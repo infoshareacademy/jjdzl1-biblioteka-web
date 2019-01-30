@@ -1,0 +1,50 @@
+body
+{
+	background-color: #2F3336;
+	color: #efefef;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+html {
+    background: url(img/background.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-nav li:hover>.dropdown-menu
+{
+	display: block;
+}
+*/
+
+.navbar
+{
+	min-height: 57px;
+}
+
+.bg
+{
+	background-color: #2F3336 !important;
+}
+
+.add_account
+{
+	list-style: none;
+	font-size: 10px;
+	padding-top: 10px;
+
+}
+
+.footer {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #2F3336;
+    text-align: center;
+}

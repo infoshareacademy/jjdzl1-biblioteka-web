@@ -5,3 +5,12 @@ O
 src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+H
+src/main/webapp/main.css,8/f/8fe7d4d4f3fcb99e511642f913cda34c17c4fc0d
+>
+libraryweb.iml,7/2/7255c36fcf44ef8acba9c48a27ea8bbb8739626c
+Q
+!src/main/webapp/LoginServlet.java,c/1/c1098d65a1de544952e1a65e2f7c1134a4ce373f

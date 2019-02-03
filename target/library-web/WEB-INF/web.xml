@@ -6,16 +6,16 @@
          id="WebApp_ID" version="3.0">
     <display-name>library-web</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
-        <filter-class>main.webapp.servlets.filters.RequestLoggingFilter</filter-class>
+        <filter-class>main.java.RequestLoggingFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>main.webapp.servlets.filters.AuthenticationFilter</filter-class>
+        <filter-class>main.java.AuthenticationFilter</filter-class>
     </filter>
 
     <filter-mapping>

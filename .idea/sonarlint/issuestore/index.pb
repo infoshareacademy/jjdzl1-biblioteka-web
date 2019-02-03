@@ -13,4 +13,16 @@ H
 >
 libraryweb.iml,7/2/7255c36fcf44ef8acba9c48a27ea8bbb8739626c
 Q
-!src/main/webapp/LoginServlet.java,c/1/c1098d65a1de544952e1a65e2f7c1134a4ce373f
+!src/main/webapp/css/bootstrap.css,1/3/13ff1c87977647caa2991b40a1e919c79e2b4c31
+P
+ src/main/webapp/LoginSuccess.jsp,e/b/ebb268ae060476936c4233c4361f00ecb869b73a
+O
+src/main/webapp/js/bootstrap.js,d/4/d4e6b9e1c4f8590713363191b14777838a5253be
+Z
+*src/main/webapp/servlets/LoginServlet.java,0/2/022c753f6794961047cd9378999aa6f86ad611d8
+P
+ src/main/webapp/CheckoutPage.jsp,3/3/334c733b2e2a811bc5e55e9e5aa869177e40b199
+j
+:src/main/webapp/servlets/filters/RequestLoggingFilter.java,1/8/18d6760376d514a2af747303b0e5d198ebe597a6
+j
+:src/main/webapp/servlets/filters/AuthenticationFilter.java,d/6/d634e86e50cefa104e749fa2d3b9292610df6a9d

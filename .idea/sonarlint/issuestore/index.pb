@@ -1,6 +1,4 @@
 
-I
-src/main/webapp/index.jsp,8/e/8e6d3b70c9f5b02570779b0441540d45eceb0ded
 O
 src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 7
@@ -18,11 +16,13 @@ P
  src/main/webapp/LoginSuccess.jsp,e/b/ebb268ae060476936c4233c4361f00ecb869b73a
 O
 src/main/webapp/js/bootstrap.js,d/4/d4e6b9e1c4f8590713363191b14777838a5253be
-Z
-*src/main/webapp/servlets/LoginServlet.java,0/2/022c753f6794961047cd9378999aa6f86ad611d8
 P
  src/main/webapp/CheckoutPage.jsp,3/3/334c733b2e2a811bc5e55e9e5aa869177e40b199
-j
-:src/main/webapp/servlets/filters/RequestLoggingFilter.java,1/8/18d6760376d514a2af747303b0e5d198ebe597a6
-j
-:src/main/webapp/servlets/filters/AuthenticationFilter.java,d/6/d634e86e50cefa104e749fa2d3b9292610df6a9d
+J
+src/main/webapp/index.html,1/3/1337d72a3b1928dba82aa5210f5cdc0e88ce895b
+W
+'src/main/java/RequestLoggingFilter.java,8/c/8cad5594f445d4c36515411a9b7f752391155665
+W
+'src/main/java/AuthenticationFilter.java,0/2/02d402c0ee5cdaa6a23775f75168adca1cfc1ff3
+O
+src/main/java/LoginServlet.java,3/3/3326a4172f8812484b607a6600e082c889934cc0

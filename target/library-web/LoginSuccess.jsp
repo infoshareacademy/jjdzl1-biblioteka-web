@@ -5,7 +5,7 @@
   Time: 16:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,10 +33,10 @@
     String userName = null;
     String sessionID = null;
     Cookie[] cookies = request.getCookies();
-    if(cookies !=null){
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("user")) userName = cookie.getValue();
-            if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("user")) userName = cookie.getValue();
+            if (cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
         }
     }
 %>
@@ -45,9 +45,11 @@
 
     <nav class="navbar navbar-dark bg navbar-expand-lg">
 
-        <a class="navbar-brand" href="#"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
+        <a class="navbar-brand" href="#"><img src="img/logo.png" width="30" height="30"
+                                              class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+                aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -55,9 +57,9 @@
 
             <ul class="navbar-nav mr-auto">
 
-
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
@@ -67,16 +69,36 @@
                     </div>
 
                 </li>
+                <ul class="navbar-nav mr-auto">
 
-            </ul>
-            Hi <%=userName %>, Login successful. Your Session ID=<%=sessionID %>
-            <br>
-            User=<%=user %>
-            <br>
-            <a href="CheckoutPage.jsp">Checkout Page</a>
-            <form action="/LogoutServlet" method="post">
-                <button class="btn btn-primary" type="submit">Wyloguj</button>
-            </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                           aria-expanded="false" id="submenu1" aria-haspopup="true"> Dodaj użytkownika </a>
+
+                        <div class="dropdown-menu" aria-labelledby="submenu">
+
+                            <a class="dropdown-item" href="#"> Dodaj administratora </a>
+                            <a class="dropdown-item" href="#"> Dodaj czytelnika </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button"
+                           aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj książkę </a>
+
+                    </li>
+
+                </ul>
+                Hi <%=userName %>, Login successful. Your Session ID=<%=sessionID %>
+                <br>
+                User=<%=user %>
+                <br>
+                <a href="CheckoutPage.jsp">Checkout Page</a>
+                <form action="LogoutServlet" method="post">
+                    <button class="btn btn-primary" type="submit">Wyloguj</button>
+                </form>
 
         </div>
 
@@ -85,14 +107,19 @@
 
 <main>
     <div class="footer">Copyright 2019 infoShare Academy. Wszelkie prawa zastrzeżone.
-        Biblioteka created by Biblioteka Team.</div>
+        Biblioteka created by Biblioteka Team.
+    </div>
     </div>
 
 </main>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
 
 <script src="js/bootstrap.min.js"></script>
 

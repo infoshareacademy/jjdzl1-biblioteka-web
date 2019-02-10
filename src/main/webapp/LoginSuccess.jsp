@@ -69,7 +69,6 @@
                     </div>
 
                 </li>
-                <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"

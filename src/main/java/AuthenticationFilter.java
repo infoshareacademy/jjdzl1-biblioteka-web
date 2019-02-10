@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
 public class AuthenticationFilter implements Filter {
 
     private ServletContext context;
-@Override
+
+    @Override
     public void init(FilterConfig fConfig) throws ServletException {
         this.context = fConfig.getServletContext();
         this.context.log("AuthenticationFilter initialized");
@@ -30,21 +31,22 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         String uri = req.getRequestURI();
-        this.context.log("Requested Resource::"+uri);
+        this.context.log("Requested Resource::" + uri);
 
         HttpSession session = req.getSession(false);
 
-        if(session == null && !(uri.endsWith("html") || uri.endsWith("LoginServlet"))){
+        if (session == null && !(uri.endsWith("html") || uri.endsWith("LoginServlet"))) {
             this.context.log("Unauthorized access request");
             res.sendRedirect("index.html");
-        }else{
+        } else {
             // pass the request along the filter chain
             chain.doFilter(request, response);
         }
 
 
     }
-@Override
+
+    @Override
     public void destroy() {
         //close any resources here
     }

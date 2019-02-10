@@ -1,3 +1,4 @@
 main/java/RequestLoggingFilter.class
 main/java/AuthenticationFilter.class
+main/java/LogoutServlet.class
 main/java/LoginServlet.class

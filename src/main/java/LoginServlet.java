@@ -6,10 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -28,6 +25,10 @@ public class LoginServlet extends HttpServlet {
         String pwd = request.getParameter("pwd");
 
         if (userID.equals(user) && password.equals(pwd)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", request.getParameter("user"));
+            //setting session to expiry in 30 mins
+            session.setMaxInactiveInterval(30*60);
             Cookie loginCookie = new Cookie("userCookie", user);
             //setting cookie to expiry in 30 mins
             loginCookie.setMaxAge(30 * 60);

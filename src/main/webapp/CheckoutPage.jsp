@@ -18,11 +18,13 @@
     Cookie[] cookies = request.getCookies();
     if(cookies !=null){
         for(Cookie cookie : cookies){
-            if(cookie.getName().equals("user")) userName = cookie.getValue();
+            if(cookie.getName().equals("userCookie")) userName = cookie.getValue();
+            if (cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
         }
     }
 %>
 <h3>Hi <%=userName %>, do the checkout.</h3>
+Your Session ID=<%=sessionID %>
 <br>
 <form action="LogoutServlet" method="post">
     <input type="submit" value="Wyloguj" >

@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,8 +35,7 @@
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("user")) userName = cookie.getValue();
-            if (cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
         }
     }
 %>
@@ -90,10 +89,7 @@
                     </li>
 
                 </ul>
-                Hi <%=userName %>, Login successful. Your Session ID=<%=sessionID %>
-                <br>
-                User=<%=user %>
-                <br>
+                Hi <%=userName %>, Login successful.
                 <a href="CheckoutPage.jsp">Checkout Page</a>
                 <form action="LogoutServlet" method="post">
                     <button class="btn btn-primary" type="submit">Wyloguj</button>

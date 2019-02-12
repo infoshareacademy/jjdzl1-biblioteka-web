@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/jsp;charset=UTF-8");
-        // get request parameters for userID and password
+
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
 
@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(loginCookie);
             response.sendRedirect("LoginSuccess.jsp");
         } else {
-            //response.sendRedirect("index.html");
             response.setContentType("text/html;charset=UTF-8");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
             PrintWriter writer = response.getWriter();

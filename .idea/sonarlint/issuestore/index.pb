@@ -26,3 +26,5 @@ W
 'src/main/java/AuthenticationFilter.java,0/2/02d402c0ee5cdaa6a23775f75168adca1cfc1ff3
 O
 src/main/java/LoginServlet.java,3/3/3326a4172f8812484b607a6600e082c889934cc0
+P
+ src/main/java/LogoutServlet.java,d/c/dcda28081507fdfa45a3dff33158b639655e991c

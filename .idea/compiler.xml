@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jjdzl1-biblioteka-web" />
-        <module name="library-web" />
         <module name="libraryweb" />
       </profile>
     </annotationProcessing>

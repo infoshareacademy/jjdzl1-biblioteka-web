@@ -1,4 +1,4 @@
-main/java/RequestLoggingFilter.class
-main/java/AuthenticationFilter.class
-main/java/LogoutServlet.class
-main/java/LoginServlet.class
+com/infoshare/LogoutServlet.class
+com/infoshare/AuthenticationFilter.class
+com/infoshare/RequestLoggingFilter.class
+com/infoshare/LoginServlet.class

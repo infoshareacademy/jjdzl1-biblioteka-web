@@ -30,6 +30,8 @@
 <%
     //allow access only if session exists
     String user = (String) session.getAttribute("user");
+    if (user == null)
+        response.sendRedirect("index.html");
     String userName = null;
     String sessionID = null;
     Cookie[] cookies = request.getCookies();

@@ -1,4 +1,4 @@
-/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/LogoutServlet.java
-/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/RequestLoggingFilter.java
-/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/LoginServlet.java
-/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/AuthenticationFilter.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/RequestLoggingFilter.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/LoginServlet.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/AuthenticationFilter.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/LogoutServlet.java

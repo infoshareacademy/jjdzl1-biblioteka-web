@@ -1,4 +1,4 @@
-package main.java;
+package com.infoshare;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

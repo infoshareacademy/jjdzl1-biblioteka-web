@@ -1,4 +1,4 @@
-package main.java;
+package com.infoshare;
 
 import java.io.IOException;
 

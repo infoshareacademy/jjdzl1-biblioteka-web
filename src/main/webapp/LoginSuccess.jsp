@@ -29,12 +29,7 @@
 <body>
 <%
     //allow access only if session exists
-    String user = (String) session.getAttribute("user");
-    if (user == null) {
-        response.sendRedirect("/library-web/index.html");
-    }
     String userName = null;
-    String sessionID = null;
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
         for (Cookie cookie : cookies) {

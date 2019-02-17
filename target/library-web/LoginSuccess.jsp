@@ -30,7 +30,7 @@
 <%
     //allow access only if session exists
     String user = (String) session.getAttribute("user");
-    if (user == null){
+    if (user == null) {
         response.sendRedirect("/library-web/index.html");
     }
     String userName = null;
@@ -72,44 +72,45 @@
 
                 </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                           aria-expanded="false" id="submenu1" aria-haspopup="true"> Dodaj użytkownika </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Dodaj użytkownika </a>
 
-                        <div class="dropdown-menu" aria-labelledby="submenu1">
+                    <div class="dropdown-menu" aria-labelledby="submenu1">
 
-                            <a class="dropdown-item" href="#"> Dodaj administratora </a>
-                            <a class="dropdown-item" href="#"> Dodaj czytelnika </a>
+                        <a class="dropdown-item" href="#"> Dodaj administratora </a>
+                        <a class="dropdown-item" href="#"> Dodaj czytelnika </a>
 
-                        </div>
+                    </div>
 
-                    </li>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button"
-                           aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj książkę </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" role="button"
+                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj książkę </a>
 
-                    </li>
+                </li>
 
-                </ul>
+            </ul>
             <ul class="navbar-nav mr-right">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                   aria-expanded="false" id="submenu3" aria-haspopup="true"> Witaj <%=userName%></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Witaj <%=userName%>
+                    </a>
 
-                <div class="dropdown-menu" aria-labelledby="submenu3">
+                    <div class="dropdown-menu" aria-labelledby="submenu3">
 
-                    <a class="dropdown-item" href="#"> Ustawienia konta </a>
-                    <a class="dropdown-item" href="#"> Powiadomienia </a>
+                        <a class="dropdown-item" href="#"> Ustawienia konta </a>
+                        <a class="dropdown-item" href="#"> Powiadomienia </a>
 
-                </div>
+                    </div>
 
-            </li>
+                </li>
             </ul>
 
-                <form action="LogoutServlet" method="post">
-                    <button class="btn btn-primary" type="submit">Wyloguj</button>
-                </form>
+            <form action="LogoutServlet" method="post">
+                <button class="btn btn-primary" type="submit">Wyloguj</button>
+            </form>
 
         </div>
 

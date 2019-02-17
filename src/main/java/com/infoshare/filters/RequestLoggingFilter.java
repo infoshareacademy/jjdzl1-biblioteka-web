@@ -1,4 +1,4 @@
-package com.infoshare;
+package com.infoshare.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -36,13 +36,11 @@ public class RequestLoggingFilter implements Filter {
                 this.context.log(req.getRemoteAddr() + "::Cookie::{" + cookie.getName() + "," + cookie.getValue() + "}");
             }
         }
-        // pass the request along the filter chain
         chain.doFilter(request, response);
     }
 
     @Override
     public void destroy() {
-        //we can close resources here
     }
 
 }

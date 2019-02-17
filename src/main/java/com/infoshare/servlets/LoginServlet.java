@@ -1,4 +1,4 @@
-package com.infoshare;
+package com.infoshare.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,7 +20,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/jsp;charset=UTF-8");
-        // get request parameters for userID and password
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
 
@@ -28,14 +27,13 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", request.getParameter("user"));
             //setting session to expiry in 30 mins
-            session.setMaxInactiveInterval(30*60);
+            session.setMaxInactiveInterval(30 * 60);
             Cookie loginCookie = new Cookie("userCookie", user);
             //setting cookie to expiry in 30 mins
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
             response.sendRedirect("LoginSuccess.jsp");
         } else {
-            //response.sendRedirect("index.html");
             response.setContentType("text/html;charset=UTF-8");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
             PrintWriter writer = response.getWriter();

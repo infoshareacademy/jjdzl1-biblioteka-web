@@ -1,4 +1,4 @@
-package com.infoshare;
+package com.infoshare.servlets;
 
 import java.io.IOException;
 

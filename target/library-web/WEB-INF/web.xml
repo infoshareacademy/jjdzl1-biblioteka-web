@@ -11,11 +11,11 @@
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
-        <filter-class>com.infoshare.RequestLoggingFilter</filter-class>
+        <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>com.infoshare.AuthenticationFilter</filter-class>
+        <filter-class>com.infoshare.filters.AuthenticationFilter</filter-class>
     </filter>
 
     <filter-mapping>

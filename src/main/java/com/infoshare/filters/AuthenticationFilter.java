@@ -1,4 +1,4 @@
-package com.infoshare;
+package com.infoshare.filters;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(value = "/AuthenticationFilter", urlPatterns = "*")
+@WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
 
     private ServletContext context;
@@ -39,16 +39,12 @@ public class AuthenticationFilter implements Filter {
             this.context.log("Unauthorized access request");
             res.sendRedirect("index.html");
         } else {
-            // pass the request along the filter chain
             chain.doFilter(request, response);
         }
-
-
     }
 
     @Override
     public void destroy() {
-        //close any resources here
     }
 
 }

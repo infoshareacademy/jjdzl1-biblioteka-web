@@ -34,8 +34,7 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(loginCookie);
             response.sendRedirect("LoginSuccess.jsp");
         } else {
-            response.setContentType("text/html;charset=UTF-8");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             PrintWriter writer = response.getWriter();
             writer.println("<font color=red>Błędna nazwa użytkownika lub hasło</font>");
             rd.include(request, response);

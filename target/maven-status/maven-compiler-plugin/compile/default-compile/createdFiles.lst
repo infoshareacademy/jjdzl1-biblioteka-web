@@ -1,4 +1,4 @@
-com/infoshare/filters/RequestLoggingFilter.class
 com/infoshare/filters/AuthenticationFilter.class
+com/infoshare/filters/RequestLoggingFilter.class
 com/infoshare/servlets/LoginServlet.class
 com/infoshare/servlets/LogoutServlet.class

@@ -35,9 +35,8 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        //response.sendRedirect("index.jsp");
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-        rd.include(request, response);
+        String redirectURL = "http://localhost:8080/library-web/index.jsp";
+        response.sendRedirect(redirectURL);
     }
 
 }

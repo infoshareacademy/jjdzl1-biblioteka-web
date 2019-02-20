@@ -1,6 +1,5 @@
 package com.infoshare.filters;
 
-import com.infoshare.servlets.LoginServlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -8,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.regex.Pattern;
+import javax.servlet.RequestDispatcher;
 
 @WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
@@ -31,9 +30,11 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = req.getSession(false);
 
-        if (session != null && session.getAttribute("user") == null && !uri.endsWith("LoginServlet")) {
+        if (session != null && session.getAttribute("user") == null) {
             this.context.log("Unauthorized access request");
-            res.sendRedirect("index.jsp");
+            String redirectURL = "http://localhost:8080/library-web/index.jsp";
+            res.sendRedirect(redirectURL);
+            //res.sendRedirect("index.jsp");
         } else {
             chain.doFilter(request, response);
         }

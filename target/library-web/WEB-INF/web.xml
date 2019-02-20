@@ -9,6 +9,17 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>app/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
@@ -25,6 +36,6 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/app/*</url-pattern>
     </filter-mapping>
 </web-app>

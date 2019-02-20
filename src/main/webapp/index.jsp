@@ -12,7 +12,6 @@
 
 <body>
 <%@include file="include/header.jsp"%>
-<%@include file="include/content.jsp"%>
 <%@include file="include/footer.jsp"%>
 
 </body>

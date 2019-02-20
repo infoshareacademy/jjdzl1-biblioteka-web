@@ -17,8 +17,8 @@
     <meta name="author" content="Biblioteka Team">
     <meta http-equiv="X-Ua-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
 
     <!--[if lt IE 9]>
@@ -28,7 +28,6 @@
 </head>
 <body>
 <%
-    //allow access only if session exists
     String userName = null;
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
@@ -42,7 +41,7 @@
 
     <nav class="navbar navbar-dark bg navbar-expand-lg">
 
-        <a class="navbar-brand" href="#"><img src="img/logo.png" width="30" height="30"
+        <a class="navbar-brand" href="#"><img src="../img/logo.png" width="30" height="30"
                                               class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -128,7 +127,7 @@
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
 
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 </body>
 

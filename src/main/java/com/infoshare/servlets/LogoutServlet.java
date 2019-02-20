@@ -2,6 +2,7 @@ package com.infoshare.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -18,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/jsp");
+        response.setContentType("text/html");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -34,7 +35,9 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        response.sendRedirect("index.jsp");
+        //response.sendRedirect("index.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+        rd.include(request, response);
     }
 
 }

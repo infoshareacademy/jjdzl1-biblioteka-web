@@ -1,11 +1,14 @@
 package com.infoshare.filters;
 
+import com.infoshare.servlets.LoginServlet;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 @WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
@@ -28,10 +31,7 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = req.getSession(false);
 
-
-        boolean endsWithIndexJSP = uri.endsWith("index.jsp");
-        boolean endsWithLoginServlet = uri.endsWith("LoginServlet");
-        if (session != null && session.getAttribute("user") == null && !(endsWithIndexJSP || endsWithLoginServlet)) {
+        if (session != null && session.getAttribute("user") == null && !uri.endsWith("LoginServlet")) {
             this.context.log("Unauthorized access request");
             res.sendRedirect("index.jsp");
         } else {

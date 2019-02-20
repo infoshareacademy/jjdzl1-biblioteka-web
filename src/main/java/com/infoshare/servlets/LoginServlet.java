@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        //response.setContentType("text/jsp;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
 
@@ -32,12 +32,13 @@ public class LoginServlet extends HttpServlet {
             //setting cookie to expiry in 30 mins
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
-            response.sendRedirect("LoginSuccess.jsp");
+            response.sendRedirect("app/LoginSuccess.jsp");
         } else {
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+            response.sendRedirect("index.jsp");
+            //RequestDispatcher rd = getServletContext().getRequestDispatcher("library-web/index.jsp");
             PrintWriter writer = response.getWriter();
             writer.println("<font color=red>Błędna nazwa użytkownika lub hasło</font>");
-            rd.include(request, response);
+            //rd.include(request, response);
         }
     }
 }

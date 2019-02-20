@@ -34,10 +34,9 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("app/LoginSuccess.jsp");
         } else {
             response.sendRedirect("index.jsp");
-            //RequestDispatcher rd = getServletContext().getRequestDispatcher("library-web/index.jsp");
-            PrintWriter writer = response.getWriter();
-            writer.println("<font color=red>Błędna nazwa użytkownika lub hasło</font>");
-            //rd.include(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("loginFalse", "loginFalse");
+            session.setMaxInactiveInterval(1);
         }
     }
 }

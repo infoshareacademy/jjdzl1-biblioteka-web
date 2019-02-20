@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 
 @WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
@@ -34,7 +33,6 @@ public class AuthenticationFilter implements Filter {
             this.context.log("Unauthorized access request");
             String redirectURL = "http://localhost:8080/library-web/index.jsp";
             res.sendRedirect(redirectURL);
-            //res.sendRedirect("index.jsp");
         } else {
             chain.doFilter(request, response);
         }

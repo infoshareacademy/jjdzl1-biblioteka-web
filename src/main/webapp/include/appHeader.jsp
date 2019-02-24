@@ -36,16 +36,10 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Dodaj użytkownika </a>
+                    <a class="nav-link" href="AddUser.jsp" role="button"
+                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj użytkownika </a>
 
-                    <div class="dropdown-menu" aria-labelledby="submenu1">
-
-                        <a class="dropdown-item" href="#"> Dodaj administratora </a>
-                        <a class="dropdown-item" href="#"> Dodaj czytelnika </a>
-
-                    </div>
-
+                </li>
                 </li>
 
                 <li class="nav-item dropdown">

@@ -1,7 +1,8 @@
-/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/bd/DBUtils.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/filters/RequestLoggingFilter.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/Hasher.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LoginServlet.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/filters/AuthenticationFilter.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/bd/DBCon.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LogoutServlet.java
+/home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/PBKDF2Hasher.java
 /home/lukaszbezlada/Pulpit/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/AddUserServlet.java

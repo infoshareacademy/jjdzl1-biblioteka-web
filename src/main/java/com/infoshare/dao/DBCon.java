@@ -1,4 +1,4 @@
-package com.infoshare.bd;
+package com.infoshare.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

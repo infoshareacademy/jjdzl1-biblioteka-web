@@ -1,6 +1,8 @@
 package com.infoshare.servlets;
 
-import com.infoshare.bd.DBCon;
+import com.infoshare.dao.DBCon;
+import com.infoshare.utils.Hasher;
+import com.infoshare.utils.PBKDF2Hasher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +48,11 @@ public class LoginServlet extends HttpServlet implements Serializable {
             e.printStackTrace();
         }
 
-        if (login.equals(user) && password.equals(pwd)) {
+        Hasher hasher = new PBKDF2Hasher();
+        boolean checkPass = hasher.checkPassword(pwd, password);
+
+        //if (login.equals(user) && password.equals(pwd) && !user.isEmpty()) {
+            if (login.equals(user) && checkPass && !user.isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", request.getParameter("user"));
             session.setMaxInactiveInterval(30 * 60);

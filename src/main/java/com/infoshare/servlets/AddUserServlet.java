@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet("/AddUserServlet")
@@ -23,10 +24,18 @@ public class AddUserServlet extends HttpServlet {
         String checkAdmin = req.getParameter("czy_admin");
         //int checkAdmin1 = Integer.parseInt(checkAdmin);
         String validTo = req.getParameter("validTo");
+        int id = 4;
 
-        String query = "INSERT INTO users (firstName, lastName, e-mail, czy_admin) VALUES (firstName, lastName, email)";
+        String query = "INSERT INTO users (id, firstName, lastName, email) " +
+                "VALUES (?, ?, ?, ?)";
+
         try {
-            DBCon.preparedStatement(query);
+            PreparedStatement ps = DBCon.preparedStatement(query);
+            ps.setInt(1, id);
+            ps.setString(2, firstName);
+            ps.setString(3, lastName);
+            ps.setString(4, email);
+            ps.executeUpdate();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

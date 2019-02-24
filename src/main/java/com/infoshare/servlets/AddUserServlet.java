@@ -26,15 +26,17 @@ public class AddUserServlet extends HttpServlet {
         String validTo = req.getParameter("validTo");
         int id = 4;
 
-        String query = "INSERT INTO users (id, firstName, lastName, email) " +
-                "VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO users (id, login, password, firstName, lastName, email) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);
             ps.setInt(1, id);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
-            ps.setString(4, email);
+            ps.setString(2, login);
+            ps.setString(3, password2);
+            ps.setString(4, firstName);
+            ps.setString(5, lastName);
+            ps.setString(6, email);
             ps.executeUpdate();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

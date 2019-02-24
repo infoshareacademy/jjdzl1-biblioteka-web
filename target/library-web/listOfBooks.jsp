@@ -1,6 +1,6 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="static com.infoshare.bd.DBCon.preparedStatement" %><%--
+<%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %><%--
   Created by IntelliJ IDEA.
   User: lukaszbezlada
   Date: 24.02.19

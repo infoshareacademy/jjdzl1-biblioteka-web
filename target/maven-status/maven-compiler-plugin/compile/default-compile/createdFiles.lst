@@ -1,8 +1,8 @@
 com/infoshare/filters/RequestLoggingFilter.class
 com/infoshare/servlets/LogoutServlet.class
 com/infoshare/servlets/AddUserServlet.class
-com/infoshare/bd/DBCon.class
 com/infoshare/utils/Hasher.class
 com/infoshare/filters/AuthenticationFilter.class
 com/infoshare/servlets/LoginServlet.class
+com/infoshare/dao/DBCon.class
 com/infoshare/utils/PBKDF2Hasher.class

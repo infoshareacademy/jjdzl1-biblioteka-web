@@ -26,23 +26,22 @@ public class AddUserServlet extends HttpServlet {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("e-mail");
-        String checkAdmin = req.getParameter("czy_admin");
-        //int checkAdmin1 = Integer.parseInt(checkAdmin);
-        String validTo = req.getParameter("validTo");
-        int id = 6;
+        String[] admin = req.getParameterValues("admin");
+        Boolean checkAdmin = admin != null ? admin[0].equals("on"):  false;
 
-        String query = "INSERT INTO users (login, password, firstName, lastName, email) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (login, password, firstName, lastName, email, admin) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);
-            //ps.setInt(1, id);
             ps.setString(1, login);
             ps.setString(2, hashedPass);
             ps.setString(3, firstName);
             ps.setString(4, lastName);
             ps.setString(5, email);
-            ps.executeUpdate();
+            ps.setBoolean(6, checkAdmin);
+            ps.execute();
+            ps.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -50,8 +49,8 @@ public class AddUserServlet extends HttpServlet {
         }
 
         resp.sendRedirect("LoginSuccess.jsp");
-        HttpSession session = req.getSession();
-        session.setAttribute("addUser", "addUser");
-        session.setMaxInactiveInterval(1);
+//        HttpSession session = req.getSession();
+//        session.setAttribute("addUser", "addUser");
+//        session.setMaxInactiveInterval(1);
     }
 }

@@ -35,8 +35,8 @@
         <tr><td>Imię: </td><td><input type="text" name="firstName"/></td></tr>
         <tr><td>Nazwisko: </td><td><input type="text" name="lastName"/></td></tr>
         <tr><td>E-mail: </td><td><input type="email" name="e-mail"/></td></tr>
-        <tr><td>Admistrator:</td><td> <input type="checkbox" name="czy_admin"/></td></tr>
-        <tr><td>Konto ważne do:</td><td> <input type="date" name="validTo"/></td></tr>
+        <tr><td>Admistrator:</td><td> <input type="checkbox" id="name" name="admin"/></td></tr>
+        <tr><td>Konto ważne do:</td><td> <input type="date"  name="validTo"/></td></tr>
         <tr><td></td><td><input type="submit" name="save" value="save"/></td></tr>
     </table>
 </form>

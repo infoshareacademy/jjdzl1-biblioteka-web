@@ -49,10 +49,12 @@ public class LoginServlet extends HttpServlet implements Serializable {
         }
 
         Hasher hasher = new PBKDF2Hasher();
-        boolean checkPass = hasher.checkPassword(pwd, password);
+        boolean checkPass;
+        if (!pwd.isEmpty())
+            checkPass = hasher.checkPassword(pwd, password);
+        else checkPass = false;
 
-        //if (login.equals(user) && password.equals(pwd) && !user.isEmpty()) {
-            if (login.equals(user) && checkPass && !user.isEmpty()) {
+            if (login.equals(user) && checkPass && !user.isEmpty() && !pwd.isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", request.getParameter("user"));
             session.setMaxInactiveInterval(30 * 60);

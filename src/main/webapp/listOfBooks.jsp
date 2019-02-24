@@ -32,6 +32,7 @@
     <%
                 System.out.format("%s, %s, %s %s, %s, %s\n", bookID, title, firstName, lastName, isbn, dareRelease, categoryID, bookscol);
             }
+            rs.close();
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println("Got an exception! ");
             System.err.println(ex.getMessage());

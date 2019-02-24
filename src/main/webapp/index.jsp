@@ -11,7 +11,7 @@
 <head>
     <%@include file="include/head.jsp" %>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <% if (session.getAttribute("loginFalse") == "loginFalse"){ %>

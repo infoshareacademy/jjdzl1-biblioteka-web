@@ -27,7 +27,7 @@
 <%@include file="/./include/appHeader.jsp" %>
 
 <h2>Dodanie nowego użytkownika</h2>
-<form method="post" action="">
+<form method="POST" action="AddUserServlet">
     <table>
         <tr><td>Login: <td><input type="text" name="login"/></td></tr>
         <tr><td>Hasło: </td><td><input type="password" name="password1"/></td></tr>

@@ -24,6 +24,7 @@
     %>
     <div class="content">
         <div class="contentInside">
+        <br/>
             <h4>Spis książek</h4>
             <table class="table">
                 <thead>

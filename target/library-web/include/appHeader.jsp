@@ -43,8 +43,9 @@
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
                         <a class="dropdown-item" href="AddUser.jsp"> Dodaj użytkownika </a>
+                        <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
                         <a class="dropdown-item" href="#"> Edytuj użytkownika </a>
-                        <a class="dropdown-item" href="#"> Usuń użytkownika </a>
+                        <a class="dropdown-item" href="removeUser.jsp"> Zmień status użytkownika </a>
 
                     </div>
 

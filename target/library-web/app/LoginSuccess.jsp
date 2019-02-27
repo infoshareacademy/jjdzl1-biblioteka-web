@@ -14,7 +14,7 @@
 <head>
 <%@include file="/./include/head.jsp"%>
 </head> <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../main.css">
+<link rel="stylesheet" href="../css/main.css">
 <body>
 <% if (session.getAttribute("addUser") == "addUser"){ %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">

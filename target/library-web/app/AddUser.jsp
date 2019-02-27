@@ -13,7 +13,7 @@
 </head>
 
 <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../main.css">
+<link rel="stylesheet" href="../css/main.css">
 <body>
 <%
     String userName = null;

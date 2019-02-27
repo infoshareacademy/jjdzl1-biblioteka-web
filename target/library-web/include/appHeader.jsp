@@ -35,11 +35,34 @@
 
                 </li>
 
+
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
+
+                    <div class="dropdown-menu" aria-labelledby="submenu">
+
+                        <a class="dropdown-item" href="AddUser.jsp"> Dodaj użytkownika </a>
+                        <a class="dropdown-item" href="#"> Edytuj użytkownika </a>
+                        <a class="dropdown-item" href="#"> Usuń użytkownika </a>
+
+                    </div>
+
+                </li>
+
+
+
+
+
+
+
+       <%--         <li class="nav-item dropdown">
                     <a class="nav-link" href="AddUser.jsp" role="button"
                        aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj użytkownika </a>
 
                 </li>
+--%>
+
                 </li>
 
                 <li class="nav-item dropdown">

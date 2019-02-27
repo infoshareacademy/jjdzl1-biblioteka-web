@@ -26,20 +26,56 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 
-<h2>Dodanie nowego użytkownika</h2>
-<form method="POST" action="AddUserServlet">
-    <table>
-        <tr><td>Login: <td><input type="text" name="login"/></td></tr>
-        <tr><td>Hasło: </td><td><input type="password" name="password1"/></td></tr>
-        <tr><td>Powtórz hasło: </td><td><input type="password" name="password2"/></td></tr>
-        <tr><td>Imię: </td><td><input type="text" name="firstName"/></td></tr>
-        <tr><td>Nazwisko: </td><td><input type="text" name="lastName"/></td></tr>
-        <tr><td>E-mail: </td><td><input type="email" name="e-mail"/></td></tr>
-        <tr><td>Admistrator:</td><td> <input type="checkbox" id="name" name="admin"/></td></tr>
-        <tr><td>Konto ważne do:</td><td> <input type="date"  name="validTo"/></td></tr>
-        <tr><td></td><td><input type="submit" name="save" value="save"/></td></tr>
-    </table>
-</form>
+<div class="addUserForm">
+<br/><br/>
+    <h4>Utwórz nowego użytkownika</h4>
+    <br/>
+    <form method="POST" action="AddUserServlet" class="addUser">
 
+    <div class="form-row">
+        <div>
+            <input type="text" class="form-control" name="login" placeholder="Login">
+        </div>
+        <div>&nbsp;</div>
+        <div>
+            <input type="email" class="form-control" name="e-mail" placeholder="Adres e-mail">
+        </div>
+    </div>
+    <br/>
+    <div class="form-row">
+        <div>
+            <input type="password" class="form-control" name="password1" placeholder="Hasło">
+        </div>
+        <div>&nbsp;</div>
+        <div>
+            <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
+        </div>
+    </div>
+    <br/>
+    <div class="form-row">
+        <div>
+            <input type="text" class="form-control" name="firstName" placeholder="Imię">
+        </div>
+        <div>&nbsp;</div>
+        <div>
+            <input type="text" class="form-control" name="lastName" placeholder="Nazwisko">
+        </div>
+    </div>
+    <br/>
+    <div class="form-row">
+        <div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="name" name="admin">
+                <label class="form-check-label" for="name">
+                    Czy użytkownik ma posiadać uprawnienia pracownika?
+                </label>
+            </div>
+        </div>
+    </div>
+    <br/>
+            <button type="submit" class="btn btn-primary">Utwórz użytkownika</button>
+</form>
+</div>
+<%@include file="/./include/footer.jsp" %>
 </body>
 </html>

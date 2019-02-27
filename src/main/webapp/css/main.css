@@ -44,6 +44,26 @@ html {
     text-align: center;
 }
 
+.footer a:link{
+    text-decoration: none;
+    color: white;
+}
+.footer a:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+footer a:active {
+    text-decoration: underline;
+    color: white;
+
+}
+
 
 #adduser {
     margin-left: 100px;

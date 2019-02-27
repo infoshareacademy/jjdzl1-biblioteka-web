@@ -47,10 +47,8 @@ public class AddUserServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        req.getSession().setAttribute("addUser", "userAdded");
         resp.sendRedirect("LoginSuccess.jsp");
-//        HttpSession session = req.getSession();
-//        session.setAttribute("addUser", "addUser");
-//        session.setMaxInactiveInterval(1);
+
     }
 }

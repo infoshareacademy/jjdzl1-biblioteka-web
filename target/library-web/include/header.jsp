@@ -10,7 +10,7 @@
 
     <nav class="navbar navbar-dark bg navbar-expand-lg">
 
-        <a class="navbar-brand" href="#"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
+        <a class="navbar-brand" href="http://localhost:8080/library-web/index.jsp"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
             <span class="navbar-toggler-icon"></span>

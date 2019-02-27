@@ -48,7 +48,9 @@ public class AddUserServlet extends HttpServlet {
             e.printStackTrace();
         }
         req.getSession().setAttribute("addUser", "userAdded");
+        if (req.getSession().getAttribute("user") != null)
         resp.sendRedirect("LoginSuccess.jsp");
-
+        else
+            resp.sendRedirect("index.jsp");
     }
 }

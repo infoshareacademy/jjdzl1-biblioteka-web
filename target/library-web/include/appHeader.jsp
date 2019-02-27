@@ -24,7 +24,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
+                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Przeglądaj książki </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 

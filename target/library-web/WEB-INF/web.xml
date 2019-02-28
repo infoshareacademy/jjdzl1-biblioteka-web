@@ -19,6 +19,15 @@
         <url-pattern>app/LogoutServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.AddUserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>app/AddUserServlet</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

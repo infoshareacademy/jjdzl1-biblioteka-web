@@ -1,20 +1,24 @@
 package com.infoshare.servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.infoshare.dao.DBCon;
+import com.infoshare.utils.Hasher;
+import com.infoshare.utils.PBKDF2Hasher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.IOException;
+import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private final String userID = "admin";
-    private final String password = "pass";
+public class LoginServlet extends HttpServlet implements Serializable {
+    private static final long serialVersionUID = 5384381614337933147L;
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
@@ -22,13 +26,39 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
 
-        if (userID.equals(user) && password.equals(pwd)) {
+        String query = "SELECT * FROM users WHERE login =?";
+
+
+        String login = "";
+        String password = "";
+        PreparedStatement ps;
+        try {
+            ps = DBCon.preparedStatement(query);
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                login = rs.getString("login");
+                password = rs.getString("password");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Hasher hasher = new PBKDF2Hasher();
+        boolean checkPass;
+        if (!pwd.isEmpty())
+            checkPass = hasher.checkPassword(pwd, password);
+        else checkPass = false;
+
+            if (login.equals(user) && checkPass && !user.isEmpty() && !pwd.isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", request.getParameter("user"));
-            //setting session to expiry in 30 mins
             session.setMaxInactiveInterval(30 * 60);
             Cookie loginCookie = new Cookie("userCookie", user);
-            //setting cookie to expiry in 30 mins
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
             response.sendRedirect("app/LoginSuccess.jsp");

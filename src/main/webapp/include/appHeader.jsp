@@ -10,7 +10,7 @@
 
     <nav class="navbar navbar-dark bg navbar-expand-lg">
 
-        <a class="navbar-brand" href="#"><img src="../img/logo.png" width="30" height="30"
+        <a class="navbar-brand" href="http://localhost:8080/library-web/index.jsp"><img src="../img/logo.png" width="30" height="30"
                                               class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -24,7 +24,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
+                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Przeglądaj książki </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
@@ -35,22 +35,40 @@
 
                 </li>
 
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Dodaj użytkownika </a>
+                       aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
 
-                    <div class="dropdown-menu" aria-labelledby="submenu1">
+                    <div class="dropdown-menu" aria-labelledby="submenu">
 
-                        <a class="dropdown-item" href="#"> Dodaj administratora </a>
-                        <a class="dropdown-item" href="#"> Dodaj czytelnika </a>
+                        <a class="dropdown-item" href="AddUser.jsp"> Dodaj użytkownika </a>
+                        <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
+                        <a class="dropdown-item" href="#"> Edytuj użytkownika </a>
+                        <a class="dropdown-item" href="removeUser.jsp"> Aktywuj/Dezaktywuj użytkownika </a>
 
                     </div>
 
                 </li>
 
+
+
+
+
+
+
+       <%--         <li class="nav-item dropdown">
+                    <a class="nav-link" href="AddUser.jsp" role="button"
+                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj użytkownika </a>
+
+                </li>
+--%>
+
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" role="button"
-                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj książkę </a>
+                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Dodaj książkę </a>
 
                 </li>
 
@@ -58,7 +76,7 @@
             <ul class="navbar-nav mr-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Witaj <%=userName%>
+                       aria-expanded="false" id="submenu4" aria-haspopup="true"> Witaj <%=userName%>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu3">

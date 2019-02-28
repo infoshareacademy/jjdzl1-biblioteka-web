@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <main>
-    <div class="footer">Copyright 2019 infoShare Academy. Wszelkie prawa zastrzeżone.
+    <div class="footer">Copyright 2019 <a href="http://www.infoshareacademy.pl">infoShare Academy</a>. Wszelkie prawa zastrzeżone.
         Biblioteka created by Biblioteka Team.</div>
     </div>
 

@@ -36,7 +36,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Zaznacz id użytkownika, któremu chcesz zmienić status</h4>
+            <h4>Zaznacz id użytkownika, któremu chcesz zmienić status konta</h4>
             <table class="table">
                 <thead>
                 <tr>

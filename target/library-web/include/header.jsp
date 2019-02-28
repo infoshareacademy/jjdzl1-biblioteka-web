@@ -58,7 +58,7 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="AddUser.jsp">Nie masz konta</br>załóż je tutaj</a>
+                        <a class="nav-link" href="addUser.jsp">Nie masz konta</br>załóż je tutaj</a>
                     </li>
                 </ul>
             </form>

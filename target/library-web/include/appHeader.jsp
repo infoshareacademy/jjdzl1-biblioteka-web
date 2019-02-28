@@ -42,27 +42,12 @@
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
-                        <a class="dropdown-item" href="AddUser.jsp"> Dodaj użytkownika </a>
+                        <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
                         <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
                         <a class="dropdown-item" href="#"> Edytuj użytkownika </a>
-                        <a class="dropdown-item" href="removeUser.jsp"> Zmień status użytkownika </a>
+                        <a class="dropdown-item" href="removeUser.jsp"> Aktywuj/Dezaktywuj użytkownika </a>
 
                     </div>
-
-                </li>
-
-
-
-
-
-
-
-       <%--         <li class="nav-item dropdown">
-                    <a class="nav-link" href="AddUser.jsp" role="button"
-                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Dodaj użytkownika </a>
-
-                </li>
---%>
 
                 </li>
 

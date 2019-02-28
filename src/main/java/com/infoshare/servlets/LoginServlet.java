@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
             Cookie loginCookie = new Cookie("userCookie", user);
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
-            response.sendRedirect("app/LoginSuccess.jsp");
+            response.sendRedirect("app/loginSuccess.jsp");
         } else {
             response.sendRedirect("index.jsp");
             HttpSession session = request.getSession();

@@ -45,7 +45,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Kontakt </a>
+                        <a class="nav-link" href="aboutUs.jsp"> O nas </a>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     </li>
 

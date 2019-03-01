@@ -5,5 +5,5 @@ com/infoshare/utils/Hasher.class
 com/infoshare/filters/AuthenticationFilter.class
 com/infoshare/utils/DateUtil.class
 com/infoshare/servlets/LoginServlet.class
-com/infoshare/dao/DBCon.class
 com/infoshare/utils/PBKDF2Hasher.class
+com/infoshare/dao/DBCon.class

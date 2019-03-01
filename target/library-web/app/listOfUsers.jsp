@@ -5,9 +5,6 @@
   Time: 19:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.infoshare.query.UsersQuery" %>
 <%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
 <%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
@@ -33,7 +30,7 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 <article>
-     <div class="content">
+    <div class="content">
         <div class="contentInside">
             <br/>
             <h4>Lista użytkowników</h4>
@@ -65,9 +62,10 @@
                     </td>
                     <td><%= user.getStatus()%>
                 </tr>
-                <%}
-                            rowNumber++;
-                  %>
+                <%
+                        rowNumber++;
+                    }
+                %>
                 </tbody>
             </table>
         </div>

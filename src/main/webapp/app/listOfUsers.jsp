@@ -63,8 +63,8 @@
                     <td><%= user.getStatus()%>
                 </tr>
                 <%
+                        rowNumber++;
                     }
-                    rowNumber++;
                 %>
                 </tbody>
             </table>

@@ -32,6 +32,7 @@
 <%}
     request.getSession().removeAttribute("addUser");%>
 <%@include file="include/header.jsp" %>
+<div class="mainpage"></div>
 <%@include file="include/footer.jsp" %>
 </body>
 

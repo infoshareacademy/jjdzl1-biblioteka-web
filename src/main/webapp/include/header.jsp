@@ -7,11 +7,9 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <header>
-
     <nav class="navbar navbar-dark bg navbar-expand-lg">
-
-        <a class="navbar-brand" href="index.jsp"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
-
+        <a class="navbar-brand" href="index.jsp"><img src="img/logo.png" width="30" height="30"
+                                                      class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
                 aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
             <span class="navbar-toggler-icon"></span>

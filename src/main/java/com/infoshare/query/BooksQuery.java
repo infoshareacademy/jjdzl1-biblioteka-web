@@ -13,10 +13,25 @@ public class BooksQuery {
         String query = "SELECT * FROM books " +
                 "JOIN authors ON books.authorID = authors.id " +
                 "JOIN booksCat ON books.categoryID = booksCat.id " +
-                "ORDER by " + order;
+                "ORDER BY " + order;
 
+        return preparedStatement(query).executeQuery();
+    }
+
+    public static ResultSet listOfBooksFromTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
+
+        String query = "SELECT * FROM books " +
+                "JOIN authors ON books.authorID = authors.id " +
+                "JOIN booksCat ON books.categoryID = booksCat.id " +
+                "ORDER BY " + order + " LIMIT " + from + "," + to;
+
+        return preparedStatement(query).executeQuery();
+    }
+
+    public static ResultSet CountAllBooks() throws SQLException, ClassNotFoundException {
+
+        String query ="SELECT COUNT(*) FROM books WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }
-
 }

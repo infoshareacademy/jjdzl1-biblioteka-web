@@ -4,6 +4,7 @@ com/infoshare/servlets/LogoutServlet.class
 com/infoshare/servlets/AddUserServlet.class
 com/infoshare/utils/Hasher.class
 com/infoshare/filters/AuthenticationFilter.class
+com/infoshare/query/UsersQuery.class
 com/infoshare/utils/DateUtil.class
 com/infoshare/servlets/LoginServlet.class
 com/infoshare/utils/PBKDF2Hasher.class

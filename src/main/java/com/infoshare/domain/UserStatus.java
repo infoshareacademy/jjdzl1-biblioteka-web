@@ -1,6 +1,6 @@
 package com.infoshare.domain;
 
-public enum AccountStatus {
+public enum UserStatus {
     ADMIN,
     USER;
 }

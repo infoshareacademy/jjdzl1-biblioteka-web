@@ -3,14 +3,8 @@ package com.infoshare.domain;
 import lombok.Data;
 
 @Data
-public class User {
+public class Author {
     private int id;
-    private String login;
     private String firstName;
     private String lastName;
-    private String password;
-    private String email;
-    private UserStatus status;
-
 }
-

@@ -30,7 +30,7 @@ public class BooksQuery {
 
     public static ResultSet CountAllBooks() throws SQLException, ClassNotFoundException {
 
-        String query ="SELECT COUNT(*) FROM books WHERE 1";
+        String query = "SELECT COUNT(*) FROM books WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }

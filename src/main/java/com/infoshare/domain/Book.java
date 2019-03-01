@@ -1,5 +1,6 @@
 package com.infoshare.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -12,4 +13,6 @@ public class Book {
     private int categoryID;
     private boolean bookscol;
 
+
 }
+

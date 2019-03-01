@@ -5,17 +5,18 @@
   Time: 19:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.infoshare.query.UsersQuery" %>
+<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
+<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
+<%@ page import="com.infoshare.domain.User" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <%@include file="/./include/head.jsp" %>
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <%
@@ -29,9 +30,6 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 <article>
-    <% try {
-        ResultSet rs = UsersQuery.listOfUsers("id");
-    %>
     <div class="content">
         <div class="contentInside">
             <br/>
@@ -49,33 +47,24 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    while (rs.next()) {
-                        int userID = rs.getInt("id");
-                        String login = rs.getString("login");
-                        String firstName = rs.getString("firstName");
-                        String lastName = rs.getString("lastName");
-                        String email = rs.getString("email");
-                        int status = rs.getInt("admin");%>
-
+                    UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
+                    List<User> listOfUsers = usersRepositoryDaoBean.listOfUsers();
+                    for (User user : listOfUsers) {
+                %>
                 <tr>
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><%= login%>
+                    <td><%= user.getLogin()%>
                     </td>
-                    <td><%= lastName + ", " + firstName%>
+                    <td><%= user.getFirstName() + ", " + user.getLastName()%>
                     </td>
-                    <td><%= email%>
+                    <td><%= user.getEmail()%>
                     </td>
-                    <td><%= status%>
+                    <td><%= user.getStatus()%>
                 </tr>
                 <%
-                            rowNumber++;
-                        }
-                        rs.close();
-                    } catch (ClassNotFoundException | SQLException ex) {
-                        System.err.println("Got an exception! ");
-                        System.err.println(ex.getMessage());
                     }
+                    rowNumber++;
                 %>
                 </tbody>
             </table>

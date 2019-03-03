@@ -17,7 +17,7 @@
             <h2>Nasz zespół</h2>
         </div>
         <ul class="row">
-            <li class="col-12 col-md-6 col-lg-3">
+            <li class="col-12 col-md-6 col-lg-4">
                 <div class="cnt-block equal-hight" style="height: 349px;">
                     <figure><img src="https://mini-figurki.pl/3731-thickbox_default/lego-minifig-the-big-bang-theory.jpg" class="img-responsive" alt=""></figure>
                     <h3><a href="#">Arkadiusz Kałka</a></h3>
@@ -29,7 +29,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="col-12 col-md-6 col-lg-3">
+            <li class="col-12 col-md-6 col-lg-4">
                 <div class="cnt-block equal-hight" style="height: 349px;">
                     <figure><img src="https://mini-figurki.pl/1210-thickbox_default/lego-minifig-mutt-williams.jpg" class="img-responsive" alt=""></figure>
                     <h3><a href="#">Łukasz Bezłada</a></h3>
@@ -41,7 +41,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="col-12 col-md-6 col-lg-3">
+            <li class="col-12 col-md-6 col-lg-4">
                 <div class="cnt-block equal-hight" style="height: 349px;">
                     <figure><img src="https://mini-figurki.pl/3987-thickbox_default/figurka-lego-custom-android-vs-apple.jpg" class="img-responsive" alt=""></figure>
                     <h3><a href="#">Michał Mrozik</a></h3>

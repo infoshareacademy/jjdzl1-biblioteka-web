@@ -14,8 +14,8 @@
 <html lang="pl">
 <head>
     <%@include file="/./include/head.jsp" %>
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <%
@@ -44,6 +44,7 @@
                     <th scope="col">Login</th>
                     <th scope="col">Nazwisko, Imię</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Administrator</th>
                     <th scope="col">Status</th>
                 </tr>
                 </thead>
@@ -56,7 +57,8 @@
                         String firstName = rs.getString("firstName");
                         String lastName = rs.getString("lastName");
                         String email = rs.getString("email");
-                        int status = rs.getInt("admin");%>
+                        int kind = rs.getInt("admin");
+                        String status = rs.getString("status");%>
 
                 <tr>
                     <th scope="row"><%=rowNumber%>
@@ -67,7 +69,10 @@
                     </td>
                     <td><%= email%>
                     </td>
+                    <td><%= kind%>
+                    </td>
                     <td><%= status%>
+                    </td>
                 </tr>
                 <%
                             rowNumber++;
@@ -83,7 +88,6 @@
         </div>
     </div>
 </article>
-</head>
 <%@include file="/./include/footer.jsp" %>
 </body>
 </html>

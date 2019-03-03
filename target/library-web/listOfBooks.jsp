@@ -79,7 +79,6 @@
         </div>
     </div>
 </article>
-</head>
 <%@include file="include/footer.jsp" %>
 </body>
 </html>

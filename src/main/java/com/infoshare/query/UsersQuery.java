@@ -23,7 +23,7 @@ public class UsersQuery {
 
     public static ResultSet CountAllUsers() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM users WHERE 1";
+        String query = "SELECT COUNT(*) FROM users WHERE 1" ;
         return preparedStatement(query).executeQuery();
 
     }
@@ -31,8 +31,12 @@ public class UsersQuery {
     public static ResultSet findUserById(int id) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM users WHERE id = " + id;
         return preparedStatement(query).executeQuery();
-
-
     }
+
+    public static ResultSet findUserByLogin(String login) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM users WHERE login = '" + login + "'" ;
+        return preparedStatement(query).executeQuery();
+    }
+
 
 }

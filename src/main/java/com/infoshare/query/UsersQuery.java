@@ -28,5 +28,11 @@ public class UsersQuery {
 
     }
 
+    public static ResultSet findUserById(int id) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM users WHERE id = " + id;
+        return preparedStatement(query).executeQuery();
+
+
+    }
 
 }

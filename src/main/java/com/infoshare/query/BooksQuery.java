@@ -30,7 +30,7 @@ public class BooksQuery {
 
     public static ResultSet CountAllBooks() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM books WHERE 1";
+        String query = "SELECT COUNT(*) FROM books WHERE 1" ;
         return preparedStatement(query).executeQuery();
 
     }
@@ -43,6 +43,15 @@ public class BooksQuery {
                 "WHERE books.bookID = " + id;
         return preparedStatement(query).executeQuery();
 
+    }
+
+    public static ResultSet findBookByTitle(String title) throws SQLException, ClassNotFoundException {
+
+        String query = "SELECT * FROM books " +
+                "JOIN authors ON books.authorID = authors.id " +
+                "JOIN booksCat ON books.categoryID = booksCat.id " +
+                "WHERE books.title LIKE '%" + title + "%'" ;
+        return preparedStatement(query).executeQuery();
     }
 
 }

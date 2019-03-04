@@ -39,10 +39,6 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Pomoc </a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="#"> Kontakt </a>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     </li>

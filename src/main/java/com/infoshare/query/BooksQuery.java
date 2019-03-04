@@ -34,4 +34,27 @@ public class BooksQuery {
         return preparedStatement(query).executeQuery();
 
     }
+
+    public static ResultSet findBookById(int id) throws SQLException, ClassNotFoundException {
+
+        String query = "SELECT * FROM books " +
+                "JOIN authors ON books.authorID = authors.id " +
+                "JOIN booksCat ON books.categoryID = booksCat.id " +
+                "WHERE books.bookID = " + id;
+        return preparedStatement(query).executeQuery();
+
+    }
+
+
+    SELECT *
+    FROM books
+    JOIN authors
+    ON books.authorID =
+    authors.id JOIN
+    booksCat ON
+    books.categoryID =
+    booksCat.id WHERE
+    books.bookID=1
+
+
 }

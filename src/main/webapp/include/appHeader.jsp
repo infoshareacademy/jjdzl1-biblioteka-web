@@ -45,7 +45,7 @@
                         <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
                         <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
                         <a class="dropdown-item" href="#"> Edytuj użytkownika </a>
-                        <a class="dropdown-item" href="removeUser.jsp"> Aktywuj/Dezaktywuj użytkownika </a>
+                        <a class="dropdown-item" href="searchUserToEdit.jsp"> Aktywuj/Dezaktywuj użytkownika </a>
 
                     </div>
 

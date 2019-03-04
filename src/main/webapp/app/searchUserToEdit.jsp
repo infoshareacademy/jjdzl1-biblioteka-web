@@ -62,13 +62,7 @@
                         String status = rs.getString("status");%>
 
                 <tr>
-                    <th scope="row">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio<%= radioId%>" name="customRadio"
-                                   class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio<%= radioId%>"><%=rowNumber%>
-                            </label>
-                        </div>
+                    <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= login%>
                     </td>
@@ -95,20 +89,6 @@
             </table>
             <br/>
             <br/>
-            <div class=removeForm>
-                <h4>Wpisz hasło administratora, aby dezaktywować zaznaczone konto</h4>
-
-                <form method="POST" action="AddUserServlet" class="removeForm">
-                    <div class="form-row">
-                        <div>
-                            <input type="password" class="form-control" name="password" placeholder="Hasło">
-                        </div>
-                        <br/>
-                    </div>
-                    <br/>
-                    <button type="submit" class="btn btn-primary">Dezaktywuj użytkownika</button>
-                </form>
-            </div>
 
         </div>
     </div>

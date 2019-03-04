@@ -45,16 +45,4 @@ public class BooksQuery {
 
     }
 
-
-    SELECT *
-    FROM books
-    JOIN authors
-    ON books.authorID =
-    authors.id JOIN
-    booksCat ON
-    books.categoryID =
-    booksCat.id WHERE
-    books.bookID=1
-
-
 }

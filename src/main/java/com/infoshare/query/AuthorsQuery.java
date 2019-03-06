@@ -22,7 +22,7 @@ public class AuthorsQuery {
 
     }
 
-    public static ResultSet findBookById(int id) throws SQLException, ClassNotFoundException {
+    public static ResultSet findAuthorById(int id) throws SQLException, ClassNotFoundException {
 
         String query = "SELECT * FROM authors WHERE id = " + id;
         return preparedStatement(query).executeQuery();

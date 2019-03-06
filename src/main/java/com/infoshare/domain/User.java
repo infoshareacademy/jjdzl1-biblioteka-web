@@ -10,7 +10,7 @@ public class User {
     private String lastName;
     private String password;
     private String email;
-    private UserStatus status;
+    private UserStatus admin;
 
     public User(int id, String login, String firstName, String lastName, String password, String email, UserStatus status) {
         this.id = id;
@@ -19,7 +19,7 @@ public class User {
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.status = status;
+        this.admin = status;
     }
 
     public User() {
@@ -50,6 +50,6 @@ public class User {
     }
 
     public UserStatus getStatus() {
-        return status;
+        return admin;
     }
 }

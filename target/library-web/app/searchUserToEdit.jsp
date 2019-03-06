@@ -29,7 +29,6 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 <article>
-    <% int rowNumber = 1;%>
     <% try {
         String query = "SELECT * FROM users " + "ORDER by id";
         ResultSet rs = preparedStatement(query).executeQuery();
@@ -76,7 +75,6 @@
                         </td>
                     </tr>
                 <%
-                            rowNumber++;
                         }
                         rs.close();
                     } catch (ClassNotFoundException | SQLException ex) {

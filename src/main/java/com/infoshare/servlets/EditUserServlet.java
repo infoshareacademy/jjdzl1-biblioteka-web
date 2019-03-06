@@ -4,7 +4,6 @@ import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import lombok.Data;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +23,9 @@ public class EditUserServlet extends HttpServlet implements Serializable {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.getParameter("userID");
-        String query = "SELECT * FROM users WHERE id=" + req.getParameter("userID");
-        ResultSet rs = null;
+        String userId = req.getParameter("userID");
+        String query = "SELECT * FROM users WHERE id=" + userId;
+        ResultSet rs;
         try {
             rs = preparedStatement(query).executeQuery();
             user = new User(rs.getInt("id"), rs.getString("login"), rs.getString("firstName"),

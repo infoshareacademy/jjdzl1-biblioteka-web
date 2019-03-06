@@ -19,3 +19,4 @@ com/infoshare/query/AuthorsQuery.class
 com/infoshare/utils/PBKDF2Hasher.class
 com/infoshare/repository/UsersRepositoryDaoBean.class
 com/infoshare/repository/AuthorsRepositoryDaoBean.class
+

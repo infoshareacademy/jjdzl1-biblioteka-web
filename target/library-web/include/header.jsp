@@ -37,13 +37,15 @@
 
             <form action="LoginServlet" class="form-inline" method="post">
 
-                <ul class="navbar-nav mr-auto">
+             <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#"> Kontakt </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutUs.jsp"> O nas </a>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     </li>
-
-                </ul>
+               </ul>
 
                 <input class="form-control mr-1" type="user" placeholder="Użytkownik" aria-label="Użytkownik"
                        name="user">

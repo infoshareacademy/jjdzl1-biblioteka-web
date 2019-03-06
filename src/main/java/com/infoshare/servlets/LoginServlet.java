@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Servlet implementation class LoginServlet
@@ -32,6 +33,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
         String login = "";
         String password = "";
         PreparedStatement ps;
+        Boolean admin = true;
         try {
             ps = DBCon.preparedStatement(query);
             ps.setString(1, user);
@@ -40,33 +42,37 @@ public class LoginServlet extends HttpServlet implements Serializable {
             while (rs.next()) {
                 login = rs.getString("login");
                 password = rs.getString("password");
+                admin = rs.getBoolean("admin");
             }
             rs.close();
+
+            Hasher hasher = new PBKDF2Hasher();
+            boolean checkPass;
+            if (!pwd.isEmpty())
+                checkPass = hasher.checkPassword(pwd, password);
+            else checkPass = false;
+
+            if (login.equals(user) && checkPass && !user.isEmpty() && !pwd.isEmpty()) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", request.getParameter("user"));
+                session.setMaxInactiveInterval(30 * 60);
+                Cookie loginCookie = new Cookie("userCookie", user);
+                loginCookie.setMaxAge(30 * 60);
+                response.addCookie(loginCookie);
+                if (!admin) {
+                    session.setAttribute("normalUser", "normalUser");
+                }
+                response.sendRedirect("app/loginSuccess.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+                HttpSession session = request.getSession();
+                session.setAttribute("loginFalse", "loginFalse");
+                session.setMaxInactiveInterval(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-
-        Hasher hasher = new PBKDF2Hasher();
-        boolean checkPass;
-        if (!pwd.isEmpty())
-            checkPass = hasher.checkPassword(pwd, password);
-        else checkPass = false;
-
-            if (login.equals(user) && checkPass && !user.isEmpty() && !pwd.isEmpty()) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", request.getParameter("user"));
-            session.setMaxInactiveInterval(30 * 60);
-            Cookie loginCookie = new Cookie("userCookie", user);
-            loginCookie.setMaxAge(30 * 60);
-            response.addCookie(loginCookie);
-            response.sendRedirect("app/loginSuccess.jsp");
-        } else {
-            response.sendRedirect("index.jsp");
-            HttpSession session = request.getSession();
-            session.setAttribute("loginFalse", "loginFalse");
-            session.setMaxInactiveInterval(1);
         }
     }
 }

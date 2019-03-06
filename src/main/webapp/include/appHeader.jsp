@@ -57,11 +57,13 @@
                 </li>
                 <li>&nbsp;&nbsp;&nbsp;</li>
                 <li>
-                    <form>
+                    <form action="FindBookServlet" class="form-inline" method="get">
                         <div class="form-row align-items-center">
                             <div class="col-auto">
+<%--
                                 <label class="sr-only" for="inlineFormInput">Name</label>
-                                <input type="text" class="form-control" id="inlineFormInput"
+--%>
+                                <input type="text" name="title" class="form-control" id="inlineFormInput"
                                        placeholder="Wpisz tytuł książki">
                             </div>
                             <div class="col-auto">

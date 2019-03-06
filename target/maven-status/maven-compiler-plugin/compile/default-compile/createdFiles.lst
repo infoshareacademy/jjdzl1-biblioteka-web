@@ -6,6 +6,7 @@ com/infoshare/query/UsersQuery.class
 com/infoshare/domain/User.class
 com/infoshare/dao/DBCon.class
 com/infoshare/filters/RequestLoggingFilter.class
+com/infoshare/servlets/FindBookServlet.class
 com/infoshare/domain/Author.class
 com/infoshare/query/BooksQuery.class
 com/infoshare/servlets/LogoutServlet.class

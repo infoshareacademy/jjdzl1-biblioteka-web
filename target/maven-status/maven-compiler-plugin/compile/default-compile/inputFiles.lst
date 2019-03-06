@@ -12,6 +12,7 @@
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/query/UsersQuery.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/filters/RequestLoggingFilter.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/DateUtil.java
+/home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/FindBookServlet.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LogoutServlet.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/UserStatus.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/PBKDF2Hasher.java

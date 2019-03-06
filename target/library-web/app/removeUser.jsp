@@ -7,7 +7,7 @@
 --%>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %>
+<%@ page import="com.infoshare.query.UsersQuery" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -30,8 +30,7 @@
 <%@include file="/./include/appHeader.jsp" %>
 <article>
     <% try {
-        String query = "SELECT * FROM users " + "ORDER by id";
-        ResultSet rs = preparedStatement(query).executeQuery();
+        ResultSet rs = UsersQuery.listOfUsers("id");
     %>
     <div class="content">
         <div class="contentInside">

@@ -21,7 +21,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<%}%>
+<%request.getSession().removeAttribute("loginFalse");}%>
 <% if (request.getSession().getAttribute("addUser") == "userAdded"){ %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Twoje konto jest aktywne, możesz się zalogować</strong>
@@ -32,6 +32,7 @@
 <%}
     request.getSession().removeAttribute("addUser");%>
 <%@include file="include/header.jsp" %>
+<div class="mainpage"></div>
 <%@include file="include/footer.jsp" %>
 </body>
 

@@ -6,17 +6,31 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <%@include file="include/head.jsp" %>
+    <%@include file="../include/head.jsp" %>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-<%@include file="include/header.jsp" %>
+<%
+    String userName = null;
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
+        }
+    }
+%>
+
+<%@include file="../include/appHeader.jsp" %>
+
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/main.css">
 <body>
-
 <article>
-    <% try {
-        ResultSet rs = BooksQuery.listOfBooks("title");
+    <%
+        String title1 = request.getParameter("title");
+        try {
+            ResultSet rs = BooksQuery.findBookByTitle(title1);
     %>
 
     <div class="content">
@@ -48,7 +62,7 @@
                         int bookscol = rs.getInt("bookscol");
                         String category = rs.getString("booksCat.name");%>
 
-                <tr>
+                <tr style="cursor:pointer" onclick="window.location='loginSuccess.jsp';">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= title%>
@@ -61,7 +75,7 @@
                     </td>
                     <td><%= category%>
                     </td>
-                </tr>
+                   </tr>
                 <%
                             rowNumber++;
                         }
@@ -77,6 +91,8 @@
     </div>
 </article>
 </head>
-<%@include file="include/footer.jsp" %>
+<%@include file="../include/footer.jsp" %>
+
+
 </body>
 </html>

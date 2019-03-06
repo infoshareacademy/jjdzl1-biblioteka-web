@@ -7,16 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 @WebServlet("/FindBookServlet")
 public class FindBookServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String titeOfBook=req.getParameter("title");
+        String titleOfBook = req.getParameter("title");
 
         resp.setContentType("text/html;charset=UTF-8");
-        resp.sendRedirect( "app/listOfBooks.jsp?title="+titeOfBook);
+        resp.sendRedirect("listOfBooks.jsp?title=" + titleOfBook);
 
     }
 }

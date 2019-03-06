@@ -1,4 +1,5 @@
 com/infoshare/repository/UsersRepositoryDao.class
+com/infoshare/repository/AuthorsRepositoryDao.class
 com/infoshare/utils/Hasher.class
 com/infoshare/domain/Book.class
 com/infoshare/filters/AuthenticationFilter.class
@@ -16,3 +17,5 @@ com/infoshare/domain/UserStatus.class
 com/infoshare/servlets/LoginServlet.class
 com/infoshare/repository/UsersRepositoryDaoBean.class
 com/infoshare/utils/PBKDF2Hasher.class
+com/infoshare/query/AuthorsQuery.class
+com/infoshare/repository/AuthorsRepositoryDaoBean.class

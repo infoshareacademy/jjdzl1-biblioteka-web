@@ -29,14 +29,14 @@
         <url-pattern>app/AddUserServlet</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
+    <servlet>
         <servlet-name>FindBookServlet</servlet-name>
-        <url-pattern>app/FindBookServlet</url-pattern>
-    </servlet-mapping>
+        <servlet-class>com.infoshare.servlets.FindBookServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>FindBookServlet</servlet-name>
-        <url-pattern>com.infoshare.servlets.FindBookServlet</url-pattern>
+        <url-pattern>app/FindBookServlet</url-pattern>
     </servlet-mapping>
 
 

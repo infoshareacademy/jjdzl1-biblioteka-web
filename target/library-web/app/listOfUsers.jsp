@@ -50,7 +50,6 @@
                 </thead>
                 <tbody>
                 <%
-                    int rowNumber = 1;
                     while (rs.next()) {
                         int userID = rs.getInt("id");
                         String login = rs.getString("login");
@@ -61,7 +60,7 @@
                         String status = rs.getString("status");%>
 
                 <tr>
-                    <th scope="row"><%=rowNumber%>
+                    <th scope="row"><%=userID%>
                     </th>
                     <td><%= login%>
                     </td>
@@ -75,7 +74,6 @@
                     </td>
                 </tr>
                 <%
-                            rowNumber++;
                         }
                         rs.close();
                     } catch (ClassNotFoundException | SQLException ex) {

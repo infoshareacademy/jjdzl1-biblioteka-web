@@ -62,7 +62,7 @@
 
 
                     <tr>
-                        <th scope="row"><a class="editUser" href="EditUserServlet?userID=<%=rowNumber%>" role="button"><%=rowNumber%></a>
+                        <th scope="row"><a class="editUser" href="EditUserServlet?userID=<%=userID%>" role="button"><%=userID%></a>
                         </th>
                         <td><%= login%>
                         </td>

@@ -62,7 +62,7 @@
                         int bookscol = rs.getInt("bookscol");
                         String category = rs.getString("booksCat.name");%>
 
-                <tr style="cursor:pointer" onclick="window.location='index.jsp';">
+                <tr style="cursor:pointer" onclick="window.location='loginSuccess.jsp';">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= title%>

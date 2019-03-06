@@ -1,6 +1,8 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="com.infoshare.servlets.EditUserServlet" %>
+<%@ page import="com.infoshare.domain.UserStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -21,20 +23,14 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 <article>
-    <%
-        String query = "SELECT * FROM users WHERE id=" + request.getParameter("userID");
-        ResultSet rs = null;%>
     <div class="addUserForm">
         <br/><br/>
-        <% try {
-            rs = preparedStatement(query).executeQuery();
-            int userID = rs.getInt("id");
-            String login = rs.getString("login");
-            String firstName = rs.getString("firstName");
-            String lastName = rs.getString("lastName");
-            String email = rs.getString("email");
-            int kind = rs.getInt("admin");
-            String status = rs.getString("status");%>
+        <% int id = EditUserServlet.user.getId(); %>
+        <% String login = EditUserServlet.user.getLogin(); %>
+        <% String firstName = EditUserServlet.user.getFirstName(); %>
+        <% String lastName = EditUserServlet.user.getLastName(); %>
+        <% String email = EditUserServlet.user.getEmail(); %>
+        <% UserStatus status = EditUserServlet.user.getStatus(); %>
         <h4>Edytuj użytkownika <%= firstName + "," + lastName%></h4>
         <br/>
         <form method="POST" action="AddUserServlet" class="addUser">
@@ -84,15 +80,7 @@
             <br/>
             <button type="submit" class="btn btn-primary">Utwórz użytkownika</button>
         </form>
-        <%
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        %>
     </div>
-
 </article>
 <%@include file="/./include/footer.jsp" %>
 </body>

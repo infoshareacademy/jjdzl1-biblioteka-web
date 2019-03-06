@@ -2,8 +2,11 @@ com/infoshare/filters/RequestLoggingFilter.class
 com/infoshare/servlets/LogoutServlet.class
 com/infoshare/servlets/AddUserServlet.class
 com/infoshare/utils/Hasher.class
+com/infoshare/servlets/EditUserServlet.class
 com/infoshare/filters/AuthenticationFilter.class
 com/infoshare/utils/DateUtil.class
 com/infoshare/servlets/LoginServlet.class
+com/infoshare/domain/UserStatus.class
 com/infoshare/dao/DBCon.class
+com/infoshare/domain/User.class
 com/infoshare/utils/PBKDF2Hasher.class

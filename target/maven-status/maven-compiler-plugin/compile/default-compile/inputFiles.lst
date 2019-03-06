@@ -1,9 +1,12 @@
+/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/User.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/PBKDF2Hasher.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/DateUtil.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/filters/RequestLoggingFilter.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/AddUserServlet.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/filters/AuthenticationFilter.java
+/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/EditUserServlet.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LogoutServlet.java
+/home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/UserStatus.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/utils/Hasher.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/dao/DBCon.java
 /home/lukasz/Pulpit/Projekty/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LoginServlet.java

@@ -36,7 +36,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Zaznacz id użytkownika, któremu chcesz zmienić status konta</h4>
+            <h4>Kliknij użytkownika, którego chcesz edytować</h4>
             <table class="table">
                 <thead>
                 <tr>
@@ -51,7 +51,6 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    int radioId = 1;
                     while (rs.next()) {
                         int userID = rs.getInt("id");
                         String login = rs.getString("login");
@@ -61,23 +60,23 @@
                         int kind = rs.getInt("admin");
                         String status = rs.getString("status");%>
 
-                <tr>
-                    <th scope="row"><%=rowNumber%>
-                    </th>
-                    <td><%= login%>
-                    </td>
-                    <td><%= lastName + ", " + firstName%>
-                    </td>
-                    <td><%= email%>
-                    </td>
-                    <td><%= kind%>
-                    </td>
-                    <td><%= status%>
-                    </td>
-                </tr>
+
+                    <tr>
+                        <th scope="row"><a class="editUser" href="editUserServlet?userID=<%=rowNumber%>" role="button"><%=rowNumber%></a>
+                        </th>
+                        <td><%= login%>
+                        </td>
+                        <td><%= lastName + ", " + firstName%>
+                        </td>
+                        <td><%= email%>
+                        </td>
+                        <td><%= kind%>
+                        </td>
+                        <td><%= status%>
+                        </td>
+                    </tr>
                 <%
                             rowNumber++;
-                            radioId++;
                         }
                         rs.close();
                     } catch (ClassNotFoundException | SQLException ex) {

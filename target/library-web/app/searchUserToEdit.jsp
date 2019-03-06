@@ -36,7 +36,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Zaznacz id użytkownika, któremu chcesz zmienić status konta</h4>
+            <h4>Kliknij użytkownika, którego chcesz edytować</h4>
             <table class="table">
                 <thead>
                 <tr>
@@ -51,7 +51,6 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    int radioId = 1;
                     while (rs.next()) {
                         int userID = rs.getInt("id");
                         String login = rs.getString("login");
@@ -61,29 +60,23 @@
                         int kind = rs.getInt("admin");
                         String status = rs.getString("status");%>
 
-                <tr>
-                    <th scope="row">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio<%= radioId%>" name="customRadio"
-                                   class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio<%= radioId%>"><%=rowNumber%>
-                            </label>
-                        </div>
-                    </th>
-                    <td><%= login%>
-                    </td>
-                    <td><%= lastName + ", " + firstName%>
-                    </td>
-                    <td><%= email%>
-                    </td>
-                    <td><%= kind%>
-                    </td>
-                    <td><%= status%>
-                    </td>
-                </tr>
+
+                    <tr>
+                        <th scope="row"><a class="editUser" href="editUser.jsp?userID=<%=rowNumber%>" role="button"><%=rowNumber%></a>
+                        </th>
+                        <td><%= login%>
+                        </td>
+                        <td><%= lastName + ", " + firstName%>
+                        </td>
+                        <td><%= email%>
+                        </td>
+                        <td><%= kind%>
+                        </td>
+                        <td><%= status%>
+                        </td>
+                    </tr>
                 <%
                             rowNumber++;
-                            radioId++;
                         }
                         rs.close();
                     } catch (ClassNotFoundException | SQLException ex) {
@@ -95,20 +88,6 @@
             </table>
             <br/>
             <br/>
-            <div class=removeForm>
-                <h4>Wpisz hasło administratora, aby dezaktywować zaznaczone konto</h4>
-
-                <form method="POST" action="AddUserServlet" class="removeForm">
-                    <div class="form-row">
-                        <div>
-                            <input type="password" class="form-control" name="password" placeholder="Hasło">
-                        </div>
-                        <br/>
-                    </div>
-                    <br/>
-                    <button type="submit" class="btn btn-primary">Dezaktywuj użytkownika</button>
-                </form>
-            </div>
 
         </div>
     </div>

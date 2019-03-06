@@ -112,12 +112,21 @@ div.addUserForm
     color: white;
 }
 
-.removeForm {
+.editUser a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.editUser a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.editUser a:hover{
     text-decoration: underline;
     color: white;
-    position: center;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 10px;
+}
+.editUser a:active{
+    text-decoration: underline;
+    color: white;
 }

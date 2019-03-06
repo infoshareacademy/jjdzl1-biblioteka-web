@@ -60,8 +60,8 @@
                         String status = rs.getString("status");%>
 
 
-                    <tr>
-                        <th scope="row"><a class="editUser" href="EditUserServlet?userID=<%=userID%>" role="button"><%=userID%></a>
+                <tr style="cursor:pointer" onclick="window.location='EditUserServlet?userID=<%=userID%>';">
+                        <th scope="row"><%=userID%>
                         </th>
                         <td><%= login%>
                         </td>

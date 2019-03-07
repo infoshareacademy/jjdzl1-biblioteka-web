@@ -25,12 +25,12 @@
 <body>
 <%
     String order = request.getParameter("order");
-    String bookTitle=request.getParameter("title");
+    String bookTitle = request.getParameter("title");
     String orderTitle;
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
         order = "title";
-    }else orderTitle=" (wg autora)";
+    } else orderTitle = " (wg autora)";
 %>
 <article>
     <div class="content">
@@ -55,17 +55,16 @@
                     List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
                     for (Book book : listOfBooks) {
                 %>
-
-                <tr style="cursor:pointer" onclick="window.location='loginSuccess.jsp';">
-                    <th scope="row"><%=rowNumber%>
+                <tr class="listofbook">
+                    <th scope="row"><a href="bookService.jsp?id="<%=book.getBookID()%>"><%=rowNumber%></a>
                     </th>
-                    <td><%=book.getTitle()%>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%></a>
                     </td>
-                    <td><%=book.getAuthor()%>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthor()%></a>
                     </td>
-                    <td><%=book.getRelaseDate()%>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%></a>
                     </td>
-                    <td><%=book.getIsbn()%>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%></a>
                     </td>
                 </tr>
                 <%

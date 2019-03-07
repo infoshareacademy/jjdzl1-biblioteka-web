@@ -24,10 +24,8 @@ public class AddBookServlet extends HttpServlet {
 
         String author = lastName + ", " + firstName;
 
-
         String query = "INSERT INTO books (title, author, daterelease, isbn) " +
                 "VALUES (?, ?, ?, ?)";
-
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);
             ps.setString(1, title);
@@ -36,6 +34,7 @@ public class AddBookServlet extends HttpServlet {
             ps.setString(4, isbn);
             ps.execute();
             ps.close();
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

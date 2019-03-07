@@ -233,3 +233,8 @@ ul{
 .our-webcoderskull .cnt-block .follow-us li .fa:hover{
     color:#025a8e;
 }
+
+.listofbook a{
+    text-decoration: none;
+    color: white;
+}

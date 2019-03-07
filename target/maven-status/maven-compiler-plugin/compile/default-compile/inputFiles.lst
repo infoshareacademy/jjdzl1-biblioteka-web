@@ -1,4 +1,5 @@
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/query/AuthorsQuery.java
+/home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/repository/BooksRepositoryDao.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/LoginServlet.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/Book.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/repository/AuthorsRepositoryDao.java
@@ -9,6 +10,7 @@
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/Author.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/dao/DBCon.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/servlets/AddUserServlet.java
+/home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/query/BooksQuery.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/domain/User.java
 /home/arek/JAVA_SE/1/jjdzl1-biblioteka-web/src/main/java/com/infoshare/query/UsersQuery.java

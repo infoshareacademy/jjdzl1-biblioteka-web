@@ -6,5 +6,5 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UsersRepositoryDao {
-    List<User> listOfUsers() throws SQLException, ClassNotFoundException;
+    List<User> listOfUsersByTitle() throws SQLException, ClassNotFoundException;
 }

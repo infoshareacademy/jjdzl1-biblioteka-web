@@ -1,7 +1,9 @@
+com/infoshare/repository/BooksRepositoryDaoBean.class
 com/infoshare/repository/UsersRepositoryDao.class
 com/infoshare/repository/AuthorsRepositoryDao.class
 com/infoshare/utils/Hasher.class
 com/infoshare/domain/Book.class
+com/infoshare/repository/BooksRepositoryDao.class
 com/infoshare/filters/AuthenticationFilter.class
 com/infoshare/query/UsersQuery.class
 com/infoshare/domain/User.class

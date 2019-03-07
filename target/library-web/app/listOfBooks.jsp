@@ -28,9 +28,10 @@
 <body>
 <article>
     <%
-        String title1 = request.getParameter("title");
+        String titleOfBook = request.getParameter("title");
+        String order=request.getParameter("order");
         try {
-            ResultSet rs = BooksQuery.findBookByTitle(title1);
+            ResultSet rs = BooksQuery.findBookByTitle(titleOfBook, order);
     %>
 
     <div class="content">

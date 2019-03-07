@@ -48,7 +48,7 @@
                 <%
                     int rowNumber = 1;
                     UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
-                    List<User> listOfUsers = usersRepositoryDaoBean.listOfUsers();
+                    List<User> listOfUsers = usersRepositoryDaoBean.listOfUsersByTitle();
                     for (User user : listOfUsers) {
                 %>
                 <tr>

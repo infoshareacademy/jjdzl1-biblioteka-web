@@ -25,48 +25,34 @@
     <br/>
     <form method="POST" action="AddBookServlet" class="addUser">
 
+        <div>
+            <div>
+                <input type="text" class="form-control" name="title" placeholder="Tytuł książki">
+            </div>
+        </div>
+        <br/>
         <div class="form-row">
             <div>
-                <input type="text" class="form-control" name="" placeholder="">
+                <input type="text" class="form-control" name="lastName" placeholder="Nazwisko autora">
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="email" class="form-control" name="e-mail" placeholder="Adres e-mail">
+                <input type="text" class="form-control" name="firstName" placeholder="Imię autora">
             </div>
         </div>
         <br/>
         <div class="form-row">
             <div>
-                <input type="password" class="form-control" name="password1" placeholder="Hasło">
+                <input type="text" class="form-control" name="isbn" placeholder="Numer ISBN">
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
+                <input type="text" class="form-control" name="daterelease" placeholder="Rok wydania">
             </div>
         </div>
         <br/>
-        <div class="form-row">
-            <div>
-                <input type="text" class="form-control" name="firstName" placeholder="Imię">
-            </div>
-            <div>&nbsp;</div>
-            <div>
-                <input type="text" class="form-control" name="lastName" placeholder="Nazwisko">
-            </div>
-        </div>
         <br/>
-        <div class="form-row">
-            <div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="name" name="admin">
-                    <label class="form-check-label" for="name">
-                        Czy użytkownik ma posiadać uprawnienia pracownika?
-                    </label>
-                </div>
-            </div>
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-primary">Utwórz użytkownika</button>
+        <button type="submit" class="btn btn-primary">Dodaj książkę</button>
     </form>
 </div>
 <%@include file="/./include/footer.jsp" %>

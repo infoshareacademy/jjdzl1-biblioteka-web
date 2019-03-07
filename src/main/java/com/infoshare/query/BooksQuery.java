@@ -7,10 +7,10 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 
 public class BooksQuery {
 
-    public static ResultSet listOfBooks(String order) throws SQLException, ClassNotFoundException {
+    public static ResultSet listOfBooks(String title, String order) throws SQLException, ClassNotFoundException {
 
 
-        String query = "SELECT * FROM books ORDER BY " + order;
+        String query = "SELECT * FROM books WHERE title LIKE '%"+ title+ "%' ORDER BY " + order;
 
         return preparedStatement(query).executeQuery();
     }

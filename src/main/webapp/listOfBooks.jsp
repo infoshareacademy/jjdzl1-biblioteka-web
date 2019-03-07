@@ -16,6 +16,7 @@
 <body>
 <%
     String order = request.getParameter("order");
+    String bookTitle=request.getParameter("title");
     String orderTitle;
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
@@ -26,7 +27,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Spis książek<%=orderTitle.toString()%>
+            <h4>Spis książek<%=orderTitle%>
             </h4>
             <table class="table">
                 <thead>
@@ -42,7 +43,7 @@
                 <%
                     int rowNumber = 1;
                     BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
-                    List<Book> listOfBooks = booksRepository.bookList(order);
+                    List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
                     for (Book book : listOfBooks) {
                 %>
 

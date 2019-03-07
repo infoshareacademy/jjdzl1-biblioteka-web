@@ -11,19 +11,19 @@ import java.util.List;
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
     @Override
-    public List<Book> bookList(String order) throws SQLException, ClassNotFoundException {
+    public List<Book> bookList(String title, String order) throws SQLException, ClassNotFoundException {
         List<Book> booksList = new ArrayList<>();
-
-        try (ResultSet rs = BooksQuery.listOfBooks(order)) {
+        if (title==null ||title.isEmpty()) title="";
+        try (ResultSet rs = BooksQuery.listOfBooks(title, order)) {
 
             while (rs.next()) {
                 int bookID = rs.getInt("id");
-                String title = rs.getString("title");
+                String bookTitle = rs.getString("title");
                 String author = rs.getString("author");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
 
-                booksList.add(new Book(bookID, title, author, relaseDate, isbn));
+                booksList.add(new Book(bookID, bookTitle, author, relaseDate, isbn));
 
             }
             rs.close();

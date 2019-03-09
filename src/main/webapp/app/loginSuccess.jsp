@@ -25,6 +25,15 @@
 </div>
 <%}
 request.getSession().removeAttribute("addUser");%>
+<% if (request.getSession().getAttribute("userEdited") == "userEdited"){ %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Edytowano dane użytkownika w bazie</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%}
+    request.getSession().removeAttribute("userEdited");%>
 <%
     String userName = null;
     Cookie[] cookies = request.getCookies();

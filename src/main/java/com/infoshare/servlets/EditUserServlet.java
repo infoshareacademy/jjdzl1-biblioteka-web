@@ -24,10 +24,14 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("e-mail");
-        //String[] admin = req.getParameterValues("admin");
-        //Boolean checkAdmin = admin != null ? admin[0].equals("on") : false;
+        String[] admin = req.getParameterValues("adminUser");
+        Boolean checkAdmin = admin != null ? admin[0].equals("1") :  false;
+        String status = req.getParameter("status");
+        if (status.equals("1"))
+        status = "Aktywny";
+        else status = "Nieaktywny";
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ? WHERE id = " + userID;
+        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE id = " + userID;
 
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);
@@ -35,6 +39,8 @@ public class EditUserServlet extends HttpServlet implements Serializable {
             ps.setString(2, firstName);
             ps.setString(3, lastName);
             ps.setString(4, email);
+            ps.setBoolean(5,checkAdmin);
+            ps.setString(6, status);
             ps.execute();
             ps.close();
         } catch (ClassNotFoundException e) {

@@ -29,41 +29,47 @@
         <% String email = GetUserToEditServlet.user.getEmail(); %>
         <% UserStatus admin = GetUserToEditServlet.user.getAdmin(); %>
         <% String status = GetUserToEditServlet.user.getStatus(); %>
-        <h4>Edytuj użytkownika <%= firstName + "," + lastName%></h4>
+        <h4>Edytuj użytkownika <%= firstName + " " + lastName%>
+        </h4>
         <br/>
         <form method="POST" action="EditUserServlet" class="addUser">
 
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control" name="login" placeholder="<%= login%>">
+                    <input type="text" class="form-control" name="login" placeholder="Login: <%= login%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="email" class="form-control" name="e-mail" placeholder="<%= email%>">
+                    <input type="email" class="form-control" name="e-mail" placeholder="E-mail: <%= email%>">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control" name="firstName" placeholder="<%= firstName%>">
+                    <input type="text" class="form-control" name="firstName" placeholder="Imię: <%= firstName%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="text" class="form-control" name="lastName" placeholder="<%= lastName%>">
+                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko: <%= lastName%>">
                 </div>
             </div>
             <br/>
             <div class="form-row">
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="name" name="admin">
-                        <label class="form-check-label" for="name">
-                            Czy użytkownik ma posiadać uprawnienia pracownika?
-                        </label>
-                    </div>
-                </div>
+                    <select class="form-control" id="adminUser" name="adminUser">
+                        <option selected>Wybierz rodzaj użytkownika</option>
+                        <option value="1">Administrator</option>
+                        <option value="2">Czytelnik</option>
+                    </select>
             </div>
             <br/>
+            <div class="form-row">
+                    <select class="form-control" id="status" name="status">
+                        <option selected>Wybierz status konta użytkownika</option>
+                        <option value="1">Aktywny</option>
+                        <option value="2">Nieaktywny</option>
+                    </select>
+            </div>
+            <br/><br/><br/>
             <button type="submit" class="btn btn-primary">Edytuj użytkownika</button>
         </form>
     </div>

@@ -28,15 +28,17 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         ResultSet rs;
         try {
             rs = DBCon.preparedStatement(query).executeQuery();
+            while (rs.next()) {
             user = new User(rs.getInt("id"), rs.getString("login"), rs.getString("firstName"),
                     rs.getString("lastName"), null, rs.getString("email"), UserStatus.USER);
             //UserStatus.valueOf(rs.getString("admin")
+            }
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        resp.sendRedirect("/editUser.jsp");
+        resp.sendRedirect("editUser.jsp");
     }
 }

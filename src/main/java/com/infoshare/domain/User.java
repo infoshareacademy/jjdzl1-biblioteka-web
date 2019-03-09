@@ -11,15 +11,17 @@ public class User {
     private String password;
     private String email;
     private UserStatus admin;
+    private String status;
 
-    public User(int id, String login, String firstName, String lastName, String password, String email, UserStatus status) {
+    public User(int id, String login, String firstName, String lastName, String password, String email, UserStatus admin, String status) {
         this.id = id;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.admin = status;
+        this.admin = admin;
+        this.status = status;
     }
 
     public User() {
@@ -49,7 +51,11 @@ public class User {
         return email;
     }
 
-    public UserStatus getStatus() {
+    public UserStatus getAdmin() {
         return admin;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

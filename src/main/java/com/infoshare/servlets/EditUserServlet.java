@@ -29,9 +29,14 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         try {
             rs = DBCon.preparedStatement(query).executeQuery();
             while (rs.next()) {
-            user = new User(rs.getInt("id"), rs.getString("login"), rs.getString("firstName"),
-                    rs.getString("lastName"), null, rs.getString("email"), UserStatus.USER);
-            //UserStatus.valueOf(rs.getString("admin")
+                int userID = rs.getInt("id");
+                String login = rs.getString("login");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String email = rs.getString("email");
+                UserStatus admin = UserStatus.valueOf(rs.getString("admin"));
+                String status = rs.getString("status");
+                user = new User(userID, login, firstName, lastName, null, email, admin, status);
             }
             rs.close();
         } catch (SQLException e) {

@@ -1,6 +1,3 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
 <%@ page import="com.infoshare.servlets.EditUserServlet" %>
 <%@ page import="com.infoshare.domain.UserStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -30,30 +27,19 @@
         <% String firstName = EditUserServlet.user.getFirstName(); %>
         <% String lastName = EditUserServlet.user.getLastName(); %>
         <% String email = EditUserServlet.user.getEmail(); %>
-        <% UserStatus status = EditUserServlet.user.getStatus(); %>
+        <% UserStatus admin = EditUserServlet.user.getAdmin(); %>
+        <% String status = EditUserServlet.user.getStatus(); %>
         <h4>Edytuj użytkownika <%= firstName + "," + lastName%></h4>
         <br/>
         <form method="POST" action="AddUserServlet" class="addUser">
 
             <div class="form-row">
                 <div>
-                    <h5>Login użytkownika to <%= login%>
-                    </h5>
                     <input type="text" class="form-control" name="login" placeholder="Login">
                 </div>
                 <div>&nbsp;</div>
                 <div>
                     <input type="email" class="form-control" name="e-mail" placeholder="Adres e-mail">
-                </div>
-            </div>
-            <br/>
-            <div class="form-row">
-                <div>
-                    <input type="password" class="form-control" name="password1" placeholder="Hasło">
-                </div>
-                <div>&nbsp;</div>
-                <div>
-                    <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
                 </div>
             </div>
             <br/>

@@ -43,7 +43,11 @@ request.getSession().removeAttribute("addUser");%>
         }
     }
 %>
+<% if (session.getAttribute("normalUser") == null) {%>
 <%@include file="/./include/appHeader.jsp"%>
+<% } else { %>
+<%@include file="/./include/appUserHeader.jsp"%><%}%>
+<div class="mainpage"></div>
 <%@include file="/./include/footer.jsp"%>
 
 </body>

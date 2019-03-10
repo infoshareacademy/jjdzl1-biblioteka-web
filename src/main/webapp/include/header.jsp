@@ -7,11 +7,9 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <header>
-
     <nav class="navbar navbar-dark bg navbar-expand-lg">
-
-        <a class="navbar-brand" href="http://localhost:8080/library-web/index.jsp"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
-
+        <a class="navbar-brand" href="index.jsp"><img src="img/logo.png" width="30" height="30"
+                                                      class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
                 aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
             <span class="navbar-toggler-icon"></span>
@@ -39,16 +37,14 @@
 
             <form action="LoginServlet" class="form-inline" method="post">
 
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Pomoc </a>
-                    </li>
-
+            <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#"> Kontakt </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutUs.jsp"> O nas </a>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     </li>
-
                 </ul>
 
                 <input class="form-control mr-1" type="user" placeholder="Użytkownik" aria-label="Użytkownik"

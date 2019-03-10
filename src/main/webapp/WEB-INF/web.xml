@@ -42,6 +42,17 @@
         <url-pattern>app/AddUserServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FindBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.FindBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FindBookServlet</servlet-name>
+        <url-pattern>app/FindBookServlet</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
@@ -60,4 +71,9 @@
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/app/*</url-pattern>
     </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
 </web-app>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                               http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <display-name>Biblioteka</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>app/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetUserToEditServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetUserToEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUserToEditServlet</servlet-name>
+        <url-pattern>app/GetUserToEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>app/EditUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>app/AddUserServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FindBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.FindBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FindBookServlet</servlet-name>
+        <url-pattern>app/FindBookServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.infoshare.filters.AuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/app/*</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+</web-app>

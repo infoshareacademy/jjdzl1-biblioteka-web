@@ -13,17 +13,30 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.LogoutServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>app/LogoutServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>GetUserToEditServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetUserToEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUserToEditServlet</servlet-name>
+        <url-pattern>app/GetUserToEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>app/EditUserServlet</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>AddUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.AddUserServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>AddUserServlet</servlet-name>
         <url-pattern>app/AddUserServlet</url-pattern>

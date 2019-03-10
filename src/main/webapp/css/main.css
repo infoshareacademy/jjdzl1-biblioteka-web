@@ -18,7 +18,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}*/
+}
 
 .navbar-nav li:hover > .dropdown-menu {
     display: block;
@@ -232,4 +232,24 @@ ul{
 }
 .our-webcoderskull .cnt-block .follow-us li .fa:hover{
     color:#025a8e;
+}
+
+
+.editUser a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.editUser a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.editUser a:hover{
+    text-decoration: underline;
+    color: white;
+}
+.editUser a:active{
+    text-decoration: underline;
+    color: white;
 }

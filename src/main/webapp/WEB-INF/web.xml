@@ -62,8 +62,6 @@
         <url-pattern>app/AddBookServlet</url-pattern>
     </servlet-mapping>
 
-
-
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>

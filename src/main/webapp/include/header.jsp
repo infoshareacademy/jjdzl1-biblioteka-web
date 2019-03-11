@@ -25,9 +25,9 @@
                        aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
-
                         <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
                         <a class="dropdown-item" href="listOfBooks.jsp?order=author"> Przeglądaj wg autora </a>
+
 
                     </div>
 
@@ -37,10 +37,7 @@
 
             <form action="LoginServlet" class="form-inline" method="post">
 
-            <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Kontakt </a>
-                    </li>
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="aboutUs.jsp"> O nas </a>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>

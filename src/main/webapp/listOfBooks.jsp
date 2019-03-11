@@ -54,9 +54,10 @@
                     </td>
                     <td><%=book.getAuthor()%>
                     </td>
-                    <td><%=book.getRelaseDate()%>
-                    </td>
+
                     <td><%=book.getIsbn()%>
+                    </td>
+                    <td><%=book.getRelaseDate()%>
                     </td>
                 </tr>
                 <%
@@ -67,6 +68,7 @@
         </div>
     </div>
 </article>
+</head>
 <%@include file="include/footer.jsp" %>
 </body>
 </html>

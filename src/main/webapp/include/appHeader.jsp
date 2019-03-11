@@ -76,7 +76,7 @@
             <ul class="navbar-nav mr-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu4" aria-haspopup="true"> Witaj <%=userName%>
+                       aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=userName%>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu3">

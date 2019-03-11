@@ -20,9 +20,7 @@ public class DBCon {
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, user, pass);
         ps = con.prepareStatement(sql);
-        ps.executeQuery("SET NAMES 'UTF8'");
-        ps.executeQuery("SET CHARACTER SET 'UTF8'");
-
+       
         return ps;
     }
 }

@@ -48,6 +48,7 @@ public class AddBookServlet extends HttpServlet {
             List<String> validationResult = BookValidation.validationResult;
             for (String s : validationResult) {
                 writer.write(s);
+                writer.write("</br>");
             }
         }
 

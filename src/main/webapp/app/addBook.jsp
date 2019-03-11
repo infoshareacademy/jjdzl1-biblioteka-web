@@ -43,11 +43,11 @@
         <br/>
         <div class="form-row">
             <div>
-                <input type="text" class="form-control" name="isbn" placeholder="Numer ISBN">
+                <input type="number" class="form-control" name="isbn" placeholder="Numer ISBN (tylko cyfry)">
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="text" class="form-control" name="daterelease" placeholder="Rok wydania">
+                <input type="number" class="form-control" name="daterelease" placeholder="Rok wydania (tylko cyfry)">
             </div>
         </div>
         <br/>

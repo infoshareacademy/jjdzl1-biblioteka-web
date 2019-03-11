@@ -12,9 +12,10 @@ public class BookValidation {
 
         validationResult.clear();
         book.setTitle(BookValidation.validateTitle(book.getTitle()));
-        //   book.setAuthorFirstName(BookValidation.validateAutorName(book.getAuthorFirstName()));
-        //       book.setAuthorLastName(BookValidation.validateAutorName(book.getAuthorLastName()));
-        //     book.setIsbn(BookValidation.validateIsbn(book.getIsbn()));
+        book.setAuthorFirstName(BookValidation.validateAutorName(book.getAuthorFirstName()));
+        book.setAuthorLastName(BookValidation.validateAutorName(book.getAuthorLastName()));
+        book.setIsbn(BookValidation.validateIsbn(book.getIsbn()));
+        book.setRelaseDate(BookValidation.validateRelaseDate(book.getRelaseDate()));
 
         return validationResult;
     }
@@ -24,23 +25,31 @@ public class BookValidation {
         if (title == null || title.trim().length() == 0) {
             validationResult.add("Tytuł nie może być pusty ani przekraczać 80 znaków");
         }
-        validationResult.add("Dodano");
         return title;
     }
 
     public static String validateAutorName(String name) {
 
-        if (name == null || name.isEmpty() & name.length() > 50) {
+        if (name == null || name.isEmpty()) {
             validationResult.add("Imię i nazwisko nie może być pusty ani przekraczać 50 znaków");
         }
         return name;
     }
 
     public static String validateIsbn(String isbn) {
-        if (isbn == null || isbn.isEmpty() || isbn.contains("[a-zA-Z]+") == true || isbn.length() > 20) {
+        String letterRegex = "[a-zA-Z]+";
+        if (isbn == null || isbn.isEmpty() || isbn.matches(letterRegex)) {
             validationResult.add("Numer ISBN nie może być pusty, zawierać liter ani przekraczać 20 znaków");
         }
         return isbn;
+    }
+
+    public static int validateRelaseDate(Integer date) {
+        String letterRegex = "[a-zA-Z]+";
+        if (date == null || date > 2020) {
+            validationResult.add("Data nie może być większa niż 2020");
+        }
+        return 100;
     }
 
 }

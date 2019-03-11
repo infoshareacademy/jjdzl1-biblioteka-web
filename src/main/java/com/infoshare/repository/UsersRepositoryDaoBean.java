@@ -12,9 +12,9 @@ import java.util.List;
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
     @Override
-    public List<User> listOfUsersByTitle() throws SQLException, ClassNotFoundException {
+    public List<User> listOfUsers() throws SQLException, ClassNotFoundException {
 
-        List<User> usersList = new ArrayList<>();
+        List<User> lista = new ArrayList<>();
 
         try (ResultSet rs = UsersQuery.listOfUsers("id")) {
 
@@ -25,7 +25,8 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
                 String lastName = rs.getString("lastName");
                 String password = rs.getString("password");
                 String email = rs.getString("email");
-                int status = rs.getInt("admin");
+                int admin = rs.getInt("admin");
+                String status = rs.getString("status");
 
                 User user = new User();
                 user.setId(userID);
@@ -34,13 +35,14 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
                 user.setLastName(lastName);
                 user.setPassword(password);
                 user.setEmail(email);
-                if (status == 1) user.setStatus(UserStatus.ADMIN);
-                else user.setStatus(UserStatus.USER);
+                if (admin == 1) user.setAdmin(UserStatus.ADMIN);
+                else user.setAdmin(UserStatus.USER);
+                user.setStatus(status);
 
-                usersList.add(user);
+                lista.add(user);
             }
             rs.close();
-            return usersList;
+            return lista;
         }
     }
 }

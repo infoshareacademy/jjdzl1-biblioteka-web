@@ -62,9 +62,9 @@
                     </td>
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthor()%></a>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%></a>
-                    </td>
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%></a>
+                    </td>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%></a>
                     </td>
                 </tr>
                 <%
@@ -75,7 +75,6 @@
         </div>
     </div>
 </article>
-</head>
 <%@include file="../include/footer.jsp" %>
 </body>
 </html>

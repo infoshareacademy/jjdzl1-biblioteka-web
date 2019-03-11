@@ -5,10 +5,9 @@
   Time: 19:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
-<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
-<%@ page import="com.infoshare.domain.User" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -30,6 +29,10 @@
 %>
 <%@include file="/./include/appHeader.jsp" %>
 <article>
+    <% try {
+        String query = "SELECT * FROM users " + "ORDER by id";
+        ResultSet rs = preparedStatement(query).executeQuery();
+    %>
     <div class="content">
         <div class="contentInside">
             <br/>
@@ -41,29 +44,45 @@
                     <th scope="col">Login</th>
                     <th scope="col">Nazwisko, Imię</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Administrator</th>
                     <th scope="col">Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                    int rowNumber = 1;
-                    UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
-                    List<User> listOfUsers = usersRepositoryDaoBean.listOfUsersByTitle();
-                    for (User user : listOfUsers) {
-                %>
+                    while (rs.next()) {
+                        int userID = rs.getInt("id");
+                        String login = rs.getString("login");
+                        String firstName = rs.getString("firstName");
+                        String lastName = rs.getString("lastName");
+                        String email = rs.getString("email");
+                        int kind = rs.getInt("admin");
+                        String admin;
+                        if (kind == 1)
+                            admin = "TAK";
+                        else admin = "NIE";
+                        String status = rs.getString("status");%>
+
                 <tr>
-                    <th scope="row"><%=rowNumber%>
+                    <th scope="row"><%=userID%>
                     </th>
-                    <td><%= user.getLogin()%>
+                    <td><%= login%>
                     </td>
-                    <td><%= user.getFirstName() + ", " + user.getLastName()%>
+                    <td><%= lastName + ", " + firstName%>
                     </td>
-                    <td><%= user.getEmail()%>
+                    <td><%= email%>
                     </td>
-                    <td><%= user.getStatus()%>
+                    <td><%= admin%>
+                    </td>
+                    <td><%= status%>
+                    </td>
                 </tr>
                 <%
-                        rowNumber++;
+                        }
+                        rs.close();
+                    } catch (ClassNotFoundException | SQLException ex) {
+                        System.err.println("Got an exception! ");
+                        System.err.println(ex.getMessage());
                     }
                 %>
                 </tbody>
@@ -71,7 +90,6 @@
         </div>
     </div>
 </article>
-</head>
 <%@include file="/./include/footer.jsp" %>
 </body>
 </html>

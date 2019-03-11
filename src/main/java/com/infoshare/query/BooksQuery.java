@@ -7,23 +7,17 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 
 public class BooksQuery {
 
-    public static ResultSet listOfBooks(String order) throws SQLException, ClassNotFoundException {
+    public static ResultSet listOfBooks(String title, String order) throws SQLException, ClassNotFoundException {
 
 
-        String query = "SELECT * FROM books " +
-                "JOIN authors ON books.authorID = authors.id " +
-                "JOIN booksCat ON books.categoryID = booksCat.id " +
-                "ORDER BY " + order;
+        String query = "SELECT * FROM books WHERE title LIKE '%"+ title+ "%' ORDER BY " + order;
 
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet listOfBooksFromTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books " +
-                "JOIN authors ON books.authorID = authors.id " +
-                "JOIN booksCat ON books.categoryID = booksCat.id " +
-                "ORDER BY " + order + " LIMIT " + from + "," + to;
+        String query = "SELECT * FROM books ORDER BY " + order + " LIMIT " + from + "," + to;
 
         return preparedStatement(query).executeQuery();
     }
@@ -37,20 +31,14 @@ public class BooksQuery {
 
     public static ResultSet findBookById(int id) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books " +
-                "JOIN authors ON books.authorID = authors.id " +
-                "JOIN booksCat ON books.categoryID = booksCat.id " +
-                "WHERE books.bookID = " + id;
+        String query = "SELECT * FROM books WHERE id = " + id;
         return preparedStatement(query).executeQuery();
 
     }
 
-    public static ResultSet findBookByTitle(String title) throws SQLException, ClassNotFoundException {
+    public static ResultSet findBookByTitle(String title, String order) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books " +
-                "JOIN authors ON books.authorID = authors.id " +
-                "JOIN booksCat ON books.categoryID = booksCat.id " +
-                "WHERE books.title LIKE '%" + title + "%'" ;
+        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY "+ order ;
         return preparedStatement(query).executeQuery();
     }
 

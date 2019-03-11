@@ -10,8 +10,8 @@ public class DBCon {
     public static PreparedStatement preparedStatement(String sql) throws ClassNotFoundException, SQLException {
 
         final String driver = "com.mysql.cj.jdbc.Driver";
-        final String url = "jdbc:mysql://db4free.net/librarydb";
-        final String user = "librarydb";
+        final String url = "jdbc:mysql://db4free.net/librarydb2";
+        final String user = "librarydb2";
         final String pass = "infoshareacademy";
 
         PreparedStatement ps = null;

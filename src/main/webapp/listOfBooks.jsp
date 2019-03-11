@@ -1,6 +1,7 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.infoshare.query.BooksQuery" %>
+<%@ page import="com.infoshare.repository.BooksRepositoryDao" %>
+<%@ page import="com.infoshare.repository.BooksRepositoryDaoBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.infoshare.domain.Book" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -13,16 +14,21 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/main.css">
 <body>
-
+<%
+    String order = request.getParameter("order");
+    String bookTitle=request.getParameter("title");
+    String orderTitle;
+    if (order == null || order.isEmpty() || order.equals("title")) {
+        orderTitle = " (wg tytułu)";
+        order = "title";
+    }else orderTitle=" (wg autora)";
+%>
 <article>
-    <% try {
-        ResultSet rs = BooksQuery.listOfBooks("title");
-    %>
-
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Spis książek</h4>
+            <h4>Spis książek<%=orderTitle%>
+            </h4>
             <table class="table">
                 <thead>
                 <tr>
@@ -31,46 +37,31 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Nr ISBN</th>
                     <th scope="col">Rok wydania</th>
-                    <th scope="col">Kategoria</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    while (rs.next()) {
-                        int bookID = rs.getInt("bookID");
-                        String title = rs.getString("title");
-                        String firstName = rs.getString("firstName");
-                        String lastName = rs.getString("lastName");
-                        String isbn = rs.getString("isbn");
-                        int dateRelease = rs.getInt("dateRelease");
-                        int categoryID = rs.getInt("categoryID");
-                        int bookscol = rs.getInt("bookscol");
-                        String category = rs.getString("booksCat.name");%>
+                    BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
+                    List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
+                    for (Book book : listOfBooks) {
+                %>
 
                 <tr>
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><%= title%>
+                    <td><%=book.getTitle()%>
                     </td>
-                    <td><%= lastName + ", " + firstName%>
+                    <td><%=book.getAuthor()%>
                     </td>
-                    <td><%= isbn%>
+                    <td><%=book.getRelaseDate()%>
                     </td>
-                    <td><%= dateRelease%>
-                    </td>
-                    <td><%= category%>
+                    <td><%=book.getIsbn()%>
                     </td>
                 </tr>
                 <%
-                            rowNumber++;
-                        }
-                        rs.close();
-                    } catch (ClassNotFoundException | SQLException ex) {
-                        System.err.println("Got an exception! ");
-                        System.err.println(ex.getMessage());
-                    }
-                %>
+                        rowNumber++;
+                    }%>
                 </tbody>
             </table>
         </div>

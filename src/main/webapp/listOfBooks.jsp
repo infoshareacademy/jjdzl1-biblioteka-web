@@ -52,7 +52,7 @@
                     </th>
                     <td><%=book.getTitle()%>
                     </td>
-                    <td><%=book.getAuthor()%>
+                    <td><%=book.getAuthorLastName()+", "+book.getAuthorFirstName()%>
                     </td>
 
                     <td><%=book.getIsbn()%>

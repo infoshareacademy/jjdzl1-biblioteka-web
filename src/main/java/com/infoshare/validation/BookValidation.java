@@ -10,6 +10,7 @@ public class BookValidation {
 
     public static List<String> bookValidation(Book book) {
 
+        validationResult.clear();
         book.setTitle(BookValidation.validateTitle(book.getTitle()));
         //   book.setAuthorFirstName(BookValidation.validateAutorName(book.getAuthorFirstName()));
         //       book.setAuthorLastName(BookValidation.validateAutorName(book.getAuthorLastName()));
@@ -20,13 +21,10 @@ public class BookValidation {
 
     public static String validateTitle(String title) {
 
-        if (title != null && title.trim().length() != 0) {
-            System.out.println("Tytuł" + title);
-            title = title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase();
-        } else {
+        if (title == null || title.trim().length() == 0) {
             validationResult.add("Tytuł nie może być pusty ani przekraczać 80 znaków");
-            title = "";
         }
+        validationResult.add("Dodano");
         return title;
     }
 

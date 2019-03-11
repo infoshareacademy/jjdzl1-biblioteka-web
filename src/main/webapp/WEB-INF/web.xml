@@ -52,6 +52,15 @@
         <url-pattern>app/FindBookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.AddBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddBookServlet</servlet-name>
+        <url-pattern>app/AddBookServlet</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

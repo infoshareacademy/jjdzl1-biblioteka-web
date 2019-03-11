@@ -28,8 +28,8 @@
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
-                        <a class="dropdown-item" href="#"> Sortuj wg tytułów </a>
-                        <a class="dropdown-item" href="#"> Sortuj wg autorów </a>
+                        <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Sortuj wg tytułów </a>
+                        <a class="dropdown-item" href="listOfBooks.jsp?order=author"> Sortuj wg autorów </a>
 
                     </div>
 
@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" role="button"
+                    <a class="nav-link" href="addBook.jsp" role="button"
                        aria-expanded="false" id="submenu3" aria-haspopup="true"> Dodaj książkę </a>
                 </li>
                 <li>&nbsp;&nbsp;&nbsp;</li>
@@ -76,7 +76,7 @@
             <ul class="navbar-nav mr-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu4" aria-haspopup="true"> Witaj <%=userName%>
+                       aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=userName%>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu3">

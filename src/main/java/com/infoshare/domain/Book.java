@@ -1,18 +1,21 @@
 package com.infoshare.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 public class Book {
     private int bookID;
     private String title;
-    private int authorID;
-    private String isbn;
+    private String author;
     private int relaseDate;
-    private int categoryID;
-    private boolean bookscol;
+    private String isbn;
 
-
+    public Book(int bookID, String title, String author, int relaseDate, String isbn) {
+        this.bookID = bookID;
+        this.title = title;
+        this.author = author;
+        this.relaseDate = relaseDate;
+        this.isbn = isbn;
+    }
 }
 

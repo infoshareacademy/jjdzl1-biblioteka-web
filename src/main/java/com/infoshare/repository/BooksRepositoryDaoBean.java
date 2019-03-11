@@ -44,6 +44,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String isbn = rs.getString("isbn");
 
                 book = new Book(bookID, bookTitle, author, relaseDate, isbn);
+
             }
             return book;
         }

@@ -54,6 +54,7 @@
                     </td>
                     <td><%=book.getAuthor()%>
                     </td>
+
                     <td><%=book.getIsbn()%>
                     </td>
                     <td><%=book.getRelaseDate()%>

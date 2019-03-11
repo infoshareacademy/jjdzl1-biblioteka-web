@@ -1,12 +1,10 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: lukasz
-  Date: 02.02.19
-  Time: 16:08
-  To change this template use File | Settings | File Templates.
+Created by IntelliJ IDEA.
+User: lukasz
+Date: 02.02.19
+Time: 16:08
+To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -16,6 +14,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/main.css">
 <body>
+
 <% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Dodano użytkownika do biblioteki</strong>
@@ -27,6 +26,7 @@
     }
     request.getSession().removeAttribute("addUser");
 %>
+
 <% if (request.getSession().getAttribute("userEdited") == "userEdited") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Edytowano dane użytkownika w bazie</strong>
@@ -70,5 +70,3 @@
 </body>
 
 </html>
-
-

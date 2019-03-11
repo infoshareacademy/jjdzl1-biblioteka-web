@@ -12,13 +12,6 @@ body {
     height: 100vh;
 
 }
-/*html {
-    background: url(../img/background.jpeg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}*/
 
 .navbar-nav li:hover > .dropdown-menu {
     display: block;
@@ -234,7 +227,26 @@ ul{
     color:#025a8e;
 }
 
-.listofbook a{
+.editUser a:link{
     text-decoration: none;
     color: white;
 }
+
+.editUser a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.editUser a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+.editUser a:active{
+    text-decoration: underline;
+    color: white;
+}
+
+.listofbook a{
+    text-decoration: none;
+    color: white;

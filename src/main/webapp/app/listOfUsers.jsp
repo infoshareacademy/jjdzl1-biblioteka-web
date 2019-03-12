@@ -1,13 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lukasz
-  Date: 27.02.19
-  Time: 19:40
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="static com.infoshare.dao.DBCon.preparedStatement" %>
 <%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
 <%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>

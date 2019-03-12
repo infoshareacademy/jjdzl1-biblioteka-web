@@ -38,12 +38,13 @@ public class LoginServlet extends HttpServlet implements Serializable {
             ps = DBCon.preparedStatement(query);
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
-
+            String userName="";
             while (rs.next()) {
                 login = rs.getString("login");
                 password = rs.getString("password");
                 admin = rs.getBoolean("admin");
                 status = rs.getString("status");
+                userName = rs.getString("firstName")+", "+rs.getString("lastName");
             }
             rs.close();
 
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", request.getParameter("user"));
                 session.setMaxInactiveInterval(30 * 60);
-                Cookie loginCookie = new Cookie("userCookie", user);
+                Cookie loginCookie = new Cookie("userCookie", userName);
                 loginCookie.setMaxAge(30 * 60);
                 response.addCookie(loginCookie);
                 if (!admin) {

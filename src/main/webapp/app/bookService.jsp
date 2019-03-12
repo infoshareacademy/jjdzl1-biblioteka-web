@@ -36,7 +36,7 @@
     </br>
     </br>
     <h3><%=book.getTitle()%></h3></br>
-    <h4>Autor: <%=book.getAuthor()%></h4></br>
+    <h4>Autor: <%=book.getAuthorLastName()+", "+book.getAuthorFirstName()%></h4></br>
     <h5>ISBN: <%=book.getIsbn()%></h5></br>
     <h5>Rok wydania: <%=book.getRelaseDate()%></h5></br>
 

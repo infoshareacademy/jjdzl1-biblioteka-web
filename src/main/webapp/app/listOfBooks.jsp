@@ -60,7 +60,7 @@
                     </th>
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%></a>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthor()%></a>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthorLastName()+", "+book.getAuthorFirstName()%></a>
                     </td>
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%></a>
                     </td>

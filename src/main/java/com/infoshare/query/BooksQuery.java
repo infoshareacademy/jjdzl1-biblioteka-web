@@ -1,5 +1,8 @@
 package com.infoshare.query;
 
+import com.infoshare.dao.DBCon;
+import com.infoshare.domain.Book;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,7 +13,7 @@ public class BooksQuery {
     public static ResultSet listOfBooks(String title, String order) throws SQLException, ClassNotFoundException {
 
 
-        String query = "SELECT * FROM books WHERE title LIKE '%"+ title+ "%' ORDER BY " + order;
+        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY " + order;
 
         return preparedStatement(query).executeQuery();
     }
@@ -24,7 +27,7 @@ public class BooksQuery {
 
     public static ResultSet CountAllBooks() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM books WHERE 1" ;
+        String query = "SELECT COUNT(*) FROM books WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }
@@ -38,8 +41,26 @@ public class BooksQuery {
 
     public static ResultSet findBookByTitle(String title, String order) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY "+ order ;
+        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY " + order;
         return preparedStatement(query).executeQuery();
     }
 
+    public static void addNewBook(Book book) {
+
+        String query = "INSERT INTO `books`(`title`, `authorFirstName`, `authorLastName`, `daterelease`, `isbn`) VALUES ('" +
+                book.getTitle() + "', '" +
+                book.getAuthorFirstName() + "', '" +
+                book.getAuthorLastName() + "', '" +
+                book.getRelaseDate() + "', '" +
+                book.getIsbn() + "' )";
+        try {
+            preparedStatement(query).execute();
+            DBCon.connClose();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

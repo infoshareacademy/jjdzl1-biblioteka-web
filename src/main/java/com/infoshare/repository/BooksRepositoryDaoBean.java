@@ -1,8 +1,10 @@
 package com.infoshare.repository;
 
+import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
 import com.infoshare.query.BooksQuery;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,17 +21,16 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
             while (rs.next()) {
                 int bookID = rs.getInt("id");
                 String bookTitle = rs.getString("title");
-                String author = rs.getString("author");
+                String authorFirstName = rs.getString("authorFirstName");
+                String authorLastName = rs.getString("authorLastName");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
 
-                booksList.add(new Book(bookID, bookTitle, author, relaseDate, isbn));
-
+                booksList.add(new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn));
             }
             rs.close();
             return booksList;
         }
-
     }
 
     @Override
@@ -39,14 +40,19 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
             while (rs.next()) {
                 int bookID = rs.getInt("id");
                 String bookTitle = rs.getString("title");
-                String author = rs.getString("author");
+                String authorFirstName = rs.getString("authorFirstName");
+                String authorLastName = rs.getString("authorLastName");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
 
-                book = new Book(bookID, bookTitle, author, relaseDate, isbn);
-
+                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn);
             }
+            rs.close();
             return book;
         }
+    }
+
+    public void addNewBook(Book book) {
+        BooksQuery.addNewBook(book);
     }
 }

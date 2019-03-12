@@ -1,6 +1,9 @@
 package com.infoshare.servlets;
 
-import com.infoshare.dao.DBCon;
+import com.infoshare.domain.Book;
+import com.infoshare.repository.BooksRepositoryDao;
+import com.infoshare.repository.BooksRepositoryDaoBean;
+import com.infoshare.validation.BookValidation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 @WebServlet("/AddBookServlet")
 public class AddBookServlet extends HttpServlet {
@@ -19,32 +20,34 @@ public class AddBookServlet extends HttpServlet {
         String title = req.getParameter("title");
         String lastName = req.getParameter("lastName");
         String firstName = req.getParameter("firstName");
-        Integer date = Integer.parseInt(req.getParameter("daterelease"));
+        Integer date;
+        try {
+            date = Integer.parseInt(req.getParameter("daterelease"));
+        } catch (NumberFormatException e) {
+            date = 0;
+        }
         String isbn = req.getParameter("isbn");
 
-        String author = lastName + ", " + firstName;
+        Book book = new Book();
+        book.setTitle(title);
+        book.setAuthorFirstName(firstName);
+        book.setAuthorLastName(lastName);
+        book.setIsbn(isbn);
+        book.setRelaseDate(date);
 
-        String query = "INSERT INTO books (title, author, daterelease, isbn) " +
-                "VALUES (?, ?, ?, ?)";
-        try {
-            PreparedStatement ps = DBCon.preparedStatement(query);
-            ps.setString(1, title);
-            ps.setString(2, author);
-            ps.setInt(3, date);
-            ps.setString(4, isbn);
-            ps.execute();
-            ps.close();
+        BookValidation.bookValidation(book);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (req.getSession().getAttribute("user") != null && BookValidation.validationResult.size() > 0) {
+            resp.sendRedirect("addBook.jsp");
+        } else {
+            BooksRepositoryDao booksRepositoryDaoBean = new BooksRepositoryDaoBean();
+            booksRepositoryDaoBean.addNewBook(book);
+            req.getSession().setAttribute("addBook", "bookAdded");
+            if (req.getSession().getAttribute("user") != null)
+                resp.sendRedirect("loginSuccess.jsp");
+            else
+                resp.sendRedirect("index.jsp");
         }
-        req.getSession().setAttribute("addBook", "bookAdded");
-        if (req.getSession().getAttribute("user") != null)
-            resp.sendRedirect("loginSuccess.jsp");
-        else
-            resp.sendRedirect("index.jsp");
     }
 
 }

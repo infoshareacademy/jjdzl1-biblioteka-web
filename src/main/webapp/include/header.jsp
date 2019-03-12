@@ -26,7 +26,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
                         <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
-                        <a class="dropdown-item" href="listOfBooks.jsp?order=author"> Przeglądaj wg autora </a>
+                        <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autora </a>
 
 
                     </div>

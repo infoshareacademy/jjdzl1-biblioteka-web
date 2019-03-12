@@ -1,6 +1,5 @@
 package com.infoshare.servlets;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
 import com.infoshare.repository.BooksRepositoryDao;
 import com.infoshare.repository.BooksRepositoryDaoBean;
@@ -12,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet("/AddBookServlet")
 public class AddBookServlet extends HttpServlet {

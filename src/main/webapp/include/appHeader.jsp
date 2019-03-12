@@ -24,17 +24,18 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Przeglądaj książki </a>
+                       aria-expanded="false" id="submenu1" aria-haspopup="true"> Książki </a>
 
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
-                        <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Sortuj wg tytułów </a>
-                        <a class="dropdown-item" href="listOfBooks.jsp?order=author"> Sortuj wg autorów </a>
-
+                        <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
+                        <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+                        <a class="dropdown-item"> --- </a>
+                        <a class="dropdown-item" href="addBook.jsp"> Dodaj książkę </a>
+                        <a class="dropdown-item" href="#"> Edytuj książkę </a>
                     </div>
 
                 </li>
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
@@ -51,17 +52,26 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="addBook.jsp" role="button"
-                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Dodaj książkę </a>
+                    <a class="nav-link" href="#" role="button"
+                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Rezerwacje i wypożyczenia </a>
+                    <div class="dropdown-menu" aria-labelledby="submenu">
+
+                        <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
+                        <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
+                        <a class="dropdown-item"> --- </a>
+                        <a class="dropdown-item" href="#"> Lista rezerwacja </a>
+                        <a class="dropdown-item" href="#"> Lista wypożyczeń </a>
+
+                    </div>
                 </li>
                 <li>&nbsp;&nbsp;&nbsp;</li>
                 <li>
                     <form action="FindBookServlet" class="form-inline" method="get">
                         <div class="form-row align-items-center">
                             <div class="col-auto">
-<%--
-                                <label class="sr-only" for="inlineFormInput">Name</label>
---%>
+                                <%--
+                                                                <label class="sr-only" for="inlineFormInput">Name</label>
+                                --%>
                                 <input type="text" name="title" class="form-control" id="inlineFormInput"
                                        placeholder="Wpisz tytuł książki">
                             </div>

@@ -47,6 +47,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
                 book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn);
             }
+            rs.close();
             return book;
         }
     }

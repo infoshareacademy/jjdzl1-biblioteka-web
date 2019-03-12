@@ -52,8 +52,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" role="button"
-                       aria-expanded="false" id="submenu3" aria-haspopup="true"> Rezerwacje i wypożyczenia </a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                       aria-expanded="false" id="submenu2" aria-haspopup="true"> Rezerwacje / Wypożyczenia </a>
+
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
                         <a class="dropdown-item" href="#"> Nowa rezerwacja </a>

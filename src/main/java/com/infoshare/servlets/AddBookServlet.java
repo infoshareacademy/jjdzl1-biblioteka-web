@@ -2,6 +2,8 @@ package com.infoshare.servlets;
 
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
+import com.infoshare.repository.BooksRepositoryDao;
+import com.infoshare.repository.BooksRepositoryDaoBean;
 import com.infoshare.validation.BookValidation;
 
 import javax.servlet.ServletException;
@@ -23,10 +25,14 @@ public class AddBookServlet extends HttpServlet {
         String title = req.getParameter("title");
         String lastName = req.getParameter("lastName");
         String firstName = req.getParameter("firstName");
-        Integer date = Integer.parseInt(req.getParameter("daterelease"));
+        Integer date;
+        try {
+            date = Integer.parseInt(req.getParameter("daterelease"));
+        } catch (NumberFormatException e) {
+            date = 0;
+        }
         String isbn = req.getParameter("isbn");
 
-        String author = lastName + ", " + firstName;
         Book book = new Book();
         book.setTitle(title);
         book.setAuthorFirstName(firstName);
@@ -34,45 +40,19 @@ public class AddBookServlet extends HttpServlet {
         book.setIsbn(isbn);
         book.setRelaseDate(date);
 
-
-        String query = "INSERT INTO books (title, , daterelease, isbn) " +
-                "VALUES (?, ?, ?, ?)";
-
-        /**
-         * Walidacja dodawania użytkownika
-         * */
         BookValidation.bookValidation(book);
-        if (BookValidation.validationResult.size() > 0) {
 
-            PrintWriter writer = resp.getWriter();
-            List<String> validationResult = BookValidation.validationResult;
-            for (String s : validationResult) {
-                writer.write(s);
-                writer.write("</br>");
-            }
+        if (req.getSession().getAttribute("user") != null && BookValidation.validationResult.size() > 0) {
+            resp.sendRedirect("addBook.jsp");
+        } else {
+            BooksRepositoryDao booksRepositoryDaoBean = new BooksRepositoryDaoBean();
+            booksRepositoryDaoBean.addNewBook(book);
+            req.getSession().setAttribute("addBook", "bookAdded");
+            if (req.getSession().getAttribute("user") != null)
+                resp.sendRedirect("loginSuccess.jsp");
+            else
+                resp.sendRedirect("index.jsp");
         }
-
-        //Zakomentowano na czas pracy nad walidacją, nie dodaje nic do bazy
-        /*        try {
-            PreparedStatement ps = DBCon.preparedStatement(query);
-            ps.setString(1, title);
-            ps.setString(2, author);
-            ps.setInt(3, date);
-            ps.setString(4, isbn);
-            ps.execute();
-            ps.close();
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        req.getSession().setAttribute("addBook", "bookAdded");
-        if (req.getSession().getAttribute("user") != null)
-            resp.sendRedirect("loginSuccess.jsp");
-        else
-            resp.sendRedirect("index.jsp");
-            */
     }
 
 }

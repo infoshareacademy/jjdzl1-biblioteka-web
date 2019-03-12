@@ -1,3 +1,6 @@
+<%@ page import="com.infoshare.validation.BookValidation" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -8,18 +11,31 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/main.css">
 <body>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<%@include file="/./include/appHeader.jsp" %>
-
 <div class="addUserForm">
+    <%
+        String userName = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
+            }
+        }
+        List<String> validationResult = BookValidation.validationResult;
+    %>
+    <%@include file="/./include/appHeader.jsp" %>
+
+    <% if (BookValidation.validationResult.size() > 0) { %>
+    <br/><br/><br/>
+    <ul class="list-group" style="vertical-align: center">
+        <%
+            for (String s : validationResult) {
+        %>
+        <li>
+            <%=s%>
+        </li>
+        <%}%>
+    </ul>
+    <%}%>
     <br/><br/>
     <h4>Dodaj książkę</h4>
     <br/>
@@ -47,7 +63,8 @@
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="number" class="form-control" name="daterelease" placeholder="Rok wydania (tylko cyfry)">
+                <input type="number" class="form-control" name="daterelease"
+                       placeholder="Rok wydania (tylko cyfry)">
             </div>
         </div>
         <br/>

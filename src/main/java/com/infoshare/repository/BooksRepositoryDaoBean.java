@@ -1,8 +1,10 @@
 package com.infoshare.repository;
 
+import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
 import com.infoshare.query.BooksQuery;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,12 +27,10 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String isbn = rs.getString("isbn");
 
                 booksList.add(new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn));
-
             }
             rs.close();
             return booksList;
         }
-
     }
 
     @Override
@@ -46,9 +46,12 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String isbn = rs.getString("isbn");
 
                 book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn);
-
             }
             return book;
         }
+    }
+
+    public void addNewBook(Book book) {
+        BooksQuery.addNewBook(book);
     }
 }

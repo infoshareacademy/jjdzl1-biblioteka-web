@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", request.getParameter("user"));
                 session.setMaxInactiveInterval(30 * 60);
-                Cookie loginCookie = new Cookie("userCookie", userName);
+                Cookie loginCookie = new Cookie("userCookie", user);
                 loginCookie.setMaxAge(30 * 60);
                 response.addCookie(loginCookie);
                 if (!admin) {

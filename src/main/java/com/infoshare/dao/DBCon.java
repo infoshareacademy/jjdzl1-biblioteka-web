@@ -21,8 +21,6 @@ public class DBCon {
     }
 
     public static void connClose() throws ClassNotFoundException, SQLException {
-
-        PreparedStatement ps = null;
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, user, pass);
         con.close();

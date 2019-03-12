@@ -44,8 +44,7 @@
                     <div class="dropdown-menu" aria-labelledby="submenu">
 
                         <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
-                        <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
-                        <a class="dropdown-item" href="searchUserToEdit.jsp"> Edytuj użytkownika </a>
+                        <a class="dropdown-item" href="listOfUsers.jsp"> Edytuj użytkownika </a>
 
                     </div>
 

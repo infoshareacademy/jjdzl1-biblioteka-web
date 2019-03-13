@@ -1,18 +1,15 @@
 package com.infoshare.servlets;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
-import com.infoshare.domain.UserStatus;
+import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.repository.UsersRepositoryDaoBean;
 import lombok.Data;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 @Data
@@ -23,31 +20,11 @@ public class GetUserToEditServlet extends HttpServlet implements Serializable {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String userId = req.getParameter("userID");
-        String query = "SELECT * FROM users WHERE id = " + userId;
-        ResultSet rs;
-        try {
-            rs = DBCon.preparedStatement(query).executeQuery();
-            while (rs.next()) {
-                int userID = rs.getInt("id");
-                String login = rs.getString("login");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String email = rs.getString("email");
-                int kind = rs.getInt("admin");
-                UserStatus admin;
-                if (kind == 1)
-                    admin = UserStatus.ADMIN;
-                else admin = UserStatus.USER;
-                String status = rs.getString("status");
-                user = new User(userID, login, firstName, lastName, null, email, admin, status);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        String userID = req.getParameter("userID");
+
+        UsersRepositoryDao lista = new UsersRepositoryDaoBean();
+        user = lista.getUserById(Integer.parseInt(userID));
+
         resp.sendRedirect("editUser.jsp");
     }
 }

@@ -31,7 +31,7 @@ public class AuthenticationFilter implements Filter {
 
         if (session != null && session.getAttribute("user") == null) {
             this.context.log("Unauthorized access request");
-            String redirectURL = "http://localhost:8080/library-web/index.jsp";
+            String redirectURL = "../index.jsp";
             res.sendRedirect(redirectURL);
         } else {
             chain.doFilter(request, response);

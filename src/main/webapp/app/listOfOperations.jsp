@@ -7,22 +7,15 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="../include/head.jsp" %>
 </head>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<%@include file="../include/appHeader.jsp" %>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+<header>
+    <%@include file="../include/appHeader.jsp" %>
+</header>
+
 <body>
 <article>
     <div class="content">
@@ -30,7 +23,7 @@
             <br/>
             <table class="table">
                 <thead>
-                <tr>
+                <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col">Użytkownik</th>
                     <th scope="col">Tytuł książki</th>
@@ -43,13 +36,13 @@
                 <tbody>
                 <%
                     String operationType = request.getParameter("operationType");
-                    if (operationType ==null || operationType.isEmpty()) operationType = "all";
+                    if (operationType == null || operationType.isEmpty()) operationType = "all";
                     int rowNumber = 1;
                     OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
                     List<Operation> operationList = operationsRepository.AllOperationList(operationType);
                     for (Operation operation : operationList) {
                 %>
-                <tr class="listofbook">
+                <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%=operation.getUserName()%>
@@ -78,6 +71,10 @@
         </div>
     </div>
 </article>
-<%@include file="../include/footer.jsp" %>
+
+<footer>
+    <%@include file="../include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

@@ -1,24 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
-<body>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<%@include file="/./include/appHeader.jsp" %>
+<header>
+    <%@include file="/./include/appHeader.jsp" %>
+</header>
 
+<body>
 <div class="addUserForm">
     <br/><br/>
     <h4>Utwórz nowego użytkownika</h4>
@@ -69,6 +61,10 @@
         <button type="submit" class="btn btn-primary">Utwórz użytkownika</button>
     </form>
 </div>
-<%@include file="/./include/footer.jsp" %>
+
+<footer>
+    <%@include file="/./include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

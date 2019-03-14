@@ -6,22 +6,15 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="../include/head.jsp" %>
 </head>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<%@include file="../include/appHeader.jsp" %>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+<header>
+    <%@include file="../include/appHeader.jsp" %>
+</header>
+
 <body>
 <%
     String order = request.getParameter("order");
@@ -40,7 +33,7 @@
             </h4>
             <table class="table">
                 <thead>
-                <tr>
+                <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>
@@ -55,16 +48,21 @@
                     List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
                     for (Book book : listOfBooks) {
                 %>
-                <tr class="listofbook">
+                <tr class="listofitemps">
                     <th scope="row"><a href="bookService.jsp?id="<%=book.getBookID()%>"><%=rowNumber%></a>
                     </th>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%></a>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%>
+                    </a>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthorLastName()+", "+book.getAuthorFirstName()%></a>
+                    <td>
+                        <a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
+                        </a>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%></a>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%>
+                    </a>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%></a>
+                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%>
+                    </a>
                     </td>
                 </tr>
                 <%
@@ -75,6 +73,10 @@
         </div>
     </div>
 </article>
+
+<footer>
 <%@include file="../include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

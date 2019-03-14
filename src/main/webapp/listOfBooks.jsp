@@ -6,22 +6,24 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-<%@include file="include/header.jsp" %>
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/main.css">
+<header>
+    <%@include file="include/header.jsp" %>
+</header>
+
 <body>
 <%
     String order = request.getParameter("order");
-    String bookTitle=request.getParameter("title");
+    String bookTitle = request.getParameter("title");
     String orderTitle;
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
         order = "title";
-    }else orderTitle=" (wg autora)";
+    } else orderTitle = " (wg autora)";
 %>
 <article>
     <div class="content">
@@ -31,7 +33,7 @@
             </h4>
             <table class="table">
                 <thead>
-                <tr>
+                <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>
@@ -47,12 +49,12 @@
                     for (Book book : listOfBooks) {
                 %>
 
-                <tr>
+                <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%=book.getTitle()%>
                     </td>
-                    <td><%=book.getAuthorLastName()+", "+book.getAuthorFirstName()%>
+                    <td><%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
                     </td>
 
                     <td><%=book.getIsbn()%>
@@ -68,7 +70,10 @@
         </div>
     </div>
 </article>
-</head>
-<%@include file="include/footer.jsp" %>
+
+<footer>
+    <%@include file="include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

@@ -1,28 +1,23 @@
 <%@ page import="com.infoshare.validation.BookValidation" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
-    <%@include file="/./include/head.jsp" %>
+    <%@include file="/include/head.jsp" %>
 </head>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+<header>
+    <%@include file="../include/appHeader.jsp" %>
+</header>
+
 <body>
 <div class="addUserForm">
     <%
-        String userName = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-            }
-        }
         List<String> validationResult = BookValidation.validationResult;
     %>
-    <%@include file="/./include/appHeader.jsp" %>
 
     <% if (BookValidation.validationResult.size() > 0) { %>
     <br/><br/><br/>
@@ -59,11 +54,11 @@
         <br/>
         <div class="form-row">
             <div>
-                <input type="number" class="form-control" name="isbn" placeholder="Numer ISBN (tylko cyfry)">
+                <input type="number"  class="form-control no-spin" name="isbn" placeholder="Numer ISBN (tylko cyfry)">
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="number" class="form-control" name="daterelease"
+                <input type="number" class="form-control no-spin" name="daterelease"
                        placeholder="Rok wydania (tylko cyfry)">
             </div>
         </div>
@@ -72,6 +67,10 @@
         <button type="submit" class="btn btn-primary">Dodaj książkę</button>
     </form>
 </div>
-<%@include file="/./include/footer.jsp" %>
+
+<footer>
+<%@include file="../include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

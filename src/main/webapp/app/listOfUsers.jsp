@@ -6,22 +6,16 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="/./include/head.jsp" %>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/main.css">
 </head>
+
+<header>
+    <%@include file="/./include/appHeader.jsp" %>
+</header>
+
 <body>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<%@include file="/./include/appHeader.jsp" %>
 <article>
     <div class="content">
         <div class="contentInside">
@@ -29,7 +23,7 @@
             <h4>Kliknij użytkownika, którego chcesz edytować</h4>
             <table class="table">
                 <thead>
-                <tr>
+                <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col">Login</th>
                     <th scope="col">Nazwisko, Imię</th>
@@ -45,7 +39,7 @@
                     for (User user : listOfUsers) {
                 %>
 
-                <tr style="cursor:pointer" onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
+                <tr class="listofitemps" style="cursor:pointer" onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';" >
                     <th scope="row"><%=user.getId()%>
                     </th>
                     <td><%= user.getLogin()%>
@@ -69,8 +63,10 @@
         </div>
     </div>
 </article>
-<%@include file="/./include/footer.jsp" %>
 
+<footer>
+<%@include file="/./include/footer.jsp" %>
+</footer>
 
 </body>
 </html>

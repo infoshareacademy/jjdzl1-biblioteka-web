@@ -2,13 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-<%@include file="include/header.jsp" %>
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/main.css">
+<header>
+<%@include file="include/header.jsp" %>
+</header>
 
 <body>
 <section class="our-webcoderskull padding-lg">
@@ -57,6 +58,9 @@
     </div>
 </section>
 
-<%@include file="include/footer.jsp" %>
+<footer>
+    <%@include file="include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

@@ -54,4 +54,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
         return null;
     }
+    public void addNewUser(User user) {
+        UsersQuery.addNewUser(user);
+    }
 }

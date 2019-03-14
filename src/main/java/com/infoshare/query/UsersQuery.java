@@ -1,5 +1,9 @@
 package com.infoshare.query;
 
+import com.infoshare.dao.DBCon;
+import com.infoshare.domain.User;
+import com.infoshare.domain.UserStatus;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -36,6 +40,33 @@ public class UsersQuery {
 
         String query = "SELECT * FROM users WHERE login = '" + login + "'" ;
         return preparedStatement(query).executeQuery();
+    }
+
+    public static void addNewUser(User user) {
+
+//        int adminTrans;
+//        if (user.getStatus().equals(UserStatus.ADMIN)) {
+//            adminTrans = 1;
+//        } else {
+//            adminTrans = 0;
+//        }
+
+        String query = "INSERT INTO `users`(`login`, `password`, `firstName`, `lastName`, `email`, `admin`) VALUES ('" +
+                user.getLogin() + "', '" +
+                user.getPassword() + "', '" +
+                user.getFirstName() + "', '" +
+                user.getLastName() + "', '" +
+                user.getEmail() + "', '" +
+                1 + "' )";
+        try {
+            preparedStatement(query).execute();
+            DBCon.connClose();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

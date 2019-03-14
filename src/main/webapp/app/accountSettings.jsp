@@ -18,34 +18,46 @@
 <% UsersRepositoryDao user = new UsersRepositoryDaoBean();
     User userData = user.getUserByLogin(userName);%>
 <article>
-    <form method="POST" action="EditUserServlet" class="addUser">
-        <div>
-            <input type="text" class="form-control" name="login" placeholder="Login"
-                   value="<%= userData.getLogin()%>">
-        </div>
-        <div>&nbsp;</div>
-        <div>
-            <input type="email" class="form-control" name="e-mail" placeholder="E-mail"
-                   value="<%= userData.getEmail()%>">
-        </div>
-
-        <div>
-            <input type="text" class="form-control" name="firstName" placeholder="Imię"
-                   value="<%= userData.getFirstName()%>">
-        </div>
-        <div>&nbsp;</div>
-        <div>
-            <input type="text" class="form-control" name="lastName" placeholder="Nazwisko"
-                   value="<%= userData.getLastName()%>">
-        </div>
-        <div>
-            <input type="password" class="form-control" name="password1" placeholder="Hasło">
-        </div>
-        <div>&nbsp;</div>
-        <div>
-            <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
-        </div>
-    </form>
+    <div class="addUserForm">
+        <form method="POST" action="EditAccountServlet" class="addUser">
+            <div class="form-row">
+                <div>
+                    <input type="text" class="form-control" name="login" placeholder="Login"
+                           value="<%= userData.getLogin()%>">
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                    <input type="email" class="form-control" name="e-mail" placeholder="E-mail"
+                           value="<%= userData.getEmail()%>">
+                </div>
+            </div>
+            <br/>
+            <div class="form-row">
+                <div>
+                    <input type="text" class="form-control" name="firstName" placeholder="Imię"
+                           value="<%= userData.getFirstName()%>">
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko"
+                           value="<%= userData.getLastName()%>">
+                </div>
+            </div>
+            <br/>
+            <div class="form-row">
+                <div>
+                    <input type="password" class="form-control" name="password1" placeholder="Hasło">
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                    <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Edytuj dane</button>
+        </form>
+    </div>
 </article>
 
 <footer>

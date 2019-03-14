@@ -8,8 +8,9 @@
         }
     }
 %>
-
-<nav class="navbar navbar-dark bg navbar-expand-lg">
+<nav class="navbar navbar-default ">
+</nav>
+<nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
 
     <a class="navbar-brand" href="loginSuccess.jsp"><img src="../img/logo.png" width="30" height="30"
                                                          class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>

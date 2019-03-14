@@ -46,12 +46,12 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     }
 
     @Override
-    public List<Operation> AllOperationList() throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String typoOfOperations) throws SQLException, ClassNotFoundException {
 
         List<Operation> allOperationsList = new ArrayList<>();
         OperationType operationType;
 
-        try (ResultSet rs = OperationsQuery.allOperations()) {
+        try (ResultSet rs = OperationsQuery.allOperations(typoOfOperations)) {
 
             while (rs.next()) {
                 int userId = rs.getInt("userId");

@@ -7,7 +7,7 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 
 public class OperationsQuery {
 
-    String query= "SELECT * FROM `operations` " +
+    String query = "SELECT * FROM `operations` " +
             "JOIN `users` ON operations.userId = users.id " +
             "JOIN books ON operations.bookId=books.id " +
             "WHERE users.id = 10";
@@ -19,15 +19,16 @@ public class OperationsQuery {
         return preparedStatement(query).executeQuery();
     }
 
-    public static ResultSet allOperations() throws SQLException, ClassNotFoundException {
+    public static ResultSet allOperations(String operationType) throws SQLException, ClassNotFoundException {
 
-//        String query = "SELECT * FROM operations WHERE 1";
-        String query= "SELECT * FROM `operations` " +
+
+        String query = "SELECT * FROM `operations` " +
                 "JOIN `users` ON operations.userId = users.id " +
-                "JOIN books ON operations.bookId=books.id " +
-                "WHERE 1";
+                "JOIN books ON operations.bookId=books.id ";
 
-
+        if (operationType.equals("reservation")) query += "WHERE operationTypeId = 0";
+        else if (operationType.equals("borrow")) query += "WHERE operationTypeId = 1";
+        else query += "WHERE 1";
 
         return preparedStatement(query).executeQuery();
     }

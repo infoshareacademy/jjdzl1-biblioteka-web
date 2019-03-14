@@ -42,9 +42,11 @@
                 </thead>
                 <tbody>
                 <%
+                    String operationType = request.getParameter("operationType");
+                    if (operationType ==null || operationType.isEmpty()) operationType = "all";
                     int rowNumber = 1;
                     OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
-                    List<Operation> operationList = operationsRepository.AllOperationList();
+                    List<Operation> operationList = operationsRepository.AllOperationList(operationType);
                     for (Operation operation : operationList) {
                 %>
                 <tr class="listofbook">

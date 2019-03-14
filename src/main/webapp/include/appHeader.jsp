@@ -59,8 +59,9 @@
                         <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
                         <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
                         <a class="dropdown-item"> --- </a>
-                        <a class="dropdown-item" href="listOfOperations.jsp"> Lista rezerwacja </a>
-                        <a class="dropdown-item" href="listOfOperations.jsp"> Lista wypożyczeń </a>
+                        <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Lista rezerwacja </a>
+                        <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Lista wypożyczeń </a>
+                        <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Wszystkie operacje </a>
 
                     </div>
                 </li>

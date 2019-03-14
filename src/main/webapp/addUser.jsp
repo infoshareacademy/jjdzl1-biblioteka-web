@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <%@include file="include/head.jsp" %>
 </head>
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/main.css">
+<header>
+    <%@include file="/include/header.jsp" %>
+</header>
+
 <body>
 
-<%@include file="/include/header.jsp" %>
 
 <div class="addUserForm">
     <br/><br/>
@@ -51,6 +53,10 @@
         <button type="submit" class="btn btn-primary">Utwórz użytkownika</button>
     </form>
 </div>
-<%@include file="include/footer.jsp" %>
+
+<footer>
+    <%@include file="include/footer.jsp" %>
+</footer>
+
 </body>
 </html>

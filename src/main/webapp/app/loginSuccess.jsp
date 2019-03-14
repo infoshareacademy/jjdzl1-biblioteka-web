@@ -11,8 +11,15 @@ To change this template use File | Settings | File Templates.
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+
+<header>
+    <% if (session.getAttribute("normalUser") == null) {%>
+    <%@include file="/./include/appHeader.jsp" %>
+    <% } else { %>
+    <%@include file="/./include/appUserHeader.jsp" %>
+    <%}%>
+</header>
+
 <body>
 
 <% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
@@ -50,23 +57,11 @@ To change this template use File | Settings | File Templates.
     }
     request.getSession().removeAttribute("addBook");
 %>
-<%
-    String userName = null;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
-        }
-    }
-%>
-<% if (session.getAttribute("normalUser") == null) {%>
-<%@include file="/./include/appHeader.jsp" %>
-<% } else { %>
-<%@include file="/./include/appUserHeader.jsp" %>
-<%}%>
 <div class="mainpage"></div>
+
+<footer>
 <%@include file="/./include/footer.jsp" %>
+</footer>
 
 </body>
-
 </html>

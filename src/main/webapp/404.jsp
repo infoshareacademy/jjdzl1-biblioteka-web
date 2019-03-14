@@ -19,7 +19,7 @@
     <%@include file="include/appHeader.jsp" %>
 </header>
 
-<meta http-equiv="refresh" content="2;url=loginSuccess.jsp">
+<meta http-equiv="refresh" content="2;url=app/loginSuccess.jsp">
 <%}%>
 
 <div class="addUserForm">

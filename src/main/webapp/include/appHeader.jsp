@@ -90,7 +90,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="submenu3">
 
-                    <a class="dropdown-item" href="#"> Ustawienia konta </a>
+                    <a class="dropdown-item" href="accountSettings.jsp"> Ustawienia konta </a>
                     <a class="dropdown-item" href="#"> Powiadomienia </a>
 
                 </div>

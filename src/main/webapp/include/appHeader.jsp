@@ -7,6 +7,8 @@
             if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
         }
     }
+
+    String nameOfUser = (String) session.getAttribute("nameOfUser");
 %>
 <nav class="navbar navbar-default ">
 </nav>
@@ -94,7 +96,7 @@
         <ul class="navbar-nav mr-right">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                   aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=userName%>
+                   aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=nameOfUser%>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu3">

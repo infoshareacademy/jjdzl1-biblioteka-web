@@ -7,7 +7,6 @@
             if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
         }
     }
-
     String nameOfUser = (String) session.getAttribute("nameOfUser");
 %>
 <nav class="navbar navbar-default ">

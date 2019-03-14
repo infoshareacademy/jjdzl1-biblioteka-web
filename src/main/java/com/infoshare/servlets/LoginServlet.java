@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 password = rs.getString("password");
                 admin = rs.getBoolean("admin");
                 status = rs.getString("status");
-                userName = rs.getString("firstName")+ ", " + rs.getString("lastName");
+                userName = rs.getString("firstName") + ", " + rs.getString("lastName");
             }
             rs.close();
 
@@ -61,6 +61,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 Cookie loginCookie = new Cookie("userCookie", user);
                 loginCookie.setMaxAge(30 * 60);
                 response.addCookie(loginCookie);
+                session.setAttribute("nameOfUser", userName);
                 if (!admin) {
                     session.setAttribute("normalUser", "normalUser");
                     session.setAttribute("nameOfUser", userName);
@@ -70,8 +71,6 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 response.sendRedirect("index.jsp");
                 HttpSession session = request.getSession();
                 session.setAttribute("loginFalse", "loginFalse");
-                session.setAttribute("nameOfUser", userName);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -7,12 +7,13 @@
             if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
         }
     }
+    String nameOfUser = (String) session.getAttribute("nameOfUser");
 %>
 <nav class="navbar navbar-default ">
 </nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
 
-    <a class="navbar-brand" href="loginSuccess.jsp"><img src="../img/logo.png" width="30" height="30"
+    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png" width="30" height="30"
                                                          class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -32,13 +33,16 @@
 
                     <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
                     <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+                    <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="addBook.jsp"> Dodaj książkę </a>
                     <a class="dropdown-item" href="#"> Edytuj książkę </a>
+                    <%}%>
                 </div>
 
             </li>
 
+            <% if (session.getAttribute("normalUser") == null) {%>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
@@ -50,20 +54,26 @@
 
                 </div>
             </li>
+            <%}%>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu2" aria-haspopup="true"> Rezerwacje / Wypożyczenia </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
-
+                    <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
                     <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Wszystkie operacje </a>
-
+                    <% } else { %>
+                    <a class="dropdown-item" href="#"> Moje rezerwacje </a>
+                    <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
+                    <a class="dropdown-item" href="@"> Wszystkie operacje </a>
+                    <%}%>
                 </div>
             </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
@@ -85,7 +95,7 @@
         <ul class="navbar-nav mr-right">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                   aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=userName%>
+                   aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=nameOfUser%>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu3">

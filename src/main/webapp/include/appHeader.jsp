@@ -32,13 +32,16 @@
 
                     <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
                     <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+                    <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="addBook.jsp"> Dodaj książkę </a>
                     <a class="dropdown-item" href="#"> Edytuj książkę </a>
+                    <%}%>
                 </div>
 
             </li>
 
+            <% if (session.getAttribute("normalUser") == null) {%>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
@@ -50,20 +53,26 @@
 
                 </div>
             </li>
+            <%}%>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu2" aria-haspopup="true"> Rezerwacje / Wypożyczenia </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
-
+                    <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
                     <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Wszystkie operacje </a>
-
+                    <% } else { %>
+                    <a class="dropdown-item" href="#"> Moje rezerwacje </a>
+                    <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
+                    <a class="dropdown-item" href="@"> Wszystkie operacje </a>
+                    <%}%>
                 </div>
             </li>
             <li>&nbsp;&nbsp;&nbsp;</li>

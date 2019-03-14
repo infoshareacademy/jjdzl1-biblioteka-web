@@ -19,6 +19,9 @@
     User userData = user.getUserByLogin(userName);%>
 <article>
     <div class="addUserForm">
+        <br/><br/><br/>
+        <h4>Edytuj swoje konto</h4>
+        <br/>
         <form method="POST" action="EditAccountServlet" class="addUser">
             <div class="form-row">
                 <div>

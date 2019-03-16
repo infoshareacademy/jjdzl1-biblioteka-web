@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet implements Serializable {
 
         String query = "SELECT * FROM users WHERE login =?";
 
-
         String login = "";
         String password = "";
         PreparedStatement ps;

@@ -49,15 +49,19 @@
             <br/>
             <div class="form-row">
                 <div>
-                    <input type="password" class="form-control" name="password1" placeholder="Hasło">
+                    <input type="password" class="form-control" name="password1" placeholder="Nowe hasło">
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="password" class="form-control" name="password2" placeholder="Powtórz hasło">
+                    <input type="password" class="form-control" name="password2" placeholder="Powtórz nowe hasło">
                 </div>
             </div>
-            <br/>
-            <br/>
+            <br/><br/><br/>
+            <h6>Wpisz aktualne hasło, aby zatwierdzić wprowadzone zmiany</h6>
+            <div class="form-row">
+                <input type="password" class="form-control" name="password3" placeholder="Hasło">
+            </div>
+            <br/><br/>
             <button type="submit" class="btn btn-primary">Edytuj dane</button>
         </form>
     </div>

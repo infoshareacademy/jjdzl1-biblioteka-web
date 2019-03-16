@@ -67,9 +67,11 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
                 String firstName = rs.getString("firstName");
                 String lastName = rs.getString("lastName");
                 String email = rs.getString("email");
+                String password = rs.getString("password");
                 user.setLogin(login);
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
+                user.setPassword(password);
                 user.setEmail(email);
                 return user;
             }

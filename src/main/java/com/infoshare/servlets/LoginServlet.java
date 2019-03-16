@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
 
             Hasher hasher = new PBKDF2Hasher();
             boolean checkPass;
-            if (!pwd.isEmpty())
+            if (!pwd.isEmpty() && !password.isEmpty())
                 checkPass = hasher.checkPassword(pwd, password);
             else checkPass = false;
 

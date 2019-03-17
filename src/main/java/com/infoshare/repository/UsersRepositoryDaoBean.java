@@ -3,9 +3,6 @@ package com.infoshare.repository;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
-import com.mysql.cj.protocol.Resultset;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +11,7 @@ import java.util.List;
 
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
-    public static List<User> listOfUsers = new ArrayList<>();
+    List<User> listOfUsers = new ArrayList<>();
 
     @Override
     public List<User> listOfUsers() throws SQLException, ClassNotFoundException {
@@ -50,12 +47,29 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
     }
 
     public User getUserById(int id) {
-        for (User user : listOfUsers) {
-            if (user.getId() == id) {
+        ResultSet rs;
+        User user = new User();
+        try {
+            rs = UsersQuery.findUserById(id);
+            while (rs.next()) {
+                String login = rs.getString("login");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                user.setLogin(login);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
+                user.setEmail(email);
                 return user;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return null;
+        return user;
     }
 
     public User getUserByLogin(String login) {

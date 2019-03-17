@@ -1,12 +1,14 @@
 package com.infoshare.servlets;
 
 import com.infoshare.dao.DBCon;
+import com.infoshare.domain.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -16,10 +18,13 @@ import java.sql.SQLException;
 public class EditUserServlet extends HttpServlet implements Serializable {
     private static final long serialVersionUID = 2911687195703070806L;
 
-    int userID = GetUserToEditServlet.user.getId();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("UserObject");
+        int userID = user.getId();
+
         String login = req.getParameter("login");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
@@ -48,6 +53,8 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        req.removeAttribute("UserObject");
         req.getSession().setAttribute("userEdited", "userEdited");
         if (req.getSession().getAttribute("user") != null)
             resp.sendRedirect("loginSuccess.jsp");

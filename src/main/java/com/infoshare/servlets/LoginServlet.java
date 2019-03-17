@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet implements Serializable {
 
         String query = "SELECT * FROM users WHERE login =?";
 
-
         String login = "";
         String password = "";
         PreparedStatement ps;
@@ -50,7 +49,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
 
             Hasher hasher = new PBKDF2Hasher();
             boolean checkPass;
-            if (!pwd.isEmpty())
+            if (!pwd.isEmpty() && !password.isEmpty())
                 checkPass = hasher.checkPassword(pwd, password);
             else checkPass = false;
 

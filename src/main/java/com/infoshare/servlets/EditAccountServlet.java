@@ -1,6 +1,9 @@
 package com.infoshare.servlets;
 
 import com.infoshare.dao.DBCon;
+import com.infoshare.domain.User;
+import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.repository.UsersRepositoryDaoBean;
 import com.infoshare.utils.Hasher;
 import com.infoshare.utils.PBKDF2Hasher;
 
@@ -18,6 +21,13 @@ import java.sql.SQLException;
 @WebServlet("/EditAccountServlet")
 public class EditAccountServlet extends HttpServlet implements Serializable {
     private static final long serialVersionUID = 1321721107243360065L;
+    private String login = "";
+    private String password1 = "";
+    private String password2 = "";
+    private String firstName = "";
+    private String lastName = "";
+    private String email = "";
+    private String hashedPass;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,17 +38,19 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
                 if (cookie.getName().equals("userCookie")) userName = cookie.getValue();
             }
         }
-
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String password2 = req.getParameter("password2");
+        login = req.getParameter("login");
+        password1 = req.getParameter("password1");
+        password2 = req.getParameter("password2");
         Hasher hasher = new PBKDF2Hasher();
-        String hashedPass = hasher.hash(password2);
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        String email = req.getParameter("e-mail");
+        if (!password2.isEmpty()) hashedPass = hasher.hash(password2);
+        firstName = req.getParameter("firstName");
+        lastName = req.getParameter("lastName");
+        email = req.getParameter("e-mail");
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ? WHERE login = '" + userName + "'";
+        emptyInputValidation(userName);
+
+        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
+                " WHERE login = '" + userName + "'";
 
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);
@@ -60,4 +72,15 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
         else
             resp.sendRedirect("index.jsp");
     }
+
+    private void emptyInputValidation(String userName) {
+        UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
+        User user = usersRepositoryDao.getUserByLogin(userName);
+        if (login.isEmpty()) login = user.getLogin();
+        if (password1.isEmpty() || password2.isEmpty()) hashedPass = user.getPassword();
+        if (firstName.isEmpty()) firstName = user.getFirstName();
+        if (lastName.isEmpty()) lastName = user.getLastName();
+        if (email.isEmpty()) email = user.getEmail();
+    }
+
 }

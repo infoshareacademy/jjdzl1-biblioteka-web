@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet implements Serializable {
         if (session != null) {
             session.invalidate();
         }
-        String redirectURL = "http://localhost:8080/library-web/index.jsp";
+        String redirectURL = "../index.jsp";
         response.sendRedirect(redirectURL);
     }
 

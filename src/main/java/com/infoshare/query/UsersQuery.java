@@ -2,7 +2,9 @@ package com.infoshare.query;
 
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
-import com.infoshare.domain.UserStatus;
+import com.infoshare.utils.Hasher;
+import com.infoshare.utils.PBKDF2Hasher;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,20 +52,15 @@ public class UsersQuery {
 
     public static void addNewUser(User user) {
 
-//        int adminTrans;
-//        if (user.getStatus().equals(UserStatus.ADMIN)) {
-//            adminTrans = 1;
-//        } else {
-//            adminTrans = 0;
-//        }
+        Hasher hasher = new PBKDF2Hasher();
 
         String query = "INSERT INTO `users`(`login`, `password`, `firstName`, `lastName`, `email`, `admin`) VALUES ('" +
                 user.getLogin() + "', '" +
-                user.getPassword() + "', '" +
+                hasher.hash(user.getPassword()) + "', '" +
                 user.getFirstName() + "', '" +
                 user.getLastName() + "', '" +
                 user.getEmail() + "', '" +
-                1 + "' )";
+                ((user.getStatus() == "ADMIN") ? 1 : 0) + "' )";
         try {
             preparedStatement(query).execute();
             DBCon.connClose();

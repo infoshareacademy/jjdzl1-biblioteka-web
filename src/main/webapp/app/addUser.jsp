@@ -1,4 +1,4 @@
-<%@ page import="com.infoshare.validation.UserValidation" %>
+<%@ page import="com.infoshare.validation.UserValidator" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -16,10 +16,9 @@
 <div class="addUserForm">
 
     <%
-        List<String> validationResult = UserValidation.validationResult;
-    %>
-
-    <% if (UserValidation.validationResult.size() > 0) { %>
+        UserValidator userValidator = new UserValidator();
+        List<String> validationResult = userValidator.validationResult;
+        if (validationResult.size() > 0) { %>
     <br/><br/><br/>
     <ul class="list-group" style="vertical-align: center">
         <%
@@ -49,7 +48,7 @@
         <br/>
         <div class="form-row">
             <div>
-                <input type="password" class="form-control" name="password1" placeholder="Hasło">
+                <input type="password" class="form-control" name="password" placeholder="Hasło">
             </div>
             <div>&nbsp;</div>
             <div>

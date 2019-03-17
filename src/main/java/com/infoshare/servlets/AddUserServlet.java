@@ -1,61 +1,33 @@
 package com.infoshare.servlets;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.repository.UsersRepositoryDao;
 import com.infoshare.repository.UsersRepositoryDaoBean;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
-import com.infoshare.validation.UserValidation;
+import com.infoshare.validation.UserValidator;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
+@Slf4j
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String password2 = req.getParameter("password2");
-        Hasher hasher = new PBKDF2Hasher();
-        String hashedPass = hasher.hash(password2);
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        String email = req.getParameter("e-mail");
-        String[] admin = req.getParameterValues("admin");
-        Boolean checkAdmin = admin != null ? admin[0].equals("on"):  false;
 
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(hasher.hash(password2));
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setEmail(email);
-//        if (checkAdmin) {
-//            user.setAdmin(UserStatus.ADMIN);
-//        } else {
-//            user.setAdmin(UserStatus.USER);
-//        }
+        User user = createUserFromForm(req);
 
-        UserValidation.userValidation(user);
-        try {
-            UserValidation.checkIsLoginOrEmailExist(login, email);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        List<String> errors = validate(user, req);
 
-        if (req.getSession().getAttribute("user") != null && UserValidation.validationResult.size() > 0) {
+
+        if (req.getSession().getAttribute("user") != null && errors.size() > 0) {
             resp.sendRedirect("addUser.jsp");
         } else {
             UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
@@ -66,32 +38,46 @@ public class AddUserServlet extends HttpServlet {
             else
                 resp.sendRedirect("index.jsp");
         }
+    }
+
+    private User createUserFromForm(HttpServletRequest req) {
+
+        return User.builder()
+                .login(req.getParameter("login"))
+                .password(req.getParameter("password"))
+                .firstName(req.getParameter("firstName"))
+                .lastName(req.getParameter("lastName"))
+                .email(req.getParameter("e-mail"))
+                .admin(isChecked(req, "admin") ? UserStatus.ADMIN : UserStatus.USER)
+                .build();
+    }
+
+    private boolean isChecked(HttpServletRequest req, String fieldname) {
+        String[] value = req.getParameterValues(fieldname);
+
+        return value != null ? value[0].equals("on") : false;
+    }
+
+    private List<String> validate(User user, HttpServletRequest req) {
+
+        UserValidator validator = new UserValidator();
+
+        List<String> errors = validator.userValidation(user);
+
+        String password = user.getPassword();
+        if (password != null && !password.equals(req.getParameter("password2"))) {
+            errors.add("Hasła są różne !");
+        }
 
 
-//        String query = "INSERT INTO users (login, password, firstName, lastName, email, admin) " +
-//                "VALUES (?, ?, ?, ?, ?, ?)";
-//
-//        try {
-//            PreparedStatement ps = DBCon.preparedStatement(query);
-//            ps.setString(1, login);
-//            ps.setString(2, hashedPass);
-//            ps.setString(3, firstName);
-//            ps.setString(4, lastName);
-//            ps.setString(5, email);
-//            ps.setBoolean(6, checkAdmin);
-//            ps.execute();
-//            ps.close();
-//
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        req.getSession().setAttribute("addUser", "userAdded");
-//        if (req.getSession().getAttribute("user") != null)
-//        resp.sendRedirect("loginSuccess.jsp");
-//        else
-//            resp.sendRedirect("index.jsp");
+        try {
+            validator.checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
+        } catch (SQLException e) {
+            log.error("User validation - SQL error", e);
+        } catch (ClassNotFoundException e) {
+            log.error("User validation - Class not found", e);
+        }
+
+        return errors;
     }
 }

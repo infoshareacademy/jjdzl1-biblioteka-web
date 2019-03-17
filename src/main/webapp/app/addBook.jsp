@@ -34,7 +34,7 @@
     <br/><br/>
     <h4>Dodaj książkę</h4>
     <br/>
-    <form method="POST" action="AddBookServlet" class="addUser">
+    <form method="POST" action="AddBookServlet" class="addUser" >
 
         <div>
             <div>

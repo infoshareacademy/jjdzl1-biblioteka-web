@@ -42,6 +42,12 @@ public class UsersQuery {
         return preparedStatement(query).executeQuery();
     }
 
+    public static ResultSet findUserByEmail(String email) throws SQLException, ClassNotFoundException {
+
+        String query = "SELECT * FROM users WHERE email = '" + email + "'" ;
+        return preparedStatement(query).executeQuery();
+    }
+
     public static void addNewUser(User user) {
 
 //        int adminTrans;

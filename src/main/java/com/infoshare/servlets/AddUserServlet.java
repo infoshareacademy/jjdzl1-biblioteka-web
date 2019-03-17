@@ -47,6 +47,13 @@ public class AddUserServlet extends HttpServlet {
 //        }
 
         UserValidation.userValidation(user);
+        try {
+            UserValidation.checkIsLoginOrEmailExist(login, email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         if (req.getSession().getAttribute("user") != null && UserValidation.validationResult.size() > 0) {
             resp.sendRedirect("addUser.jsp");

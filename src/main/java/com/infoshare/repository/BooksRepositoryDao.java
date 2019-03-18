@@ -10,6 +10,6 @@ public interface BooksRepositoryDao {
 
 
     List<Book> bookList(String title, String order) throws SQLException, ClassNotFoundException;
-    Book bookById (int id) throws SQLException,ClassNotFoundException;
+    Book getBookById (int id) throws SQLException,ClassNotFoundException;
     void addNewBook(Book book);
 }

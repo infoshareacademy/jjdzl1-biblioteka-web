@@ -75,8 +75,16 @@
                     %>
                     <td>
                         <div>
-                            <a class="btn btn-secondary" href="#">R</a>
-                            <a class="btn btn-info" href="#">W</a>
+                            <form method="GET" action="UserBasketServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="operationType" value="reservation"/>
+                                <button type="submit" class="btn btn-secondary">R</button>
+                            </form>
+                            <form method="GET" action="UserBasketServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="operationType" value="borrow"/>
+                                <button type="submit" class="btn btn-secondary">W</button>
+                            </form>
                         </div>
                     </td>
                     <%}%>

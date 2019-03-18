@@ -33,7 +33,6 @@
         <servlet-name>EditUserServlet</servlet-name>
         <url-pattern>app/EditUserServlet</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>SelectUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.SelectUserServlet</servlet-class>
@@ -42,6 +41,16 @@
         <servlet-name>SelectUserServlet</servlet-name>
         <url-pattern>app/SelectUserServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UserBasketServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.UserBasketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserBasketServlet</servlet-name>
+        <url-pattern>app/UserBasketServlet</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>AddUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.AddUserServlet</servlet-class>

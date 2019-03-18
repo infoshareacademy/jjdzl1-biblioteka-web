@@ -65,7 +65,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
-                    <a class="dropdown-item" href="#"> Nowa operacja </a>
+                    <a class="dropdown-item" href="listOfUsers.jsp?operation=newoperation"> Nowa operacja </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
@@ -96,8 +96,22 @@
                 User user = (User) session.getAttribute("selectedUser");
             %>
             <li>&nbsp;&nbsp;&nbsp;</li>
-            <li>
-                <a href="#" class="nav-link"> Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                   aria-expanded="false" aria-haspopup="true">
+                    Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="submenu">
+                <a class="dropdown-item" href="#"> Koszyk operacji </a>
+                <a class="dropdown-item" href="#"> Anuluj bieżące operacje </a>
+                <a class="dropdown-item"> --- </a>
+                <a class="dropdown-item" href="@"> Historia rezerwacji </a>
+                <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
+                </div>
+                    <%--
+
+                                <a href="#" class="nav-link"> Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+                --%>
                 </a>
             </li>
             <%}%>

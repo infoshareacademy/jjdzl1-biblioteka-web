@@ -15,7 +15,7 @@
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 <%
-    String operationType = request.getParameter("operationtype");
+    String operation = request.getParameter("operation");
     String operatnionName = "";
  if (session.getAttribute("normalUser") == null) {%>
 <body>
@@ -23,7 +23,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <% if (operationType != null && !operationType.isEmpty()) {%>
+            <% if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
             <h4> Nowa operacja: wybierz użytkownika</h4>
             <%} else {%>
             <h4>Kliknij użytkownika, którego chcesz edytować</h4>
@@ -38,7 +38,7 @@
                     <th scope="col"> Email</th>
                     <th scope="col"> Administrator</th>
                     <th scope="col"> Status</th>
-                    <%if (operationType != null && !operationType.isEmpty()) {%>
+                    <%if (operation != null && !operation.isEmpty()) {%>
                     <th scope="col">Działanie</th>
                     <%}%>
 
@@ -66,7 +66,7 @@
                     <td><%= user.getStatus()%>
                     </td>
 
-                    <%if (operationType != null && !operationType.isEmpty()) {%>
+                    <%if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
                     <td>
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>" />

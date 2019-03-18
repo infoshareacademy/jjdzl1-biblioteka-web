@@ -19,13 +19,12 @@
     <%@include file="include/appHeader.jsp" %>
 </header>
 
-<meta http-equiv="refresh" content="2;url=app/loginSuccess.jsp">
+<meta http-equiv="refresh" content="3;url=app/loginSuccess.jsp">
 <%}%>
 
 <div class="addUserForm">
     <br/><br/>
-    <p class="font-weight-bold">
-    <h1>Oops!</h1></p>
+    <img src="${pageContext.request.contextPath}/img/oops.png"/>
     <h3>Błąd 404</h3>
     <h5>Strony nie odnaleziono</h5>
     Za chwilę nastąpi przekierowanie na stronę główną.

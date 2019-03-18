@@ -11,7 +11,13 @@ To change this template use File | Settings | File Templates.
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
+<%
+    String selectedUser = request.getParameter("selectedUser");
 
+    if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
+        session.removeAttribute("selectedUser");
+    }
+%>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>

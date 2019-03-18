@@ -39,6 +39,11 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Nr ISBN</th>
                     <th scope="col">Rok wydania</th>
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <th scope="col">Działania</th>
+                    <%}%>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,6 +69,17 @@
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%>
                     </a>
                     </td>
+
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <td>
+                        <div>
+                            <a class="btn btn-secondary" href="#">R</a>
+                            <a class="btn btn-info" href="#">W</a>
+                        </div>
+                    </td>
+                    <%}%>
                 </tr>
                 <%
                         rowNumber++;
@@ -89,7 +105,7 @@
 </article>
 
 <footer>
-<%@include file="../include/footer.jsp" %>
+    <%@include file="../include/footer.jsp" %>
 </footer>
 
 </body>

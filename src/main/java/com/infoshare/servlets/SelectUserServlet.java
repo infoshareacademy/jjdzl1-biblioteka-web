@@ -24,7 +24,7 @@ public class SelectUserServlet extends HttpServlet {
         User user = usersRepositoryDao.getUserById(userId);
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
-        resp.sendRedirect("loginSuccess.jsp");
+        resp.sendRedirect("listOfBooks.jsp");
 
     }
 }

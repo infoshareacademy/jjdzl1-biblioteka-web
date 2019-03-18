@@ -48,17 +48,18 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
-
                 <div class="dropdown-menu" aria-labelledby="submenu">
-
                     <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
+                    <%} else {%>
                     <a class="dropdown-item" href="listOfUsers.jsp"> Edytuj użytkownika </a>
-
+                    <%}%>
                 </div>
             </li>
             <%}%>
-
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu2" aria-haspopup="true"> Operacje </a>
@@ -102,16 +103,16 @@
                     Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
-                <a class="dropdown-item" href="#"> Koszyk operacji </a>
-                <a class="dropdown-item" href="#"> Anuluj bieżące operacje </a>
-                <a class="dropdown-item"> --- </a>
-                <a class="dropdown-item" href="@"> Historia rezerwacji </a>
-                <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
+                    <a class="dropdown-item" href="#"> Koszyk operacji </a>
+                    <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
+                    <a class="dropdown-item"> --- </a>
+                    <a class="dropdown-item" href="@"> Historia rezerwacji </a>
+                    <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
                 </div>
-                    <%--
+                <%--
 
-                                <a href="#" class="nav-link"> Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
-                --%>
+                            <a href="#" class="nav-link"> Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+            --%>
                 </a>
             </li>
             <%}%>

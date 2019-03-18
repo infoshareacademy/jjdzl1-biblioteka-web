@@ -1,3 +1,4 @@
+<%@ page import="com.infoshare.domain.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String userName = null;
@@ -13,7 +14,8 @@
 </nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
 
-    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png" width="30" height="30"
+    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png"
+                                                         width="30" height="30"
                                                          class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -59,12 +61,11 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                   aria-expanded="false" id="submenu2" aria-haspopup="true"> Rezerwacje / Wypożyczenia </a>
+                   aria-expanded="false" id="submenu2" aria-haspopup="true"> Operacje </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
-                    <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
-                    <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
+                    <a class="dropdown-item" href="#"> Nowa operacja </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
@@ -90,6 +91,16 @@
                     </div>
                 </form>
             </li>
+
+            <% if (session.getAttribute("selectedUser") != null) {
+                User user = (User) session.getAttribute("selectedUser");
+            %>
+            <li>&nbsp;&nbsp;&nbsp;</li>
+            <li>
+                <a href="#" class="nav-link"> Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+                </a>
+            </li>
+            <%}%>
         </ul>
 
         <ul class="navbar-nav mr-right">

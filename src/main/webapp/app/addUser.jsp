@@ -16,8 +16,7 @@
 <div class="addUserForm">
 
     <%
-        UserValidator userValidator = new UserValidator();
-        List<String> validationResult = userValidator.validationResult;
+        List<String> validationResult = UserValidator.validationResult;
         if (validationResult.size() > 0) { %>
     <br/><br/><br/>
     <ul class="list-group" style="vertical-align: center">

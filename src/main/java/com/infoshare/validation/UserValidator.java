@@ -18,16 +18,16 @@ public class UserValidator {
     private static final Pattern namePattern = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!\"~]*");
     private static final Pattern emailPattern = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
 
-    public List<String> validationResult = new ArrayList<>();
+    public static List<String> validationResult = new ArrayList<>();
 
-    public List<String> userValidation(User user) {
+    public void userValidation(User user)  {
 
+        validationResult.clear();
         user.setLogin(validateLogin(user.getLogin()));
         validatePassword(user.getPassword());
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
-        return validationResult;
     }
 
     public String validateLogin(String login) {
@@ -39,7 +39,7 @@ public class UserValidator {
         return login;
     }
 
-    public  void validatePassword(String password) {
+    public void validatePassword(String password) {
 
         if (password == null || password.length() > loginLength) {
             validationResult.add("Hasło nie może być puste ani przekraczać 20 znaków");
@@ -71,19 +71,15 @@ public class UserValidator {
     }
 
     public void checkIsLoginOrEmailExist(String login, String email) throws SQLException, ClassNotFoundException {
-        ResultSet rs = UsersQuery.findUserByLogin(login);
-        ResultSet rs1 = UsersQuery.findUserByEmail(email);
+        ResultSet rs = UsersQuery.findUserByEmailOrLogin(email, login);
         while (rs.next()) {
-            if (!rs.getString("login").isEmpty()) {
+            if (!rs.getString("login").isEmpty() && rs.getString("login").equals(login)) {
                 validationResult.add("Login jest zajęty");
             }
-        }
-        rs.close();
-        while (rs1.next()) {
-            if (!rs1.getString("email").trim().isEmpty()) {
+            if (!rs.getString("email").trim().isEmpty() && rs.getString("email").equals(email)) {
                 validationResult.add("E-mail jest zajęty");
             }
         }
-        rs1.close();
+        rs.close();
     }
 }

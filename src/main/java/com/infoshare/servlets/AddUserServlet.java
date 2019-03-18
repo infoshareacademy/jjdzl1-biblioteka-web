@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+
 @Slf4j
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
@@ -24,19 +25,22 @@ public class AddUserServlet extends HttpServlet {
 
         User user = createUserFromForm(req);
 
-        List<String> errors = validate(user, req);
-
-
-        if (req.getSession().getAttribute("user") != null && errors.size() > 0) {
-            resp.sendRedirect("addUser.jsp");
-        } else {
-            UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
-            usersRepositoryDaoBean.addNewUser(user);
-            req.getSession().setAttribute("addUser", "userAdded");
-            if (req.getSession().getAttribute("user") != null)
-                resp.sendRedirect("loginSuccess.jsp");
-            else
-                resp.sendRedirect("index.jsp");
+        try {
+            if (req.getSession().getAttribute("user") != null && validate(user, req).size() > 0) {
+                resp.sendRedirect("addUser.jsp");
+            } else {
+                UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
+                usersRepositoryDaoBean.addNewUser(user);
+                req.getSession().setAttribute("addUser", "userAdded");
+                if (req.getSession().getAttribute("user") != null)
+                    resp.sendRedirect("loginSuccess.jsp");
+                else
+                    resp.sendRedirect("index.jsp");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -58,17 +62,16 @@ public class AddUserServlet extends HttpServlet {
         return value != null ? value[0].equals("on") : false;
     }
 
-    private List<String> validate(User user, HttpServletRequest req) {
+    private List<String> validate(User user, HttpServletRequest req) throws SQLException, ClassNotFoundException {
 
         UserValidator validator = new UserValidator();
 
-        List<String> errors = validator.userValidation(user);
+        validator.userValidation(user);
 
         String password = user.getPassword();
         if (password != null && !password.equals(req.getParameter("password2"))) {
-            errors.add("Hasła są różne !");
+            validator.validationResult.add("Hasła są różne !");
         }
-
 
         try {
             validator.checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
@@ -78,6 +81,6 @@ public class AddUserServlet extends HttpServlet {
             log.error("User validation - Class not found", e);
         }
 
-        return errors;
+        return validator.validationResult;
     }
 }

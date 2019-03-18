@@ -50,6 +50,12 @@ public class UsersQuery {
         return preparedStatement(query).executeQuery();
     }
 
+    public static ResultSet findUserByEmailOrLogin(String email, String login) throws SQLException, ClassNotFoundException {
+
+        String query = "SELECT * FROM users WHERE email = '" + email + "' OR login = '" + login + "'" ;
+        return preparedStatement(query).executeQuery();
+    }
+
     public static void addNewUser(User user) {
 
         Hasher hasher = new PBKDF2Hasher();
@@ -71,6 +77,4 @@ public class UsersQuery {
             e.printStackTrace();
         }
     }
-
-
 }

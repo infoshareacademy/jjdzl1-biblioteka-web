@@ -18,20 +18,16 @@ import java.util.List;
 @WebServlet("/SelectUserServlet")
 public class SelectUserServlet extends HttpServlet {
 
-    public List<Basket> basket = new ArrayList<>();
+    public static List<Basket> basket = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         int userId = Integer.parseInt(req.getParameter("userid"));
-
         UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
         User user = usersRepositoryDao.getUserById(userId);
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
         resp.sendRedirect("listOfBooks.jsp");
-
-
     }
 }

@@ -11,16 +11,21 @@ import java.util.List;
 
 public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
+    public List<Basket> basket = SelectUserServlet.basket;
+
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType) {
-        SelectUserServlet selectUserServlet = new SelectUserServlet();
-        List basketList = selectUserServlet.basket;
-        basketList.add(new Basket(book, user, operationType));
+        basket.add(new Basket(book, user, operationType));
     }
 
     @Override
     public List basketList() {
-        SelectUserServlet selectUserServlet = new SelectUserServlet();
-        return selectUserServlet.basket;
+        return basket;
+    }
+
+    @Override
+    public List createBasketList() {
+        List<Basket> basket = new ArrayList<>();
+        return basket;
     }
 }

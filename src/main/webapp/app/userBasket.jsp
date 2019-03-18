@@ -1,6 +1,7 @@
 <%@ page import="com.infoshare.repository.BasketRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.Basket" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -23,41 +24,47 @@
         orderTitle = " (wg tytułu)";
         order = "title";
     } else orderTitle = " (wg autora)";
+    BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
+    List<Basket> basketList = basketRepositoryDaoBean.basketList();
+
 %>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Koszyk bieżących operacji
-            </h4>
+            <%
+                if (session.getAttribute("selectedUser") != null) {
+                    User user = (User) session.getAttribute("selectedUser");
+            %><h4>Koszyk bieżących operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
+        </h4>
+            <%}%>
             <table class="table">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>
-                    <th scope="col">uztkownik</th>
-                    <th scope="col">operacja</th>
+                    <th scope="col">Operacja</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    BasketRepositoryDaoBean basketRepositoryDaoBean = new BasketRepositoryDaoBean();
-                    List<Basket> basketList = basketRepositoryDaoBean.basketList();
                     for (Basket basket : basketList) {
                 %>
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><%=basket.getUser().getLastName().toString() + ", " + basket.getUser().getFirstName().toString()%>
+                    <td><%=basket.getBook().getTitle() %>
                     </td>
-                    <td><%=basket.getBook().getTitle() + ", " + basket.getBook().getAuthorLastName()%>
+                    <td><%=basket.getBook().getAuthorLastName() + ", " + basket.getBook().getAuthorFirstName()%>
                     </td>
                     <td><%=basket.getOperationType()%>
                     </td>
-
-                            <%}%>
+                    <%
+                            rowNumber++;
+                        }
+                    %>
                 </tr>
                 </tbody>
             </table>

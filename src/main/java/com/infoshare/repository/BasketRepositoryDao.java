@@ -8,6 +8,10 @@ import com.infoshare.domain.User;
 import java.util.List;
 
 public interface BasketRepositoryDao {
+
     void addToBasketList(User user, Book book, OperationType operationType);
+
     List basketList();
+
+    List createBasketList();
 }

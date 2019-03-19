@@ -35,8 +35,31 @@
             <%
                 if (session.getAttribute("selectedUser") != null) {
                     User user = (User) session.getAttribute("selectedUser");
-            %><h4>Koszyk bieżących operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
-        </h4>
+            %>
+
+            <div class="d-flex">
+
+
+                <div class="mr-auto p-2 align-items-start"><h4>Koszyk bieżących
+                    operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
+                </h4>
+                </div>
+                <div class="p2 align-items-end">
+                    <form method="GET" action="UserBasketServlet" class="addUser">
+                        <input type="hidden" name="operationType" value="reservation"/>
+                        <button type="submit" class="btn btn-success">Akceptuj operacje</button>
+                    </form>
+                </div>
+                <div class="p2 align-items-end">
+                    &nbsp;&nbsp;
+                </div>
+                <div class="p2 align-items-end">
+                    <form method="GET" action="UserBasketServlet" class="addUser">
+                        <input type="hidden" name="operationType" value="borrow"/>
+                        <button type="submit" class="btn btn-secondary">Anuluj</button>
+                    </form>
+                </div>
+            </div>
             <%}%>
             <table class="table">
                 <thead>

@@ -21,24 +21,13 @@
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg
-                        autora </a>
-
-
+                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autora </a>
                 </div>
-
             </li>
 
         </ul>
 
         <form action="LoginServlet" class="form-inline" method="post">
-
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.jsp"> O nas </a>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                </li>
-            </ul>
 
             <input class="form-control mr-1" type="user" placeholder="Użytkownik" aria-label="Użytkownik"
                    name="user">

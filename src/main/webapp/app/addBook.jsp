@@ -1,4 +1,4 @@
-<%@ page import="com.infoshare.validation.BookValidation" %>
+<%@ page import="com.infoshare.validation.BookValidator" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -16,10 +16,10 @@
 <body>
 <div class="addUserForm">
     <%
-        List<String> validationResult = BookValidation.validationResult;
+        List<String> validationResult = BookValidator.validationResult;
     %>
 
-    <% if (BookValidation.validationResult.size() > 0) { %>
+    <% if (validationResult.size() > 0) { %>
     <br/><br/><br/>
     <ul class="list-group" style="vertical-align: center">
         <%

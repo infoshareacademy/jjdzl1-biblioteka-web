@@ -57,15 +57,14 @@ public class AddUserServlet extends HttpServlet {
     }
 
     private boolean isChecked(HttpServletRequest req, String fieldname) {
-        String[] value = req.getParameterValues(fieldname);
 
+        String[] value = req.getParameterValues(fieldname);
         return value != null ? value[0].equals("on") : false;
     }
 
     private List<String> validate(User user, HttpServletRequest req) throws SQLException, ClassNotFoundException {
 
         UserValidator validator = new UserValidator();
-
         validator.userValidation(user);
 
         String password = user.getPassword();

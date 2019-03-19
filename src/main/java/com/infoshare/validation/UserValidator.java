@@ -20,7 +20,7 @@ public class UserValidator {
 
     public static List<String> validationResult = new ArrayList<>();
 
-    public void userValidation(User user)  {
+    public void userValidation(User user) {
 
         validationResult.clear();
         user.setLogin(validateLogin(user.getLogin()));
@@ -36,7 +36,7 @@ public class UserValidator {
                 (login.length() > loginLength || loginPattern.matcher(login).matches())) {
             validationResult.add("Login nie może być pusty ani przekraczać 20 znaków (typu litery i cyfry oraz podkreślenie)");
         }
-        return login;
+        return login.trim();
     }
 
     public void validatePassword(String password) {
@@ -51,7 +51,7 @@ public class UserValidator {
         if (firstName == null || firstName.trim().isEmpty() || firstName.length() > loginLength || namePattern.matcher(firstName).matches()) {
             validationResult.add("Imię nie może być puste ani przekraczać 20 znaków (typu litery i cyfry)");
         }
-        return firstName;
+        return firstName.trim();
     }
 
     public String validateLastName(String lastName) {
@@ -67,7 +67,7 @@ public class UserValidator {
         if (email == null || email.trim().isEmpty() || emailPattern.matcher(email).matches()) {
             validationResult.add("E-mail musi być prawidłowy");
         }
-        return email;
+        return email.trim();
     }
 
     public void checkIsLoginOrEmailExist(String login, String email) throws SQLException, ClassNotFoundException {

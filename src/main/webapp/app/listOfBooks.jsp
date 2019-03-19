@@ -39,6 +39,11 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Nr ISBN</th>
                     <th scope="col">Rok wydania</th>
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <th scope="col">Działania</th>
+                    <%}%>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,18 +69,51 @@
                     <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%>
                     </a>
                     </td>
+
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <td>
+                        <div>
+                            <form method="GET" action="UserBasketServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="operationType" value="reservation"/>
+                                <button type="submit" class="btn btn-secondary">R</button>
+                            </form>
+                            <form method="GET" action="UserBasketServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="operationType" value="borrow"/>
+                                <button type="submit" class="btn btn-secondary">W</button>
+                            </form>
+                        </div>
+                    </td>
+                    <%}%>
                 </tr>
                 <%
                         rowNumber++;
                     }%>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <br/><br/><br/>
         </div>
     </div>
 </article>
 
 <footer>
-<%@include file="../include/footer.jsp" %>
+    <%@include file="../include/footer.jsp" %>
 </footer>
 
 </body>

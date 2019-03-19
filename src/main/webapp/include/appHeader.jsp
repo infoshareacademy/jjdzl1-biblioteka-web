@@ -1,3 +1,8 @@
+<%@ page import="com.infoshare.domain.User" %>
+<%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.repository.BasketRepositoryDaoBean" %>
+<%@ page import="com.infoshare.domain.Basket" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String userName = null;
@@ -9,11 +14,11 @@
     }
     String nameOfUser = (String) session.getAttribute("nameOfUser");
 %>
-<nav class="navbar navbar-default ">
-</nav>
+<nav class="navbar navbar-default "></nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
 
-    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png" width="30" height="30"
+    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png"
+                                                         width="30" height="30"
                                                          class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
@@ -28,55 +33,60 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu1" aria-haspopup="true"> Książki </a>
-
                 <div class="dropdown-menu" aria-labelledby="submenu">
-
                     <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
                     <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="addBook.jsp"> Dodaj książkę </a>
                     <a class="dropdown-item" href="#"> Edytuj książkę </a>
                     <%}%>
-                </div>
 
+                </div>
             </li>
 
             <% if (session.getAttribute("normalUser") == null) {%>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
-
                 <div class="dropdown-menu" aria-labelledby="submenu">
-
                     <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
-                    <a class="dropdown-item" href="listOfUsers.jsp"> Edytuj użytkownika </a>
+                    <% if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
+                    <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
 
+                    <%} else {%>
+
+                    <a class="dropdown-item" href="listOfUsers.jsp"> Edytuj użytkownika </a>
+                    <%}%>
                 </div>
             </li>
             <%}%>
 
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                   aria-expanded="false" id="submenu2" aria-haspopup="true"> Rezerwacje / Wypożyczenia </a>
-
+                   aria-expanded="false" id="submenu2" aria-haspopup="true"> Operacje </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
-                    <a class="dropdown-item" href="#"> Nowa rezerwacja </a>
-                    <a class="dropdown-item" href="#"> Nowe wypożyczenie </a>
+                    <a class="dropdown-item" href="listOfUsers.jsp?operation=newoperation"> Nowa operacja </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
                     <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Wszystkie operacje </a>
+
                     <% } else { %>
+
                     <a class="dropdown-item" href="#"> Moje rezerwacje </a>
                     <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
                     <a class="dropdown-item" href="@"> Wszystkie operacje </a>
                     <%}%>
                 </div>
             </li>
+
             <li>&nbsp;&nbsp;&nbsp;</li>
+
             <li>
                 <form action="FindBookServlet" class="form-inline" method="get">
                     <div class="form-row align-items-center">
@@ -90,6 +100,33 @@
                     </div>
                 </form>
             </li>
+
+            <% if (session.getAttribute("selectedUser") != null) {
+                User user = (User) session.getAttribute("selectedUser");
+            %>
+
+            <li>&nbsp;&nbsp;&nbsp;</li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                   aria-haspopup="true">
+                    <%
+                        BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
+                        List<Basket> basketList = basketRepositoryDaoBean.basketList();
+                        String userFullName = user.getFirstName() + ", " + user.getLastName();
+                    %>
+                    Wybrano: <%=userFullName%> <span class="badge badge-secondary"><%=basketList.size()%></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="submenu">
+                    <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
+                    <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
+                    <a class="dropdown-item"> --- </a>
+                    <a class="dropdown-item" href="@"> Historia rezerwacji </a>
+                    <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
+                </div>
+                </a>
+            </li>
+            <%}%>
         </ul>
 
         <ul class="navbar-nav mr-right">
@@ -97,14 +134,10 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=nameOfUser%>
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="submenu3">
-
                     <a class="dropdown-item" href="accountSettings.jsp"> Ustawienia konta </a>
                     <a class="dropdown-item" href="#"> Powiadomienia </a>
-
                 </div>
-
             </li>
         </ul>
 
@@ -113,5 +146,4 @@
         </form>
 
     </div>
-
 </nav>

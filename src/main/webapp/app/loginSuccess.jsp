@@ -11,13 +11,15 @@ To change this template use File | Settings | File Templates.
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
+<%
+    String selectedUser = request.getParameter("selectedUser");
 
+    if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
+        session.removeAttribute("selectedUser");
+    }
+%>
 <header>
-    <% if (session.getAttribute("normalUser") == null) {%>
     <%@include file="/./include/appHeader.jsp" %>
-    <% } else { %>
-    <%@include file="/./include/appUserHeader.jsp" %>
-    <%}%>
 </header>
 
 <body>
@@ -60,7 +62,7 @@ To change this template use File | Settings | File Templates.
 <div class="mainpage"></div>
 
 <footer>
-<%@include file="/./include/footer.jsp" %>
+    <%@include file="/./include/footer.jsp" %>
 </footer>
 
 </body>

@@ -3,6 +3,9 @@ package com.infoshare.repository;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
+import com.infoshare.utils.Hasher;
+import com.infoshare.utils.PBKDF2Hasher;
+import com.mysql.cj.protocol.Resultset;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +57,34 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
         return null;
     }
+
     public void addNewUser(User user) {
         UsersQuery.addNewUser(user);
     }
+
+    public User getUserByLogin(String login) {
+        ResultSet rs;
+        User user = new User();
+        try {
+            rs = UsersQuery.findUserByLogin(login);
+            while (rs.next()) {
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                user.setLogin(login);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
+                user.setEmail(email);
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 }
+

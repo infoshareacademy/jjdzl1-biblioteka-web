@@ -31,21 +31,21 @@
 
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control" name="login" placeholder="Login: <%= login%>">
+                    <input type="text" class="form-control" name="login" placeholder="Login" value="<%= login%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="email" class="form-control" name="e-mail" placeholder="E-mail: <%= email%>">
+                    <input type="email" class="form-control" name="e-mail" placeholder="E-mail" value="<%= email%>">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control" name="firstName" placeholder="Imię: <%= firstName%>">
+                    <input type="text" class="form-control" name="firstName" placeholder="Imię" value="<%= firstName%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko: <%= lastName%>">
+                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko" value="<%= lastName%>">
                 </div>
             </div>
             <br/>

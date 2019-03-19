@@ -49,6 +49,9 @@ public class EditUserServlet extends HttpServlet implements Serializable {
             e.printStackTrace();
         }
         req.getSession().setAttribute("userEdited", "userEdited");
+        if (req.getSession().getAttribute("user") != null)
             resp.sendRedirect("loginSuccess.jsp");
+        else
+            resp.sendRedirect("index.jsp");
     }
 }

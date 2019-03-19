@@ -34,7 +34,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     }
 
     @Override
-    public Book bookById(int id) throws SQLException, ClassNotFoundException {
+    public Book getBookById(int id) throws SQLException, ClassNotFoundException {
         Book book = null;
         try (ResultSet rs = BooksQuery.findBookById(id)) {
             while (rs.next()) {

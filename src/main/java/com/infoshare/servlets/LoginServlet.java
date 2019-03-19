@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet implements Serializable {
 
         String query = "SELECT * FROM users WHERE login =?";
 
-
         String login = "";
         String password = "";
         PreparedStatement ps;
@@ -38,19 +37,19 @@ public class LoginServlet extends HttpServlet implements Serializable {
             ps = DBCon.preparedStatement(query);
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
-            String userName="";
+            String userName = "";
             while (rs.next()) {
                 login = rs.getString("login");
                 password = rs.getString("password");
                 admin = rs.getBoolean("admin");
                 status = rs.getString("status");
-                userName = rs.getString("firstName")+", "+rs.getString("lastName");
+                userName = rs.getString("firstName") + ", " + rs.getString("lastName");
             }
             rs.close();
 
             Hasher hasher = new PBKDF2Hasher();
             boolean checkPass;
-            if (!pwd.isEmpty())
+            if (!pwd.isEmpty() && !password.isEmpty())
                 checkPass = hasher.checkPassword(pwd, password);
             else checkPass = false;
 
@@ -61,8 +60,10 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 Cookie loginCookie = new Cookie("userCookie", user);
                 loginCookie.setMaxAge(30 * 60);
                 response.addCookie(loginCookie);
+                session.setAttribute("nameOfUser", userName);
                 if (!admin) {
                     session.setAttribute("normalUser", "normalUser");
+                    session.setAttribute("nameOfUser", userName);
                 }
                 response.sendRedirect("app/loginSuccess.jsp");
             } else {

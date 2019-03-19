@@ -58,6 +58,10 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return null;
     }
 
+    public void addNewUser(User user) {
+        UsersQuery.addNewUser(user);
+    }
+
     public User getUserByLogin(String login) {
         ResultSet rs;
         User user = new User();
@@ -83,5 +87,4 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return user;
     }
 }
-
 

@@ -1,9 +1,15 @@
 package com.infoshare.domain;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Data
+@Builder
+@NoArgsConstructor
 public class User {
+
     private int id;
     private String login;
     private String firstName;
@@ -23,10 +29,5 @@ public class User {
         this.admin = admin;
         this.status = status;
     }
-
-    public User() {
-    }
-
-
 }
 

@@ -1,4 +1,8 @@
 <%@ page import="com.infoshare.domain.User" %>
+<%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.repository.BasketRepositoryDaoBean" %>
+<%@ page import="com.infoshare.domain.Basket" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String userName = null;
@@ -87,7 +91,8 @@
                 <form action="FindBookServlet" class="form-inline" method="get">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
-                            <input type="text" name="title" class="form-control" id="inlineFormInput" placeholder="Wpisz tytuł książki">
+                            <input type="text" name="title" class="form-control" id="inlineFormInput"
+                                   placeholder="Wpisz tytuł książki">
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-info">Znajdź</button>
@@ -105,7 +110,12 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                    aria-haspopup="true">
-                    Wybrano: <%=user.getFirstName() + ", " + user.getLastName()%>
+                    <%
+                        BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
+                        List<Basket> basketList = basketRepositoryDaoBean.basketList();
+                        String userFullName = user.getFirstName() + ", " + user.getLastName();
+                    %>
+                    Wybrano: <%=userFullName%> <span class="badge badge-secondary"><%=basketList.size()%></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>

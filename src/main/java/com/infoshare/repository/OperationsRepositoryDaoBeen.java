@@ -2,6 +2,7 @@ package com.infoshare.repository;
 
 import com.infoshare.domain.Operation;
 import com.infoshare.domain.OperationType;
+import com.infoshare.domain.User;
 import com.infoshare.query.OperationsQuery;
 
 import java.sql.*;
@@ -72,5 +73,10 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             rs.close();
             return allOperationsList;
         }
+    }
+
+    @Override
+    public void addNewOperation(List basket, User user) {
+        OperationsQuery.addNewOperation(basket, user);
     }
 }

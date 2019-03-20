@@ -1,27 +1,25 @@
 package com.infoshare.utils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
 
-    public static String currentFormatedDate() {
+    public static LocalDate currentDate() {
 
-        Calendar now = Calendar.getInstance();
-        Date currentDate = now.getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        String formatedCurrentDate = format.format(currentDate);
-        return formatedCurrentDate;
+        return LocalDate.now();
     }
 
-    public static String currentPlusThreeDaysFormatedDate() {
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.DAY_OF_MONTH, 3);
-        Date currentDatePlusThreeDays = now.getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        String date = format.format(currentDatePlusThreeDays);
-        return date;
+    public static LocalDate currentPlusThreeDays() {
+        LocalDate now = LocalDate.now();
+        LocalDate plusThreedays = now.plusDays(3);
+        return plusThreedays;
+    }
+
+    public static LocalDate emptyDate() {
+        return LocalDate.of(1970, 01, 01);
     }
 
 }

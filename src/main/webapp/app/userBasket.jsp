@@ -45,7 +45,7 @@
                 </h4>
                 </div>
                 <div class="p2 align-items-end">
-                    <form method="GET" action="UserBasketServlet" class="addUser">
+                    <form method="POST" action="SaveBasketServlet" class="addUser">
                         <input type="hidden" name="operationType" value="reservation"/>
                         <button type="submit" class="btn btn-success">Akceptuj operacje</button>
                     </form>

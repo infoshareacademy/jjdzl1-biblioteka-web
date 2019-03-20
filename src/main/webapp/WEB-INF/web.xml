@@ -49,8 +49,14 @@
         <servlet-name>UserBasketServlet</servlet-name>
         <url-pattern>app/UserBasketServlet</url-pattern>
     </servlet-mapping>
-
-
+    <servlet>
+        <servlet-name>SaveBasketServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.SaveBasketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveBasketServlet</servlet-name>
+        <url-pattern>app/SaveBasketServlet</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>AddUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.AddUserServlet</servlet-class>

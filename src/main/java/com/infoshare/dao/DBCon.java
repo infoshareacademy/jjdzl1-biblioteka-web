@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 public class DBCon {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
+    //private static final String url = "jdbc:mysql://localhost/librarydb";
     private static final String url = "jdbc:mysql://db4free.net/librarydb2";
+    //private static final String user = "root";
     private static final String user = "librarydb2";
     private static final String pass = "infoshareacademy";
 

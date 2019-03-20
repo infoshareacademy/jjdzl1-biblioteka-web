@@ -121,8 +121,8 @@
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="@"> Historia rezerwacji </a>
-                    <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=user.getId()%>"> Historia rezerwacji </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=user.getId()%>"> Historia wypożyczeń </a>
                 </div>
                 </a>
             </li>

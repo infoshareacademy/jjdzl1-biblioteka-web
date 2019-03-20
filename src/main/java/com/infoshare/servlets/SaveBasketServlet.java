@@ -31,10 +31,13 @@ public class SaveBasketServlet extends HttpServlet {
         OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
         operationsRepository.addNewOperation(basketList, user);
 
-        if (req.getSession().getAttribute("user") != null)
+        if (req.getSession().getAttribute("user") != null) {
+            session.removeAttribute("selectedUser");
+            session.setAttribute("opertationSuccess","success");
+            basketList.clear();
             resp.sendRedirect("loginSuccess.jsp");
-        else
+        } else {
             resp.sendRedirect("index.jsp");
-
+        }
     }
 }

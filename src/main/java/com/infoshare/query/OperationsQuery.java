@@ -29,27 +29,26 @@ public class OperationsQuery {
         return preparedStatement(query).executeQuery();
     }
 
-    public static ResultSet allOperations(String operationType) throws SQLException, ClassNotFoundException {
+    public static ResultSet allOperations(String operationType, Integer userId) throws SQLException, ClassNotFoundException {
 
 
         String query = "SELECT * FROM `operations` " +
                 "JOIN `users` ON operations.userId = users.id " +
                 "JOIN books ON operations.bookId=books.id ";
 
-        if (operationType.equals("reservation")) query += "WHERE operationTypeId = 0";
-        else if (operationType.equals("borrow")) query += "WHERE operationTypeId = 1";
+        String userQuery = "";
+        if (userId != null && userId != 0) {
+            userQuery = " AND operations.userId =" + userId;
+        }
+
+        if (operationType.equals("reservation")) query += "WHERE operationTypeId = 0" + userQuery;
+        else if (operationType.equals("borrow")) query += "WHERE operationTypeId = 1" + userQuery;
         else query += "WHERE 1";
 
         return preparedStatement(query).executeQuery();
     }
 
     public static void addNewOperation(List userBasket, User selectedUser) {
-
-/*
-        Date currentDate = Date.valueOf(DateUtil.currentFormatedDate());
-        Date endOfReservationDate = Date.valueOf(DateUtil.currentPlusThreeDaysFormatedDate());
-        Date emptyDate = Date.valueOf(LocalDate.of(1970, 01, 01));
-*/
 
         Date currentDate = Date.valueOf(DateUtil.currentDate());
         Date endOfReservationDate = Date.valueOf(DateUtil.currentPlusThreeDays());
@@ -79,7 +78,6 @@ public class OperationsQuery {
                     operationTypeId + "' )";
             try {
                 preparedStatement(query).execute();
-                DBCon.connClose();
 
             } catch (SQLException e) {
                 e.printStackTrace();

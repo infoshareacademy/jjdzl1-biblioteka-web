@@ -13,8 +13,7 @@ public class User {
     private UserStatus admin;
     private String status;
 
-    public User(int id, String login, String firstName, String lastName, String password, String email, UserStatus admin, String status) {
-        this.id = id;
+    public User(String login, String firstName, String lastName, String password, String email, UserStatus admin, String status) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;

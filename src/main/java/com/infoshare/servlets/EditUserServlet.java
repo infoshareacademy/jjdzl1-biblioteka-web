@@ -2,6 +2,8 @@ package com.infoshare.servlets;
 
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
+import com.infoshare.domain.UserStatus;
+import com.infoshare.query.UsersQuery;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,26 +33,18 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         String email = req.getParameter("e-mail");
         String[] admin = req.getParameterValues("adminUser");
         Boolean checkAdmin = admin != null ? admin[0].equals("1") :  false;
+        UserStatus enumAdmin = admin[0].equals("1") ? UserStatus.ADMIN : UserStatus.USER;
         String status = req.getParameter("status");
         if (status.equals("1"))
         status = "Aktywny";
         else status = "Nieaktywny";
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
-
+        User editedUser = new User(login, firstName, lastName, null, email, enumAdmin, status);
         try {
-            PreparedStatement ps = DBCon.preparedStatement(query);
-            ps.setString(1, login);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
-            ps.setString(4, email);
-            ps.setBoolean(5,checkAdmin);
-            ps.setString(6, status);
-            ps.execute();
-            ps.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            UsersQuery.updateUserQuery(userLogin, editedUser);
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

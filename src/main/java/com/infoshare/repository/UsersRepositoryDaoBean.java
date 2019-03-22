@@ -96,4 +96,5 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
         return user;
     }
+
 }

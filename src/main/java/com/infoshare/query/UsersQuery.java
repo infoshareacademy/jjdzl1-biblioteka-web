@@ -1,6 +1,5 @@
 package com.infoshare.query;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 
@@ -44,6 +43,7 @@ public class UsersQuery {
     }
 
     public static void updateUserQuery(String userLogin, User user) throws SQLException, ClassNotFoundException {
+
         String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
 
             PreparedStatement ps = preparedStatement(query);
@@ -55,6 +55,21 @@ public class UsersQuery {
             ps.setBoolean(5, admin);
             ps.setString(6, user.getStatus());
 
+            ps.execute();
+            ps.close();
+    }
+
+    public static void updateAccountQuery(String userName, User user) throws SQLException, ClassNotFoundException {
+
+        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
+                " WHERE login = '" + userName + "'";
+
+            PreparedStatement ps = preparedStatement(query);
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getFirstName());
+            ps.setString(3, user.getLastName());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getPassword());
             ps.execute();
             ps.close();
     }

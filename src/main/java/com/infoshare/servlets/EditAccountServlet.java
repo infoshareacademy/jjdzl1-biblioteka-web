@@ -46,7 +46,13 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
         lastName = req.getParameter("lastName");
         email = req.getParameter("e-mail");
 
-        emptyInputValidation(userName);
+        try {
+            emptyInputValidation(userName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         User editedUser = new User(login, firstName, lastName, hashedPass, email, null, null);
         try {
@@ -64,7 +70,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
             resp.sendRedirect("index.jsp");
     }
 
-    private void emptyInputValidation(String userName) {
+    private void emptyInputValidation(String userName) throws SQLException, ClassNotFoundException {
         UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
         User user = usersRepositoryDao.getUserByLogin(userName);
         if (login.isEmpty()) login = user.getLogin();

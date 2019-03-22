@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface UsersRepositoryDao {
     List<User> listOfUsers() throws SQLException, ClassNotFoundException;
-    User getUserById(int id);
-    User getUserByLogin(String login);
+    User getUserById(int id) throws SQLException, ClassNotFoundException;
+    User getUserByLogin(String login) throws SQLException, ClassNotFoundException;
 }

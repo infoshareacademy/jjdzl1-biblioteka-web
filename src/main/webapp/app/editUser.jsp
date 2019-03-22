@@ -18,17 +18,13 @@
         <br/><br/><br/>
         <% User user = (User) request.getSession(true).getAttribute("UserObject");
 
-        if (user != null){
-
-
-            int id = user.getId();
-            String login = user.getLogin();
-            String firstName = user.getFirstName();
-            String lastName = user.getLastName();
-            String email = user.getEmail();
-            request.removeAttribute("UserObject");
-
-            %>
+            if (user != null) {
+                int id = user.getId();
+                String login = user.getLogin();
+                String firstName = user.getFirstName();
+                String lastName = user.getLastName();
+                String email = user.getEmail();
+        %>
         <h4>Edytuj użytkownika <%= firstName + " " + lastName%>
 
 

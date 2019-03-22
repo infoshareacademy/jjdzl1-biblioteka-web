@@ -23,7 +23,7 @@ public class EditUserServlet extends HttpServlet implements Serializable {
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("UserObject");
-        int userID = user.getId();
+        String userLogin = user.getLogin();
 
         String login = req.getParameter("login");
         String firstName = req.getParameter("firstName");
@@ -36,7 +36,7 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         status = "Aktywny";
         else status = "Nieaktywny";
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE id = " + userID;
+        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
 
         try {
             PreparedStatement ps = DBCon.preparedStatement(query);

@@ -36,11 +36,12 @@
                 <tbody>
                 <% UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = usersRepository.listOfUsers();
+                    int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
 
                 <tr class="listofitemps" style="cursor:pointer" onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';" >
-                    <th scope="row"><%=user.getId()%>
+                    <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= user.getLogin()%>
                     </td>
@@ -53,7 +54,7 @@
                     <td><%= user.getStatus()%>
                     </td>
                 </tr>
-                <%}%>
+                <% rowNumber++; }%>
                 </tbody>
 
             </table>

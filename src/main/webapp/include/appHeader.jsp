@@ -72,9 +72,9 @@
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="listOfUsers.jsp?operation=newoperation"> Nowa operacja </a>
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Rezerwacje </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Wszystkie operacje </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Wszystkie rezerwacje </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wszystkie wypożyczenia </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Razem wszystkie operacje </a>
 
                     <% } else { %>
 
@@ -121,8 +121,11 @@
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="@"> Historia rezerwacji </a>
-                    <a class="dropdown-item" href="@"> Historia wypożyczeń </a>
+                    <a class="dropdown-item" href="#"> Aktualne rezerwacje i wypożyczenia </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=user.getId()%>"> Historia rezerwacji </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=user.getId()%>"> Historia wypożyczeń </a>
+                    <a class="dropdown-item"> --- </a>
+                    <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
                 </div>
                 </a>
             </li>

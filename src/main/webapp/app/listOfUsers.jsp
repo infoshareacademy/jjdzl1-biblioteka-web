@@ -17,7 +17,8 @@
 <%
     String operation = request.getParameter("operation");
     String operatnionName = "";
- if (session.getAttribute("normalUser") == null) {%>
+    int rowNumber = 1;
+    if (session.getAttribute("normalUser") == null) {%>
 <body>
 <article>
     <div class="content">
@@ -53,7 +54,7 @@
 
                 <tr class="listofitemps" style="cursor:pointer"
                     onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
-                    <th scope="row"><%=user.getId()%>
+                    <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= user.getLogin()%>
                     </td>
@@ -69,18 +70,16 @@
                     <%if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
                     <td>
                         <form method="GET" action="SelectUserServlet" class="addUser">
-                            <input type="hidden" name="userid" value="<%=user.getId()%>" />
-                            <button type="submit" class="btn btn-outline-light btn-sm">Wybierz</button>
+                            <input type="hidden" name="userid" value="<%=user.getId()%>"/>
+                            <button type="submit" class="btn btn-secondary btn-sm">Wybierz</button>
                         </form>
-
-
-<%--                        <a href="http://www.stackoverflow.com/">
-                            <button class="btn btn-outline-light btn-sm"> Wybierz</button>
-                        </a>--%>
                     </td>
                     <%}%>
                 </tr>
-                <%}%>
+                <%
+                        rowNumber++;
+                    }
+                %>
                 </tbody>
 
             </table>

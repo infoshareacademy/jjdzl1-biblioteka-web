@@ -11,7 +11,13 @@ To change this template use File | Settings | File Templates.
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
+<%
+    String selectedUser = request.getParameter("selectedUser");
 
+    if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
+        session.removeAttribute("selectedUser");
+    }
+%>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
@@ -53,6 +59,19 @@ To change this template use File | Settings | File Templates.
     }
     request.getSession().removeAttribute("addBook");
 %>
+
+<% if (request.getSession().getAttribute("opertationSuccess") == "success") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Operacja została zapisana</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%
+    }
+    request.getSession().removeAttribute("opertationSuccess");
+%>
+
 <div class="mainpage"></div>
 
 <footer>

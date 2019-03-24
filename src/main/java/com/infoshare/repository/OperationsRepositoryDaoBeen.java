@@ -2,6 +2,7 @@ package com.infoshare.repository;
 
 import com.infoshare.domain.Operation;
 import com.infoshare.domain.OperationType;
+import com.infoshare.domain.User;
 import com.infoshare.query.OperationsQuery;
 
 import java.sql.*;
@@ -46,15 +47,15 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     }
 
     @Override
-    public List<Operation> AllOperationList(String typoOfOperations) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String typoOfOperations, Integer userId) throws SQLException, ClassNotFoundException {
 
         List<Operation> allOperationsList = new ArrayList<>();
         OperationType operationType;
 
-        try (ResultSet rs = OperationsQuery.allOperations(typoOfOperations)) {
+        try (ResultSet rs = OperationsQuery.allOperations(typoOfOperations, userId)) {
 
             while (rs.next()) {
-                int userId = rs.getInt("userId");
+                userId = rs.getInt("userId");
                 String userName = rs.getString("lastName") + ", " + rs.getString("firstName");
                 int bookID = rs.getInt("bookId");
                 String bookTitle = rs.getString("title");
@@ -72,5 +73,10 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             rs.close();
             return allOperationsList;
         }
+    }
+
+    @Override
+    public void addNewOperation(List basket, User user) {
+        OperationsQuery.addNewOperation(basket, user);
     }
 }

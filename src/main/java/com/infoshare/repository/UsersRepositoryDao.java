@@ -9,4 +9,5 @@ public interface UsersRepositoryDao {
     List<User> listOfUsers() throws SQLException, ClassNotFoundException;
     User getUserById(int id) throws SQLException, ClassNotFoundException;
     User getUserByLogin(String login) throws SQLException, ClassNotFoundException;
+    void addNewUser(User user);
 }

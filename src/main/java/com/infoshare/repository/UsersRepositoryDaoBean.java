@@ -3,6 +3,9 @@ package com.infoshare.repository;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
+import com.infoshare.utils.Hasher;
+import com.infoshare.utils.PBKDF2Hasher;
+import com.mysql.cj.protocol.Resultset;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,6 +67,11 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         rs.close();
         return user;
     }
+    public void addNewUser(User user) {
+        UsersQuery.addNewUser(user);
+    }
+
+
 
     public User getUserByLogin(String login) throws SQLException, ClassNotFoundException {
         User user = new User();
@@ -82,5 +90,6 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         rs.close();
         return user;
     }
-
 }
+
+

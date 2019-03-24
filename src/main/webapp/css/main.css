@@ -2,7 +2,8 @@ body {
     background-color: #2F3336;
     color: #efefef;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+
+    font-size: 1vw;
 }
 
 .mainpage {
@@ -42,6 +43,7 @@ body {
     background-color: #2F3336;
     color: white;
     text-align: center;
+    font-size: 14px;
 }
 
 .footer a:link {

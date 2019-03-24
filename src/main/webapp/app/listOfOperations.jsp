@@ -3,6 +3,7 @@
 <%@ page import="com.infoshare.domain.Operation" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="com.infoshare.servlets.SaveBasketServlet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -35,11 +36,14 @@
                 </thead>
                 <tbody>
                 <%
+                    Integer userId=0;
                     String operationType = request.getParameter("operationType");
+                    String stringUserId = request.getParameter("userId");
+                    if (stringUserId != null && !stringUserId.isEmpty()) userId = Integer.parseInt(stringUserId);
                     if (operationType == null || operationType.isEmpty()) operationType = "all";
                     int rowNumber = 1;
                     OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
-                    List<Operation> operationList = operationsRepository.AllOperationList(operationType);
+                    List<Operation> operationList = operationsRepository.AllOperationList(operationType, userId);
                     for (Operation operation : operationList) {
                 %>
                 <tr class="listofitemps">

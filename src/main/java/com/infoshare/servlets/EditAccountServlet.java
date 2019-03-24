@@ -54,7 +54,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
             e.printStackTrace();
         }
 
-        User editedUser = new User(login, firstName, lastName, hashedPass, email, null, null);
+        User editedUser = new User(null, login, firstName, lastName, hashedPass, email, null, null);
         try {
             UsersQuery.updateAccountQuery(userName, editedUser);
         } catch (SQLException e) {

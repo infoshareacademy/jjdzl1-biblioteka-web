@@ -39,7 +39,7 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         status = "Aktywny";
         else status = "Nieaktywny";
 
-        User editedUser = new User(login, firstName, lastName, null, email, enumAdmin, status);
+        User editedUser = new User(null,login, firstName, lastName, null, email, enumAdmin, status);
         try {
             UsersQuery.updateUserQuery(userLogin, editedUser);
         } catch (SQLException e) {

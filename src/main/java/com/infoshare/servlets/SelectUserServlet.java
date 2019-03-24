@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,14 @@ public class SelectUserServlet extends HttpServlet {
 
         int userId = Integer.parseInt(req.getParameter("userid"));
         UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
-        User user = usersRepositoryDao.getUserById(userId);
+        User user = null;
+        try {
+            user = usersRepositoryDao.getUserById(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);

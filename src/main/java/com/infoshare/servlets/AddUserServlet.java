@@ -26,7 +26,7 @@ public class AddUserServlet extends HttpServlet {
         User user = createUserFromForm(req);
 
         try {
-            if (req.getSession().getAttribute("user") != null && validate(user, req).size() > 0) {
+            if (validate(user, req).size() > 0) {
                 resp.sendRedirect("addUser.jsp");
             } else {
                 UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();

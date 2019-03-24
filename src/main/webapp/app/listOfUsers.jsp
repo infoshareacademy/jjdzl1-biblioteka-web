@@ -14,11 +14,9 @@
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
-<%
-    String operation = request.getParameter("operation");
-    String operatnionName = "";
-    int rowNumber = 1;
-    if (session.getAttribute("normalUser") == null) {%>
+<%String operation = request.getParameter("operation");
+String operatnionName = "";
+if (session.getAttribute("normalUser") == null) {%>
 <body>
 <article>
     <div class="content">
@@ -49,11 +47,11 @@
                 <tbody>
                 <% UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = usersRepository.listOfUsers();
+                    int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
 
-                <tr class="listofitemps" style="cursor:pointer"
-                    onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
+                <tr class="listofitemps" style="cursor:pointer" onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';" >
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= user.getLogin()%>
@@ -76,10 +74,7 @@
                     </td>
                     <%}%>
                 </tr>
-                <%
-                        rowNumber++;
-                    }
-                %>
+                <% rowNumber++; }%>
                 </tbody>
 
             </table>
@@ -102,7 +97,7 @@
 </article>
 <%}%>
 <footer>
-    <%@include file="/./include/footer.jsp" %>
+<%@include file="/./include/footer.jsp" %>
 </footer>
 
 </body>

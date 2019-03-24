@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
-    public static List<User> listOfUsers = new ArrayList<>();
+    List<User> listOfUsers = new ArrayList<>();
 
     @Override
     public List<User> listOfUsers() throws SQLException, ClassNotFoundException {
@@ -49,42 +49,47 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
     }
 
-    public User getUserById(int id) {
-        for (User user : listOfUsers) {
-            if (user.getId() == id) {
-                return user;
-            }
+    public User getUserById(int id) throws SQLException, ClassNotFoundException {
+        User user = new User();
+        ResultSet rs = UsersQuery.findUserById(id);
+        while (rs.next()) {
+            String login = rs.getString("login");
+            String firstName = rs.getString("firstName");
+            String lastName = rs.getString("lastName");
+            String email = rs.getString("email");
+            String password = rs.getString("password");
+            user.setLogin(login);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setPassword(password);
+            user.setEmail(email);
         }
-        return null;
+        rs.close();
+        return user;
     }
-
     public void addNewUser(User user) {
         UsersQuery.addNewUser(user);
     }
 
-    public User getUserByLogin(String login) {
-        ResultSet rs;
+
+
+    public User getUserByLogin(String login) throws SQLException, ClassNotFoundException {
         User user = new User();
-        try {
-            rs = UsersQuery.findUserByLogin(login);
-            while (rs.next()) {
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
-                user.setLogin(login);
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setPassword(password);
-                user.setEmail(email);
-                return user;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        ResultSet rs = UsersQuery.findUserByLogin(login);
+        while (rs.next()) {
+            String firstName = rs.getString("firstName");
+            String lastName = rs.getString("lastName");
+            String email = rs.getString("email");
+            String password = rs.getString("password");
+            user.setLogin(login);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setPassword(password);
+            user.setEmail(email);
         }
+        rs.close();
         return user;
     }
 }
+
 

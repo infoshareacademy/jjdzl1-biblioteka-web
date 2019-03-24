@@ -1,7 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
+import com.infoshare.query.UsersQuery;
 import com.infoshare.repository.UsersRepositoryDao;
 import com.infoshare.repository.UsersRepositoryDaoBean;
 import com.infoshare.utils.Hasher;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet("/EditAccountServlet")
@@ -47,25 +46,23 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
         lastName = req.getParameter("lastName");
         email = req.getParameter("e-mail");
 
-        emptyInputValidation(userName);
-
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
-                " WHERE login = '" + userName + "'";
-
         try {
-            PreparedStatement ps = DBCon.preparedStatement(query);
-            ps.setString(1, login);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
-            ps.setString(4, email);
-            ps.setString(5, hashedPass);
-            ps.execute();
-            ps.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            emptyInputValidation(userName);
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
+        User editedUser = new User(null, login, firstName, lastName, hashedPass, email, null, null);
+        try {
+            UsersQuery.updateAccountQuery(userName, editedUser);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         req.getSession().setAttribute("userEdited", "userEdited");
         if (req.getSession().getAttribute("user") != null)
             resp.sendRedirect("loginSuccess.jsp");
@@ -73,7 +70,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
             resp.sendRedirect("index.jsp");
     }
 
-    private void emptyInputValidation(String userName) {
+    private void emptyInputValidation(String userName) throws SQLException, ClassNotFoundException {
         UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
         User user = usersRepositoryDao.getUserByLogin(userName);
         if (login.isEmpty()) login = user.getLogin();

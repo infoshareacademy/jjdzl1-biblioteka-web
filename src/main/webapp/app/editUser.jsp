@@ -1,5 +1,4 @@
-<%@ page import="com.infoshare.servlets.GetUserToEditServlet" %>
-<%@ page import="com.infoshare.domain.UserStatus" %>
+<%@ page import="com.infoshare.domain.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -17,14 +16,18 @@
 <article>
     <div class="addUserForm">
         <br/><br/><br/>
-        <% int id = GetUserToEditServlet.user.getId(); %>
-        <% String login = GetUserToEditServlet.user.getLogin(); %>
-        <% String firstName = GetUserToEditServlet.user.getFirstName(); %>
-        <% String lastName = GetUserToEditServlet.user.getLastName(); %>
-        <% String email = GetUserToEditServlet.user.getEmail(); %>
-        <% UserStatus admin = GetUserToEditServlet.user.getAdmin(); %>
-        <% String status = GetUserToEditServlet.user.getStatus(); %>
+        <% User user = (User) request.getSession(true).getAttribute("UserObject");
+
+            if (user != null) {
+                int id = user.getId();
+                String login = user.getLogin();
+                String firstName = user.getFirstName();
+                String lastName = user.getLastName();
+                String email = user.getEmail();
+        %>
         <h4>Edytuj użytkownika <%= firstName + " " + lastName%>
+
+
         </h4>
         <br/>
         <form method="POST" action="EditUserServlet" class="addUser">
@@ -45,7 +48,8 @@
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko" value="<%= lastName%>">
+                    <input type="text" class="form-control" name="lastName" placeholder="Nazwisko"
+                           value="<%= lastName%>">
                 </div>
             </div>
             <br/>
@@ -67,6 +71,7 @@
             <br/><br/><br/>
             <button type="submit" class="btn btn-primary">Edytuj użytkownika</button>
         </form>
+        <% } %>
     </div>
 </article>
 

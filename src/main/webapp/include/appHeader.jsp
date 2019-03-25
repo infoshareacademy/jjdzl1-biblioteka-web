@@ -78,8 +78,6 @@
 
                     <% } else { %>
 
-                    <a class="dropdown-item" href="#"> Nowa rezerwacje </a>
-                    <span class="dropdown-item"> --- </span>
                     <a class="dropdown-item" href="#"> Moje rezerwacje </a>
                     <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
                     <a class="dropdown-item" href="@"> Wszystkie operacje </a>
@@ -116,16 +114,17 @@
                         BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
                         List<Basket> basketList = basketRepositoryDaoBean.basketList();
                         String userFullName = user.getFirstName() + ", " + user.getLastName();
+                        Integer userID = user.getId();
                     %>
-                    Wybrano: <%=userFullName%> <span class="badge badge-secondary"><%=basketList.size()%></span>
+                    Wybrano: <%=userFullName%> <%=userID%><span class="badge badge-secondary"><%=basketList.size()%></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Aktualne rezerwacje i wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=user.getId()%>"> Historia rezerwacji </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=user.getId()%>"> Historia wypożyczeń </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=userID%>"> Historia rezerwacji </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=userID%>"> Historia wypożyczeń </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
                 </div>

@@ -7,12 +7,12 @@
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-<body>
+
 <article>
     <div class="addUserForm">
         <br/><br/><br/>

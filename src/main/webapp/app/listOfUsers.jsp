@@ -10,14 +10,14 @@
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 <%String operation = request.getParameter("operation");
 String operatnionName = "";
 if (session.getAttribute("normalUser") == null) {%>
-<body>
+
 <article>
     <div class="content">
         <div class="contentInside">

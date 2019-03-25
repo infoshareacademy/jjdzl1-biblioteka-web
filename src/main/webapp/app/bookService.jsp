@@ -9,12 +9,12 @@
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-<body>
+
 <div class="addUserForm">
     <%
         Integer id = Integer.parseInt(request.getParameter("id"));

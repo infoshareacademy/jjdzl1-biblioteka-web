@@ -18,11 +18,12 @@ To change this template use File | Settings | File Templates.
         session.removeAttribute("selectedUser");
     }
 %>
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-<body>
+
 
 <% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">

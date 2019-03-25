@@ -6,7 +6,7 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-
+<body>
 <% if (session.getAttribute("user") == null) {%>
 
 <header>
@@ -21,7 +21,7 @@
 
 <%}%>
 
-<body>
+
 <section class="our-webcoderskull padding-lg">
     <div class="container">
         <div class="d-flex justify-content-center">

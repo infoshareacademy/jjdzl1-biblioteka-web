@@ -10,12 +10,12 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="include/header.jsp" %>
 </header>
 
-<body>
+
 <%
     String order = request.getParameter("order");
     String bookTitle = request.getParameter("title");

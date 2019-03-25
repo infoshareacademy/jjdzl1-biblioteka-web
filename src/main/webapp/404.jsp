@@ -5,7 +5,7 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-
+<body>
 <% if (session.getAttribute("user") == null) {%>
 
 <header>

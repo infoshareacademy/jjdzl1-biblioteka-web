@@ -51,6 +51,17 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Użytkownicy </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
+
+                    <form action="FindUserServlet" class="form-inline dropdown-item" method="get">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto inline-block">
+                                <input type="text" name="lastName" class="form-control" id="inlineFormInput1"
+                                       placeholder="Wpisz nazwisko użytkownika">
+                                <button type="submit" class="btn btn-outline-info">Znajdź</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <a class="dropdown-item" href="addUser.jsp"> Dodaj użytkownika </a>
                     <% if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");

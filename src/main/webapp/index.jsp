@@ -4,14 +4,14 @@
 
 <head>
     <%@include file="include/head.jsp" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 </head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
-
+<body>
 <header>
     <%@include file="include/header.jsp" %>
 </header>
 
-<body>
+
 <% if (session.getAttribute("loginFalse") == "loginFalse") { %>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Błędna nazwa użytkownika lub hasło!</strong>

@@ -31,9 +31,9 @@
             <br/>
             <h4>Spis książek<%=orderTitle%>
             </h4>
-            <table class="table">
-                <thead>
-                <tr class="listofitemps">
+            <table class="table table-bordered table-hover">
+                <thead class="listofitemps">
+                <tr class="black white-text">
                     <th scope="col">#</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>

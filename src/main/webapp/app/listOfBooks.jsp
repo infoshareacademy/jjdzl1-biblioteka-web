@@ -31,7 +31,7 @@
             <br/>
             <h4>Spis książek<%=orderTitle%>
             </h4>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>

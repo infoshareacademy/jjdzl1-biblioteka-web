@@ -27,7 +27,7 @@
                             <div class="col-auto inline-block">
                                 <input type="text" name="title" class="form-control" id="inlineFormInput"
                                        placeholder="Wpisz tytuł książki">
-                                <button type="submit" class="btn btn-info">Znajdź</button>
+                                <button type="submit" class="btn btn-outline-info">Znajdź</button>
                             </div>
                         </div>
                     </form>

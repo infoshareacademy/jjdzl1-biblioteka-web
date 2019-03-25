@@ -28,7 +28,7 @@ if (session.getAttribute("normalUser") == null) {%>
             <h4>Kliknij użytkownika, którego chcesz edytować</h4>
             <%}%>
             <br/>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>

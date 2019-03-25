@@ -22,7 +22,7 @@
     <div class="content">
         <div class="contentInside">
             <br/>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>

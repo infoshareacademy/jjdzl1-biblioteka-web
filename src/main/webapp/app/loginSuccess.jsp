@@ -19,6 +19,8 @@ To change this template use File | Settings | File Templates.
     }
 %>
 <body>
+<div class="mainpage">
+
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
@@ -73,7 +75,6 @@ To change this template use File | Settings | File Templates.
     request.getSession().removeAttribute("opertationSuccess");
 %>
 
-<div class="mainpage">
     <div class="row">
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">

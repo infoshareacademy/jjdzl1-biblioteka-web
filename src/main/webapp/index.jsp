@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 </head>
 <body>
+<div class="mainpage">
 <header>
     <%@include file="include/header.jsp" %>
 </header>
@@ -34,7 +35,7 @@
     }
     request.getSession().removeAttribute("addUser");
 %>
-<div class="mainpage">
+
 
 
     <div class="row">

@@ -36,6 +36,7 @@
                 </thead>
                 <tbody>
                 <%
+
                     Integer userId=0;
                     String operationType = request.getParameter("operationType");
                     String stringUserId = request.getParameter("userId");

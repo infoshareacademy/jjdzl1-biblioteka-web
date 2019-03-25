@@ -1,11 +1,12 @@
 package com.infoshare.repository;
 
 import com.infoshare.domain.Book;
-import com.infoshare.domain.User;
 
+import javax.ejb.Local;
 import java.sql.SQLException;
 import java.util.List;
 
+@Local
 public interface BooksRepositoryDao {
 
 

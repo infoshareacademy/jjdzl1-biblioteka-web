@@ -4,6 +4,8 @@ import com.infoshare.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
 import com.infoshare.repository.UsersRepositoryDaoBean;
 import lombok.Data;
+
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,14 +21,16 @@ import java.sql.SQLException;
 public class GetUserToEditServlet extends HttpServlet implements Serializable {
     private static final long serialVersionUID = -6564924863409642949L;
 
+    @EJB
+    private UsersRepositoryDao usersRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String userID = req.getParameter("userID");
 
-        UsersRepositoryDao userDAO = new UsersRepositoryDaoBean();
         User user = null;
         try {
-            user = userDAO.getUserById(Integer.parseInt(userID));
+            user = usersRepository.getUserById(Integer.parseInt(userID));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

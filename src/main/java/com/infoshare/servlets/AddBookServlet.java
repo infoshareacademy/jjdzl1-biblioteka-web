@@ -5,6 +5,7 @@ import com.infoshare.repository.BooksRepositoryDao;
 import com.infoshare.repository.BooksRepositoryDaoBean;
 import com.infoshare.validation.BookValidator;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,9 @@ import java.util.List;
 @WebServlet("/AddBookServlet")
 public class AddBookServlet extends HttpServlet {
 
+    @EJB
+    private BooksRepositoryDao booksRepository;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -24,8 +28,7 @@ public class AddBookServlet extends HttpServlet {
         if (req.getSession().getAttribute("user") != null && validate(book).size() > 0) {
             resp.sendRedirect("addBook.jsp");
         } else {
-            BooksRepositoryDao booksRepositoryDaoBean = new BooksRepositoryDaoBean();
-            booksRepositoryDaoBean.addNewBook(book);
+            booksRepository.addNewBook(book);
             req.getSession().setAttribute("addBook", "bookAdded");
             if (req.getSession().getAttribute("user") != null)
                 resp.sendRedirect("loginSuccess.jsp");

@@ -6,9 +6,11 @@ import com.infoshare.domain.OperationType;
 import com.infoshare.domain.User;
 import com.infoshare.servlets.SelectUserServlet;
 
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     public List<Basket> basket = SelectUserServlet.basket;

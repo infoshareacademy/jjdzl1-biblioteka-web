@@ -8,6 +8,7 @@ import com.infoshare.repository.BasketRepositoryDaoBean;
 import com.infoshare.repository.BooksRepositoryDao;
 import com.infoshare.repository.BooksRepositoryDaoBean;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,12 @@ import java.sql.SQLException;
 @WebServlet("/UserBasketServlet")
 public class UserBasketServlet extends HttpServlet {
 
+    @EJB
+    private BasketRepositoryDao basketRepository;
+
+    @EJB
+    private BooksRepositoryDao booksRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -27,13 +34,11 @@ public class UserBasketServlet extends HttpServlet {
         String operationType = req.getParameter("operationType");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("selectedUser");
-        BooksRepositoryDao booksRepositoryDao = new BooksRepositoryDaoBean();
-        BasketRepositoryDao basketRepositoryDao = new BasketRepositoryDaoBean();
         OperationType operationTypeEnum = OperationType.BORROW;
         if (operationType.equals("reservation")) operationTypeEnum = OperationType.RESERVATION;
         try {
-            Book book = booksRepositoryDao.getBookById(bookId);
-            basketRepositoryDao.addToBasketList(user, book, operationTypeEnum);
+            Book book = booksRepository.getBookById(bookId);
+            basketRepository.addToBasketList(user, book, operationTypeEnum);
 
         } catch (SQLException e) {
             e.printStackTrace();

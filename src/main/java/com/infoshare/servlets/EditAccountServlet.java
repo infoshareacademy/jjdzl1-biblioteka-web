@@ -7,6 +7,7 @@ import com.infoshare.repository.UsersRepositoryDaoBean;
 import com.infoshare.utils.Hasher;
 import com.infoshare.utils.PBKDF2Hasher;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -27,6 +28,9 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
     private String lastName = "";
     private String email = "";
     private String hashedPass;
+
+    @EJB
+    private UsersRepositoryDao usersRepository;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -71,8 +75,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
     }
 
     private void emptyInputValidation(String userName) throws SQLException, ClassNotFoundException {
-        UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
-        User user = usersRepositoryDao.getUserByLogin(userName);
+        User user = usersRepository.getUserByLogin(userName);
         if (login.isEmpty()) login = user.getLogin();
         if (password1.isEmpty() || password2.isEmpty()) hashedPass = user.getPassword();
         if (firstName.isEmpty()) firstName = user.getFirstName();

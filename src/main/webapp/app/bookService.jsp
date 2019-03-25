@@ -19,7 +19,7 @@
     <%
         Integer id = Integer.parseInt(request.getParameter("id"));
         BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
-        Book book = booksRepository.bookById(id);
+        Book book = booksRepository.getBookById(id);
     %>
 
     Tutaj bedzie mozna operawac na książce</br>

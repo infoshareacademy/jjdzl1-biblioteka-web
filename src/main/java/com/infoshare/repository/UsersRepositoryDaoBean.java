@@ -3,15 +3,15 @@ package com.infoshare.repository;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
-import com.mysql.cj.protocol.Resultset;
 
+
+import javax.ejb.Stateless;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
     List<User> listOfUsers = new ArrayList<>();

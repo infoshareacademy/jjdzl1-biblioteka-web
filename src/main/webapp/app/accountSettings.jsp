@@ -62,7 +62,7 @@
                 <input type="password" class="form-control" name="password3" placeholder="Hasło">
             </div>
             <br/><br/>
-            <button type="submit" class="btn btn-primary">Edytuj dane</button>
+            <button type="submit" class="btn btn-primary">Aktualizuj dane</button>
         </form>
     </div>
 </article>

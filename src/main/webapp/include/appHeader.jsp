@@ -78,6 +78,8 @@
 
                     <% } else { %>
 
+                    <a class="dropdown-item" href="#"> Nowa rezerwacje </a>
+                    <span class="dropdown-item"> --- </span>
                     <a class="dropdown-item" href="#"> Moje rezerwacje </a>
                     <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
                     <a class="dropdown-item" href="@"> Wszystkie operacje </a>

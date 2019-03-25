@@ -1,10 +1,14 @@
 body {
 
-    background-color: #1E2225;
+ /*
+ background-color: #1E2225;
+ */
+    background-color: #F2F2F2;
 
-
-    color: #efefef;
+ /*   color: #efefef;
+ */
     font-family: 'Open Sans', sans-serif;
+color: #1E2225;
 
     font-size: 1vw;
 }
@@ -74,7 +78,10 @@ body {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    /*
     background-color: #1E2225;
+    */
+background-color: #F2F2F2;
 }
 
 .contentInside {
@@ -87,7 +94,7 @@ div.addUserForm {
     display: block;
     text-align: center;
     height: 100vh;
-    background-color: #1E2225;
+    background-color: #F2F2F2;
 }
 
 .addUser {
@@ -275,12 +282,15 @@ ul {
 }
 
 .listofitemps {
+    /*
     color: white;
+    */
+color: #1E2225;
 }
 
 .listofitemps a {
     text-decoration: none;
-    color: white;
+    color: #1E2225;
 }
 
 .no-spin, .no-spin:hover, no-spin:focus {

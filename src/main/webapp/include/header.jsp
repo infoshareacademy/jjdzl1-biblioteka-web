@@ -46,12 +46,6 @@
                    name="user">
             <input class="form-control mr-1" type="password" placeholder="Hasło" aria-label="Hasło" name="pwd">
             <button class="btn btn-primary" type="submit">Zaloguj</button>
-
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="addUser.jsp">Załóż konto</a>
-                </li>
-            </ul>
         </form>
 
     </div>

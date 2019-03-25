@@ -33,9 +33,31 @@
     }
     request.getSession().removeAttribute("addUser");
 %>
+<div class="mainpage">
+    <div class="row">
+        <div class="col-lg-6">
+            <div style="margin-top:70px;margin-right: 50px; margin-left: 30px;text-align: right">
+                <p><i><b>"Czytanie książek to najpiękniejsza zabawa, jaką sobie ludzkość wymyśliła"</b></i></p>
+                <p>Wisława Szymborska</p>
 
-<div class="mainpage"></div>
+                <p><i><b>"Kto czyta książki, żyje podwójnie."</b></i></p>
+                <p>Umberto Eco</p>
 
+                <p><i><b>"Czytać to bardziej żyć, to żyć intensywniej."</b></i></p>
+                <p>Carlos Ruiz Zafón – Cień wiatru</p>
+
+            </div>
+
+            <div style="margin-top: 80px; margin-left: 70px">
+                <h2>Załóż darmowe konto</h2>
+                <p>Poświęć nam 2 minutu i otrzymaj <br/>bezpłatny dostęp do naszych zasobów</p>
+                <p><a class="btn btn-primary" href="addUser.jsp" role="button">Zakładam konto &raquo;</a></p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</div>
 <footer>
     <%@include file="include/footer.jsp" %>
 </footer>

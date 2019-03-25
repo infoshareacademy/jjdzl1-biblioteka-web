@@ -5,6 +5,7 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 
 <header>
     <%@include file="include/header.jsp" %>
@@ -34,6 +35,8 @@
     request.getSession().removeAttribute("addUser");
 %>
 <div class="mainpage">
+
+
     <div class="row">
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 30px;text-align: right">
@@ -58,8 +61,23 @@
         </div>
     </div>
 </div>
+<!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert" role="alert">
+    <b>Lubisz ciasteczka?</b> &#x1F36A;<br/>
+    <p>Używamy informacji zapisanych za pomocą plików cookies w celu zapewnienia maksymalnej wygody w korzystaniu z
+        naszego serwisu.
+        <br/>Jeżeli wyrażasz zgodę na zapisywanie informacji zawartej w cookies kliknij na przycisk Akceptuję.
+        <br/>Jeżeli nie wyrażasz zgody, ustawienia dotyczące plików cookies możesz zmienić w swojej przeglądarce.
+        <a href="https://wszystkoociasteczkach.pl/podstawa-prawna//" target="_blank">Dowiedz sie więcej</a>
+        <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">
+            Akceptuję
+        </button>
+</div>
+<!-- END Bootstrap-Cookie-Alert -->
+
 <footer>
     <%@include file="include/footer.jsp" %>
+    <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
 </footer>
 
 </body>

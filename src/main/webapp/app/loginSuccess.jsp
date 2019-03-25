@@ -72,7 +72,54 @@ To change this template use File | Settings | File Templates.
     request.getSession().removeAttribute("opertationSuccess");
 %>
 
-<div class="mainpage"></div>
+<div class="mainpage">
+    <div class="row">
+        <div class="col-lg-6">
+            <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">
+                <h4>Statystyki biblioteki</h4>
+                <table class="table table-borderless">
+                    <thead class="listofitemps">
+                    <tr>
+                        <td>Ilość książek w bibliotece:</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Ilość aktywnych użytkowników:</td>
+                        <td>20</td>
+                        <td>Ilość zablokowanych użytkowników:</td>
+                        <td>10</td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <h4>Statystyki wypożyczeń</h4>
+                <table class="table table-borderless">
+                    <thead class="listofitemps">
+                    <tr>
+                        <td>Aktualnie wypożyczonych:</td>
+                        <td>5</td>
+                        <td>Ilość rezerwacji:</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Przeterminowanych wypożyczeń:</td>
+                        <td>10</td>
+                    </tr>
+
+                    </thead>
+                </table>
+
+
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+
+
+</div>
 
 <footer>
     <%@include file="/./include/footer.jsp" %>

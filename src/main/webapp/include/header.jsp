@@ -20,6 +20,19 @@
                    aria-expanded="false" id="submenu" aria-haspopup="true"> Przeglądaj książki </a>
 
                 <div class="dropdown-menu" aria-labelledby="submenu">
+
+
+                    <form action="FindBookServlet" class="form-inline dropdown-item" method="get">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto inline-block">
+                                <input type="text" name="title" class="form-control" id="inlineFormInput"
+                                       placeholder="Wpisz tytuł książki">
+                                <button type="submit" class="btn btn-info">Znajdź</button>
+                            </div>
+                        </div>
+                    </form>
+
+
                     <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
                     <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autora </a>
                 </div>

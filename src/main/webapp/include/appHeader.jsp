@@ -57,7 +57,7 @@
                             <div class="col-auto inline-block">
                                 <input type="text" name="findUserByName" class="form-control" id="inlineFormInput1"
                                        placeholder="Wpisz nazwisko użytkownika">
-                                <button type="submit" class="btn btn-outline-info">Znajdź</button>
+                                <button type="submit" class="btn btn-outline-info">Szukaj</button>
                             </div>
                         </div>
                     </form>
@@ -106,7 +106,7 @@
                                    placeholder="Wpisz tytuł książki">
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-info">Znajdź</button>
+                            <button type="submit" class="btn btn-info">Szukaj</button>
                         </div>
                     </div>
                 </form>

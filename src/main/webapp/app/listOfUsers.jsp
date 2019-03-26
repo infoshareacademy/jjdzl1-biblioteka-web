@@ -47,7 +47,7 @@
                                 <input type="hidden" name="operation" value="newoperation">
                                 <%}%>
 
-                                <button type="submit" class="btn btn-outline-info">Znajdź</button>
+                                <button type="submit" class="btn btn-outline-info">Szukaj</button>
                             </div>
                         </div>
                     </form>

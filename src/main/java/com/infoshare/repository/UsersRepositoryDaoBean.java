@@ -17,9 +17,9 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
     List<User> listOfUsers = new ArrayList<>();
 
     @Override
-    public List<User> listOfUsers() throws SQLException, ClassNotFoundException {
+    public List<User> listOfUsers(String findUserByName) throws SQLException, ClassNotFoundException {
 
-        try (ResultSet rs = UsersQuery.listOfUsers("id")) {
+        try (ResultSet rs = UsersQuery.listOfUsers("lastName", findUserByName)) {
 
             while (rs.next()) {
                 int userID = rs.getInt("id");

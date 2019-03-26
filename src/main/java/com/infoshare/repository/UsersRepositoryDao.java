@@ -9,7 +9,7 @@ import java.util.List;
 
 @Local
 public interface UsersRepositoryDao {
-    List<User> listOfUsers() throws SQLException, ClassNotFoundException;
+    List<User> listOfUsers(String findUserByName) throws SQLException, ClassNotFoundException;
     User getUserById(int id) throws SQLException, ClassNotFoundException;
     User getUserByLogin(String login) throws SQLException, ClassNotFoundException;
     void addNewUser(User user);

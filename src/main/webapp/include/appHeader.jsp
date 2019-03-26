@@ -55,7 +55,7 @@
                     <form action="FindUserServlet" class="form-inline dropdown-item" method="get">
                         <div class="form-row align-items-center">
                             <div class="col-auto inline-block">
-                                <input type="text" name="lastName" class="form-control" id="inlineFormInput1"
+                                <input type="text" name="findUserByName" class="form-control" id="inlineFormInput1"
                                        placeholder="Wpisz nazwisko użytkownika">
                                 <button type="submit" class="btn btn-outline-info">Znajdź</button>
                             </div>

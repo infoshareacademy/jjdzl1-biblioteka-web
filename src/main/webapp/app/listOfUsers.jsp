@@ -14,20 +14,49 @@
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
-<%String operation = request.getParameter("operation");
-String operatnionName = "";
-if (session.getAttribute("normalUser") == null) {%>
+<%
+    String operation = request.getParameter("operation");
+    String findUserByName = request.getParameter("findUserByName");
+    if (session.getAttribute("normalUser") == null) {
+%>
 
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
-            <% if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
-            <h4> Nowa operacja: wybierz użytkownika</h4>
-            <%} else {%>
-            <h4>Kliknij użytkownika, którego chcesz edytować</h4>
-            <%}%>
-            <br/>
+
+            <div class="d-flex">
+
+                <div class="mr-auto p-2 align-items-start">
+                    <% if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
+                    <h4> Nowa operacja: wybierz użytkownika</h4>
+                    <%} else {%>
+                    <h4>Kliknij użytkownika, którego chcesz edytować</h4>
+                    <%}%>
+                </div>
+
+                <div class="p2 align-items-end ">
+
+                    <form action="FindUserServlet" class="form-inline" method="get">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto inline-block">
+                                <input type="text" name="findUserByName" class="form-control" id="inlineFormInput1"
+                                       placeholder="Wpisz nazwisko użytkownika">
+
+                                <%if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
+                                <input type="hidden" name="operation" value="newoperation">
+                                <%}%>
+
+                                <button type="submit" class="btn btn-outline-info">Znajdź</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -46,17 +75,18 @@ if (session.getAttribute("normalUser") == null) {%>
 
                 <tbody>
                 <% UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
-                    List<User> listOfUsers = usersRepository.listOfUsers();
+                    List<User> listOfUsers = usersRepository.listOfUsers(findUserByName);
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
 
-                <tr class="listofitemps" style="cursor:pointer" onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';" >
+                <tr class="listofitemps" style="cursor:pointer"
+                    onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= user.getLogin()%>
                     </td>
-                    <td><%= user.getFirstName() + ", " + user.getLastName()%>
+                    <td><%=  user.getLastName() + ", " + user.getFirstName()%>
                     </td>
                     <td><%= user.getEmail()%>
                     </td>
@@ -74,7 +104,8 @@ if (session.getAttribute("normalUser") == null) {%>
                     </td>
                     <%}%>
                 </tr>
-                <% rowNumber++; }%>
+                <% rowNumber++;
+                }%>
                 </tbody>
 
             </table>
@@ -97,7 +128,7 @@ if (session.getAttribute("normalUser") == null) {%>
 </article>
 <%}%>
 <footer>
-<%@include file="/./include/footer.jsp" %>
+    <%@include file="/./include/footer.jsp" %>
 </footer>
 
 </body>

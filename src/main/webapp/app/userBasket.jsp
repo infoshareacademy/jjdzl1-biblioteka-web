@@ -44,12 +44,15 @@
                     operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
                 </h4>
                 </div>
+               <% if (basketList.size()!=0){%>
+
                 <div class="p2 align-items-end">
                     <form method="POST" action="SaveBasketServlet" class="addUser">
                         <input type="hidden" name="operationType" value="reservation"/>
                         <button type="submit" class="btn btn-success">Akceptuj operacje</button>
                     </form>
                 </div>
+                <%}%>
                 <div class="p2 align-items-end">
                     &nbsp;&nbsp;
                 </div>
@@ -59,6 +62,8 @@
                         <button type="submit" class="btn btn-secondary">Anuluj</button>
                     </form>
                 </div>
+
+
             </div>
             <%}%>
             <table class="table">
@@ -107,8 +112,8 @@
                             <%}%>
                     </td>
                     <td>
-                        <form method="POST" action="" class="addUser">
-                            <input type="hidden" name="" value="reservation"/>
+                        <form method="POST" action="RemoveItemFromBasketServlet" class="addUser">
+                            <input type="hidden" name="removeItem" value="<%=rowNumber-1%>"/>
                             <button type="submit" class="btn btn-danger">Usuń</button>
                         </form>
 

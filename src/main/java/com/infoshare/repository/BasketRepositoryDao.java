@@ -16,4 +16,6 @@ public interface BasketRepositoryDao {
     List basketList();
 
     List createBasketList();
+
+    void removeItemFromBasket(int itemNumber);
 }

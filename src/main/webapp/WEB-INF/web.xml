@@ -107,6 +107,18 @@
         <url-pattern>app/OperationCancelServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RemoveItemFromBasketServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.RemoveItemFromBasketServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RemoveItemFromBasketServlet</servlet-name>
+        <url-pattern>app/RemoveItemFromBasketServlet</url-pattern>
+    </servlet-mapping>
+
+
+
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

@@ -82,10 +82,18 @@
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="listOfUsers.jsp?operation=newoperation"> Nowa operacja </a>
+
+                    <% if (session.getAttribute("selectedUser") != null) {%>
+                    <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj operację </a>
+                    <%}%>
+
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Wszystkie rezerwacje </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wszystkie wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Razem wszystkie operacje </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Wszystkie
+                        rezerwacje </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wszystkie
+                        wypożyczenia </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Razem wszystkie
+                        operacje </a>
 
                     <% } else { %>
 
@@ -134,8 +142,10 @@
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Aktualne rezerwacje i wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=userID%>"> Historia rezerwacji </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=userID%>"> Historia wypożyczeń </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=userID%>">
+                        Historia rezerwacji </a>
+                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=userID%>">
+                        Historia wypożyczeń </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
                 </div>

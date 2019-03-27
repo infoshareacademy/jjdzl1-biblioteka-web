@@ -135,7 +135,8 @@
                         String userFullName = user.getFirstName() + ", " + user.getLastName();
                         Integer userID = user.getId();
                     %>
-                    Wybrano: <%=userFullName%> <span class="badge badge-secondary"><%=basketList.size()%></span>
+                    Wybrano: <%=userFullName%>
+                    <% if (basketList.size()!=0){%><span class="badge badge-danger"><%=basketList.size()%></span><%}%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>

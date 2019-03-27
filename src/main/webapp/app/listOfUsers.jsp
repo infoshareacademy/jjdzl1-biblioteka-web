@@ -102,7 +102,7 @@
                     <td>
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
-                            <button type="submit" class="btn btn-secondary btn-sm">Wybierz</button>
+                            <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
                         </form>
                     </td>
                     <%}%>

@@ -65,8 +65,9 @@
 
 
             </div>
+            <br/>
             <%}%>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>
@@ -74,7 +75,7 @@
                     <th scope="col">Operacja</th>
                     <th scope="col">Data operacji</th>
                     <th scope="col">Data ważności</th>
-                    <th scope="col">Działenie</th>
+                    <th scope="col">Działanie</th>
 
                 </tr>
                 </thead>

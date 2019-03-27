@@ -78,12 +78,12 @@
                             <form method="GET" action="UserBasketServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
                                 <input type="hidden" name="operationType" value="reservation"/>
-                                <button type="submit" class="btn btn-secondary">R</button>
+                                <button type="submit" class="btn btn-info"data-toggle="tooltip" title="Rezerwuj">R</button>
                             </form>
                             <form method="GET" action="UserBasketServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
                                 <input type="hidden" name="operationType" value="borrow"/>
-                                <button type="submit" class="btn btn-secondary">W</button>
+                                <button type="submit" class="btn btn-success"  data-toggle="tooltip" title="Wypożycz">W</button>
                             </form>
                         </div>
                     </td>

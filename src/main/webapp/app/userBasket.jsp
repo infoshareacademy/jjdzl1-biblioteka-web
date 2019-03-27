@@ -2,6 +2,8 @@
 <%@ page import="com.infoshare.domain.Basket" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.domain.OperationType" %>
+<%@ page import="java.time.LocalDate" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -63,9 +65,12 @@
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>
-                    <th scope="col">Tytuł</th>
-                    <th scope="col">Autor</th>
+                    <th scope="col">Tytuł/Autor</th>
                     <th scope="col">Operacja</th>
+                    <th scope="col">Data operacji</th>
+                    <th scope="col">Data ważności</th>
+                    <th scope="col">Działenie</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -76,11 +81,37 @@
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><%=basket.getBook().getTitle() %>
+                    <td>
+                        <b><%=basket.getBook().getTitle()%>
+                        </b>
+                        <br/><i>
+                        <%=basket.getBook().getAuthorLastName() + ", " + basket.getBook().getAuthorFirstName()%>
+                    </i></td>
+                    <td><% if (basket.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%} else {%>
+                        Wypożyczenie<%}%>
+
                     </td>
-                    <td><%=basket.getBook().getAuthorLastName() + ", " + basket.getBook().getAuthorFirstName()%>
+
+                    <td>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="date" name="startDate" class="form-control" value="<%=basket.getStartDate()%>">
+                        </div>
                     </td>
-                    <td><%=basket.getOperationType()%>
+                    <td>
+                        <%if (basket.getOperationType().equals(OperationType.RESERVATION)){%>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="date" name="endDate" class="form-control" value="<%=basket.getEndDate()%>">
+                        </div><%}else {%>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" name="endDate" class="form-control" disabled value=" --- ">
+                            <%}%>
+                    </td>
+                    <td>
+                        <form method="POST" action="" class="addUser">
+                            <input type="hidden" name="" value="reservation"/>
+                            <button type="submit" class="btn btn-danger">Usuń</button>
+                        </form>
+
                     </td>
                     <%
                             rowNumber++;

@@ -2,6 +2,7 @@
 <%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.infoshare.domain.UserStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -90,7 +91,9 @@
                     </td>
                     <td><%= user.getEmail()%>
                     </td>
-                    <td><%= user.getAdmin()%>
+                    <td>
+                        <%if (user.getAdmin().equals(UserStatus.ADMIN)) {%> Administrator <%}%>
+                        <%if (user.getAdmin().equals(UserStatus.USER)) {%> Użytkownik <%}%>
                     </td>
                     <td><%= user.getStatus()%>
                     </td>

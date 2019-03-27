@@ -38,8 +38,6 @@
             %>
 
             <div class="d-flex">
-
-
                 <div class="mr-auto p-2 align-items-start"><h4>Koszyk bieżących
                     operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
                 </h4>
@@ -54,8 +52,8 @@
                     &nbsp;&nbsp;
                 </div>
                 <div class="p2 align-items-end">
-                    <form method="GET" action="UserBasketServlet" class="addUser">
-                        <input type="hidden" name="operationType" value="borrow"/>
+                    <form method="GET" action="OperationCancelServlet" class="addUser">
+                        <input type="hidden" name="selectedUser" value="remove"/>
                         <button type="submit" class="btn btn-secondary">Anuluj</button>
                     </form>
                 </div>

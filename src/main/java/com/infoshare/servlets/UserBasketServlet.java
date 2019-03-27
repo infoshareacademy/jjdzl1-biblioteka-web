@@ -29,8 +29,8 @@ public class UserBasketServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        LocalDate startDate= LocalDate.now();
-        LocalDate endDate=startDate.plusDays(3);
+        LocalDate startDate = LocalDate.now();
+        LocalDate endDate = startDate.plusDays(3);
 
         int bookId = Integer.parseInt(req.getParameter("bookId"));
         String operationType = req.getParameter("operationType");
@@ -40,10 +40,10 @@ public class UserBasketServlet extends HttpServlet {
         if (operationType.equals("reservation")) operationTypeEnum = OperationType.RESERVATION;
         try {
             Book book = booksRepository.getBookById(bookId);
-            if (operationType.equals(OperationType.BORROW)){
-                endDate=LocalDate.of(1970,01,01);
-            }
-            basketRepository.addToBasketList(user, book, operationTypeEnum, startDate,endDate);
+            if (operationType.equals(OperationType.BORROW)) {
+                endDate = LocalDate.of(1970, 01, 01);
+            } else {endDate=LocalDate.now().plusDays(3);}
+            basketRepository.addToBasketList(user, book, operationTypeEnum, startDate, endDate);
 
         } catch (SQLException e) {
             e.printStackTrace();

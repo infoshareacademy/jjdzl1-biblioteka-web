@@ -18,7 +18,7 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate) {
-        basket.add(new Basket(book, user, operationType, LocalDate.now() ,LocalDate.now()));
+        basket.add(new Basket(book, user, operationType, startDate, endDate));
     }
 
     @Override

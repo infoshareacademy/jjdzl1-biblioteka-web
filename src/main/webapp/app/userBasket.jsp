@@ -59,7 +59,11 @@
                 <div class="p2 align-items-end">
                     <form method="GET" action="OperationCancelServlet" class="addUser">
                         <input type="hidden" name="selectedUser" value="remove"/>
+                        <% if (basketList.size()!=0){%>
                         <button type="submit" class="btn btn-secondary">Anuluj</button>
+                        <%}else{%>
+                        <button type="submit" class="btn btn-secondary">Anuluj operację</button>
+                        <%}%>
                     </form>
                 </div>
 

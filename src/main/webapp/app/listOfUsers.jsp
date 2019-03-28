@@ -102,6 +102,15 @@
                     <td>
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
+                            <input type="hidden" name="operation" value="newoperation"/>
+                            <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
+                        </form>
+                    </td>
+                    <%} else if (operation != null && !operation.isEmpty() && operation.equals("returnbook")) {%>
+                    <td>
+                        <form method="GET" action="SelectUserServlet" class="addUser">
+                            <input type="hidden" name="userid" value="<%=user.getId()%>"/>
+                            <input type="hidden" name="operation" value="returnbook"/>
                             <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
                         </form>
                     </td>

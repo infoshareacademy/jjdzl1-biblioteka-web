@@ -3,7 +3,6 @@ package com.infoshare.servlets;
 import com.infoshare.domain.Basket;
 import com.infoshare.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.repository.UsersRepositoryDaoBean;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -29,6 +28,9 @@ public class SelectUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int userId = Integer.parseInt(req.getParameter("userid"));
+        String operationType=req.getParameter("operation");
+        String redirection="";
+
         User user = null;
         try {
             user = usersRepository.getUserById(userId);
@@ -40,6 +42,9 @@ public class SelectUserServlet extends HttpServlet {
         basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
-        resp.sendRedirect("listOfBooks.jsp");
+        if (operationType.equals("newoperation")) redirection ="listOfBooks.jsp";
+        if (operationType.equals("returnbook")) redirection= "listOfBorrow.jsp";
+
+        resp.sendRedirect(redirection);
     }
 }

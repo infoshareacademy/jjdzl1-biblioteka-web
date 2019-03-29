@@ -7,6 +7,7 @@ import com.infoshare.repository.BasketRepositoryDaoBean;
 import com.infoshare.repository.OperationsRepositoryDao;
 import com.infoshare.repository.OperationsRepositoryDaoBeen;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,16 +20,20 @@ import java.util.List;
 @WebServlet("/SaveBasketServlet")
 public class SaveBasketServlet extends HttpServlet {
 
+    @EJB
+    private BasketRepositoryDao basketRepository;
+
+    @EJB
+    private OperationsRepositoryDao operationsRepository;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("selectedUser");
 
-        BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
-        List<Basket> basketList = basketRepositoryDaoBean.basketList();
+        List<Basket> basketList = basketRepository.basketList();
 
-        OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
         operationsRepository.addNewOperation(basketList, user);
 
         if (req.getSession().getAttribute("user") != null) {

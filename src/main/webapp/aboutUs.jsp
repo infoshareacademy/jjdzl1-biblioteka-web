@@ -6,7 +6,7 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-
+<body>
 <% if (session.getAttribute("user") == null) {%>
 
 <header>
@@ -21,12 +21,13 @@
 
 <%}%>
 
-<body>
+
 <section class="our-webcoderskull padding-lg">
     <div class="container">
-        <div class="row heading heading-icon">
+        <div class="d-flex justify-content-center">
             <h2>Nasz zespół</h2>
         </div>
+        <br/><br/>
         <ul class="row">
             <li class="col-12 col-md-6 col-lg-4">
                 <div class="cnt-block equal-hight" style="height: 349px;">

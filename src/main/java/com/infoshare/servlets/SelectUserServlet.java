@@ -3,8 +3,8 @@ package com.infoshare.servlets;
 import com.infoshare.domain.Basket;
 import com.infoshare.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.repository.UsersRepositoryDaoBean;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,14 +21,19 @@ public class SelectUserServlet extends HttpServlet {
 
     public static List<Basket> basket = new ArrayList<>();
 
+    @EJB
+    private UsersRepositoryDao usersRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int userId = Integer.parseInt(req.getParameter("userid"));
-        UsersRepositoryDao usersRepositoryDao = new UsersRepositoryDaoBean();
+        String operationType=req.getParameter("operation");
+        String redirection="";
+
         User user = null;
         try {
-            user = usersRepositoryDao.getUserById(userId);
+            user = usersRepository.getUserById(userId);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -37,6 +42,9 @@ public class SelectUserServlet extends HttpServlet {
         basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
-        resp.sendRedirect("listOfBooks.jsp");
+        if (operationType.equals("newoperation")) redirection ="listOfBooks.jsp";
+        if (operationType.equals("returnbook")) redirection= "listOfBorrow.jsp";
+
+        resp.sendRedirect(redirection);
     }
 }

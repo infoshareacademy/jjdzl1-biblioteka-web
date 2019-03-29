@@ -10,12 +10,12 @@
 <head>
     <%@include file="include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="include/header.jsp" %>
 </header>
 
-<body>
+
 <%
     String order = request.getParameter("order");
     String bookTitle = request.getParameter("title");
@@ -31,9 +31,9 @@
             <br/>
             <h4>Spis książek<%=orderTitle%>
             </h4>
-            <table class="table">
-                <thead>
-                <tr class="listofitemps">
+            <table class="table table-bordered table-hover">
+                <thead class="listofitemps">
+                <tr class="black white-text">
                     <th scope="col">#</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>
@@ -67,6 +67,20 @@
                     }%>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <br/><br/><br/>
         </div>
     </div>
 </article>

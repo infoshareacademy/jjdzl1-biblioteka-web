@@ -4,6 +4,7 @@ import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 
 import java.sql.PreparedStatement;
+
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.User;
 import com.infoshare.utils.Hasher;
@@ -17,9 +18,11 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 
 public class UsersQuery {
 
-    public static ResultSet listOfUsers(String order) throws SQLException, ClassNotFoundException {
+    public static ResultSet listOfUsers(String order, String findUserByName) throws SQLException, ClassNotFoundException {
 
         String query = "SELECT * FROM users ORDER BY " + order;
+        if (findUserByName != null)
+            query = "SELECT * FROM users WHERE lastName LIKE '%" + findUserByName + "%' ORDER BY " + order;
         return preparedStatement(query).executeQuery();
     }
 
@@ -31,7 +34,7 @@ public class UsersQuery {
 
     public static ResultSet CountAllUsers() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM users WHERE 1" ;
+        String query = "SELECT COUNT(*) FROM users WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }
@@ -44,7 +47,7 @@ public class UsersQuery {
 
     public static ResultSet findUserByLogin(String login) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE login = '" + login + "'" ;
+        String query = "SELECT * FROM users WHERE login = '" + login + "'";
         return preparedStatement(query).executeQuery();
     }
 
@@ -52,17 +55,17 @@ public class UsersQuery {
 
         String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
 
-            PreparedStatement ps = preparedStatement(query);
-            ps.setString(1, user.getLogin());
-            ps.setString(2, user.getFirstName());
-            ps.setString(3, user.getLastName());
-            ps.setString(4, user.getEmail());
-            boolean admin = user.getAdmin() == UserStatus.ADMIN ? true : false;
-            ps.setBoolean(5, admin);
-            ps.setString(6, user.getStatus());
+        PreparedStatement ps = preparedStatement(query);
+        ps.setString(1, user.getLogin());
+        ps.setString(2, user.getFirstName());
+        ps.setString(3, user.getLastName());
+        ps.setString(4, user.getEmail());
+        boolean admin = user.getAdmin() == UserStatus.ADMIN ? true : false;
+        ps.setBoolean(5, admin);
+        ps.setString(6, user.getStatus());
 
-            ps.execute();
-            ps.close();
+        ps.execute();
+        ps.close();
     }
 
     public static void updateAccountQuery(String userName, User user) throws SQLException, ClassNotFoundException {
@@ -70,24 +73,25 @@ public class UsersQuery {
         String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
                 " WHERE login = '" + userName + "'";
 
-            PreparedStatement ps = preparedStatement(query);
-            ps.setString(1, user.getLogin());
-            ps.setString(2, user.getFirstName());
-            ps.setString(3, user.getLastName());
-            ps.setString(4, user.getEmail());
-            ps.setString(5, user.getPassword());
-            ps.execute();
-            ps.close();
+        PreparedStatement ps = preparedStatement(query);
+        ps.setString(1, user.getLogin());
+        ps.setString(2, user.getFirstName());
+        ps.setString(3, user.getLastName());
+        ps.setString(4, user.getEmail());
+        ps.setString(5, user.getPassword());
+        ps.execute();
+        ps.close();
     }
+
     public static ResultSet findUserByEmail(String email) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE email = '" + email + "'" ;
+        String query = "SELECT * FROM users WHERE email = '" + email + "'";
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet findUserByEmailOrLogin(String email, String login) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE email = '" + email + "' OR login = '" + login + "'" ;
+        String query = "SELECT * FROM users WHERE email = '" + email + "' OR login = '" + login + "'";
         return preparedStatement(query).executeQuery();
     }
 

@@ -9,12 +9,12 @@
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-<body>
+
 <% UsersRepositoryDao user = new UsersRepositoryDaoBean();
     User userData = user.getUserByLogin(userName);%>
 <article>
@@ -62,7 +62,7 @@
                 <input type="password" class="form-control" name="password3" placeholder="Hasło">
             </div>
             <br/><br/>
-            <button type="submit" class="btn btn-primary">Edytuj dane</button>
+            <button type="submit" class="btn btn-primary">Aktualizuj dane</button>
         </form>
     </div>
 </article>

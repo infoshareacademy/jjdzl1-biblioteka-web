@@ -4,12 +4,13 @@ import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
 import com.infoshare.query.BooksQuery;
 
+import javax.ejb.Stateless;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Stateless
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
     @Override

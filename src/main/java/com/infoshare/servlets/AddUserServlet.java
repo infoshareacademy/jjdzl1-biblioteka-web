@@ -3,10 +3,10 @@ package com.infoshare.servlets;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.repository.UsersRepositoryDaoBean;
 import com.infoshare.validation.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +20,10 @@ import java.util.List;
 @Slf4j
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
+
+    @EJB
+    private UsersRepositoryDao usersRepository;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -29,8 +33,7 @@ public class AddUserServlet extends HttpServlet {
             if (validate(user, req).size() > 0) {
                 resp.sendRedirect("addUser.jsp");
             } else {
-                UsersRepositoryDao usersRepositoryDaoBean = new UsersRepositoryDaoBean();
-                usersRepositoryDaoBean.addNewUser(user);
+                usersRepository.addNewUser(user);
                 req.getSession().setAttribute("addUser", "userAdded");
                 if (req.getSession().getAttribute("user") != null)
                     resp.sendRedirect("loginSuccess.jsp");

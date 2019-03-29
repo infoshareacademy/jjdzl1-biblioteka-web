@@ -5,11 +5,13 @@ import com.infoshare.domain.OperationType;
 import com.infoshare.domain.User;
 import com.infoshare.query.OperationsQuery;
 
+import javax.ejb.Stateless;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
     @Override

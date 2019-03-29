@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="com.infoshare.servlets.SaveBasketServlet" %>
+<%@ page import="com.infoshare.domain.OperationType" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -12,17 +13,17 @@
 <head>
     <%@include file="../include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-<body>
+
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>
@@ -36,7 +37,8 @@
                 </thead>
                 <tbody>
                 <%
-                    Integer userId=0;
+
+                    Integer userId = 0;
                     String operationType = request.getParameter("operationType");
                     String stringUserId = request.getParameter("userId");
                     if (stringUserId != null && !stringUserId.isEmpty()) userId = Integer.parseInt(stringUserId);
@@ -64,7 +66,9 @@
                         <%=operation.getEndDate()%>
                         <%}%>
                     </td>
-                    <td><%=operation.getOperationType()%>
+                    <td>
+                        <%if (operation.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%}%>
+                        <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%}%>
                     </td>
                 </tr>
                 <%

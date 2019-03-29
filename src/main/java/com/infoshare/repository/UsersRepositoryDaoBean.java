@@ -3,23 +3,23 @@ package com.infoshare.repository;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
-import com.mysql.cj.protocol.Resultset;
 
+
+import javax.ejb.Stateless;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
     List<User> listOfUsers = new ArrayList<>();
 
     @Override
-    public List<User> listOfUsers() throws SQLException, ClassNotFoundException {
+    public List<User> listOfUsers(String findUserByName) throws SQLException, ClassNotFoundException {
 
-        try (ResultSet rs = UsersQuery.listOfUsers("id")) {
+        try (ResultSet rs = UsersQuery.listOfUsers("lastName", findUserByName)) {
 
             while (rs.next()) {
                 int userID = rs.getInt("id");
@@ -58,6 +58,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
             String lastName = rs.getString("lastName");
             String email = rs.getString("email");
             String password = rs.getString("password");
+            user.setId(id);
             user.setLogin(login);
             user.setFirstName(firstName);
             user.setLastName(lastName);

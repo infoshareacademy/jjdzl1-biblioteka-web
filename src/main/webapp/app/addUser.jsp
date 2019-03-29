@@ -7,12 +7,12 @@
 <head>
     <%@include file="/./include/head.jsp" %>
 </head>
-
+<body>
 <header>
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-<body>
+
 <div class="addUserForm">
 
     <%
@@ -69,7 +69,7 @@
             <div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="name" name="admin">
-                    <label class="form-check-label" for="name">
+                    <label class="form-check-label" for="name" style="font-size: 15px;">
                         Czy użytkownik ma posiadać uprawnienia pracownika?
                     </label>
                 </div>

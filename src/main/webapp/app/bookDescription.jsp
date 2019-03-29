@@ -30,6 +30,9 @@
             <li class="col-lg-4">
                 <img src="${pageContext.request.contextPath}/img/no_image_book.jpg" style=" max-width: 100%;
     max-height: 100%;"/>
+                <br/>
+                <br/>
+                <button class="btn btn-info" onclick="goBack()">&laquo; Powrót do poprzedniej strony</button>
 
             </li>
             <li class="col-6">
@@ -41,10 +44,10 @@
                 <h6>ISBN: <%=book.getIsbn()%> Rok wydania: <%=book.getRelaseDate()%>
                 </h6></br>
                 <br/>
-                <span><%=book.getDescription()%></span>
-                <br/>
-                <br/>
-                <button class="btn btn-info" onclick="goBack()">&laquo; Powrót do poprzedniej strony</button>
+                <span>
+                    <%if (book.getDescription() != null) {%>
+                    <%=book.getDescription()%>
+                <%} else {%> Brak opisu <%}%></span>
 
             </li>
             <li class="col-1"></li>

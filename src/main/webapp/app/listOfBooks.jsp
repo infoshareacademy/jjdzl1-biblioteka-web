@@ -53,21 +53,22 @@
                     List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
                     for (Book book : listOfBooks) {
                 %>
-                <tr class="listofitemps">
-                    <th scope="row"><a href="bookService.jsp?id="<%=book.getBookID()%>"><%=rowNumber%></a>
+                <tr class="listofitemps " style="cursor:pointer"
+                    onclick="window.location='bookDescription.jsp?id=<%=book.getBookID()%>'" data-toggle="tooltip"
+                    title="Zobacz więcej ...">
+                    <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%>
-                    </a>
+                    <td>
+                        <%=book.getTitle()%>
                     </td>
                     <td>
-                        <a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
-                        </a>
+                        <%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%>
-                    </a>
+                    <td>
+                        <%=book.getIsbn()%>
                     </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%>
-                    </a>
+                    <td>
+                        <%=book.getRelaseDate()%>
                     </td>
 
                     <% if (session.getAttribute("selectedUser") != null) {
@@ -78,12 +79,14 @@
                             <form method="GET" action="UserBasketServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
                                 <input type="hidden" name="operationType" value="reservation"/>
-                                <button type="submit" class="btn btn-info"data-toggle="tooltip" title="Rezerwuj">R</button>
+                                <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">R
+                                </button>
                             </form>
                             <form method="GET" action="UserBasketServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
                                 <input type="hidden" name="operationType" value="borrow"/>
-                                <button type="submit" class="btn btn-success"  data-toggle="tooltip" title="Wypożycz">W</button>
+                                <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Wypożycz">W
+                                </button>
                             </form>
                         </div>
                     </td>

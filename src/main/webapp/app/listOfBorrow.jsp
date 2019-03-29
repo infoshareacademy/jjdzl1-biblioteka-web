@@ -1,7 +1,7 @@
-<%@ page import="com.infoshare.repository.BooksRepositoryDao" %>
-<%@ page import="com.infoshare.repository.BooksRepositoryDaoBean" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.infoshare.domain.Book" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="com.infoshare.repository.*" %>
+<%@ page import="com.infoshare.domain.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -16,97 +16,114 @@
 </header>
 
 
-<%
-    String order = request.getParameter("order");
-    String bookTitle = request.getParameter("title");
-    String orderTitle;
-    if (order == null || order.isEmpty() || order.equals("title")) {
-        orderTitle = " (wg tytułu)";
-        order = "title";
-    } else orderTitle = " (wg autora)";
-%>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
-            <h4>Spis książek<%=orderTitle%>
-            </h4>
+            <%
+                List<Operation> operations = null;
+                if (session.getAttribute("selectedUser") != null) {
+                    User user = (User) session.getAttribute("selectedUser");
+                    OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
+                    operations = operationsRepository.operationListBorrowByUser(user.getId());
+            %>
+
+
+            <div class="d-flex">
+                <div class="mr-auto p-2 align-items-start"><h4>Lista
+                    wypożyczeń: <%=user.getLastName() + ", " + user.getFirstName()%>
+                </h4>
+                </div>
+                <% if (operations.size() != 0) {%>
+
+                <div class="p2 align-items-end">
+                    <form method="POST" action="SaveBasketServlet" class="addUser">
+                        <input type="hidden" name="operationType" value="reservation"/>
+                        <button type="submit" class="btn btn-success">Zwróć wszystkie</button>
+                    </form>
+                </div>
+                <%}%>
+                <div class="p2 align-items-end">
+                    &nbsp;&nbsp;
+                </div>
+                <div class="p2 align-items-end">
+                    <form method="GET" action="OperationCancelServlet" class="addUser">
+                        <input type="hidden" name="selectedUser" value="remove"/>
+                        <% if (operations.size() != 0) {%>
+                        <button type="submit" class="btn btn-secondary">Anuluj</button>
+                        <%} else {%>
+                        <button type="submit" class="btn btn-secondary">Anuluj operację</button>
+                        <%}%>
+                    </form>
+                </div>
+
+
+            </div>
+            <br/>
+            <%}%>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
                     <th scope="col">#</th>
-                    <th scope="col">Tytuł</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Nr ISBN</th>
-                    <th scope="col">Rok wydania</th>
-                    <% if (session.getAttribute("selectedUser") != null) {
-                        User user = (User) session.getAttribute("selectedUser");
-                    %>
-                    <th scope="col">Działania</th>
-                    <%}%>
+                    <th scope="col">Tytuł/Autor</th>
+                    <th scope="col">Data wypożyczenia</th>
+                    <th scope="col">Data zwrotu</th>
+                    <th scope="col">Działanie</th>
+
                 </tr>
                 </thead>
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
-                    List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
-                    for (Book book : listOfBooks) {
+                    for (Operation operation : operations) {
                 %>
                 <tr class="listofitemps">
-                    <th scope="row"><a href="bookService.jsp?id="<%=book.getBookID()%>"><%=rowNumber%></a>
+                    <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getTitle()%>
-                    </a>
-                    </td>
                     <td>
-                        <a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
-                        </a>
-                    </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getIsbn()%>
-                    </a>
-                    </td>
-                    <td><a href="bookService.jsp?id=<%=book.getBookID()%>"><%=book.getRelaseDate()%>
-                    </a>
+                        <b><%=operation.getBookTitle()%>
+                        </b>
+                        <br/>
+                        <i><%=operation.getAuthor()%>
+                        </i>
                     </td>
 
-                    <% if (session.getAttribute("selectedUser") != null) {
-                        User user = (User) session.getAttribute("selectedUser");
-                    %>
                     <td>
-                        <div>
-                            <form method="GET" action="UserBasketServlet" class="addUser">
-                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
-                                <input type="hidden" name="operationType" value="reservation"/>
-                                <button type="submit" class="btn btn-info"data-toggle="tooltip" title="Rezerwuj">R</button>
-                            </form>
-                            <form method="GET" action="UserBasketServlet" class="addUser">
-                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
-                                <input type="hidden" name="operationType" value="borrow"/>
-                                <button type="submit" class="btn btn-success"  data-toggle="tooltip" title="Wypożycz">W</button>
-                            </form>
-                        </div>
+                        <%=operation.getStartDate()%>
                     </td>
-                    <%}%>
+                    <td>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="date" name="endDate" class="form-control" value="<%=LocalDate.now()%>">
+                            <%--
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="date" name="startDate" class="form-control" value="<%=basket.getStartDate()%>">
+                                </div>
+                            </td>
+                            <td>
+                                <%if (basket.getOperationType().equals(OperationType.RESERVATION)) {%>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="date" name="endDate" class="form-control" value="<%=basket.getEndDate()%>">
+                                </div>
+                                <%} else {%>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="text" name="endDate" class="form-control" disabled value=" --- ">
+                                        <%}%>
+        --%>
+                    </td>
+                    <td>
+                        <form method="POST" action="RemoveItemFromBasketServlet1" class="addUser">
+                            <input type="hidden" name="removeItem" value="<%=rowNumber-1%>"/>
+                            <button type="submit" class="btn btn-danger">Zwróć</button>
+                        </form>
+
+                    </td>
+                    <%
+                            rowNumber++;
+                        }
+                    %>
                 </tr>
-                <%
-                        rowNumber++;
-                    }%>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
             <br/><br/><br/>
         </div>
     </div>

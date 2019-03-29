@@ -81,4 +81,35 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     public void addNewOperation(List basket, User user) {
         OperationsQuery.addNewOperation(basket, user);
     }
+
+
+    @Override
+    public List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException {
+
+        List<Operation> operationBorrowedByUserList = new ArrayList<>();
+        OperationType operationType;
+
+        try (ResultSet rs = OperationsQuery.listOfBorrowedBookByUserId(userId)) {
+
+            while (rs.next()) {
+                userId = rs.getInt("userId");
+                String userName = rs.getString("lastName") + ", " + rs.getString("firstName");
+                int bookID = rs.getInt("bookId");
+                String bookTitle = rs.getString("title");
+                String author = rs.getString("authorLastName") + ", " + rs.getString("authorFirstName");
+                LocalDate operationDate = rs.getDate("operationDate").toLocalDate();
+                LocalDate startDate = rs.getDate("startDate").toLocalDate();
+                LocalDate endDate = rs.getDate("endDate").toLocalDate();
+                int operationTypeId = rs.getInt("operationTypeId");
+                if (operationTypeId == 0) operationType = OperationType.RESERVATION;
+                else operationType = OperationType.BORROW;
+
+                operationBorrowedByUserList.add(new Operation(userId, userName, bookID, bookTitle, author, operationDate, startDate, endDate, operationType));
+
+            }
+            rs.close();
+            return operationBorrowedByUserList;
+
+        }
+    }
 }

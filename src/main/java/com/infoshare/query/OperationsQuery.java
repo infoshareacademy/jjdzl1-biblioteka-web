@@ -86,4 +86,14 @@ public class OperationsQuery {
             }
         }
     }
+
+    public static ResultSet listOfBorrowedBookByUserId(int userID) throws SQLException, ClassNotFoundException {
+        String endDate = "1970.01.01";
+        String query = "SELECT * FROM operations " +
+                "JOIN `users` ON operations.userId = users.id " +
+                "JOIN books ON operations.bookId=books.id " +
+                "WHERE userID = " + userID + " " +
+                "AND endDate = '" + endDate + "'";
+        return preparedStatement(query).executeQuery();
+    }
 }

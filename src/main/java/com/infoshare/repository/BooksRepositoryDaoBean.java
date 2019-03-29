@@ -27,6 +27,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
 
+
                 booksList.add(new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn));
             }
             rs.close();
@@ -45,8 +46,9 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String authorLastName = rs.getString("authorLastName");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
+                String description= rs.getString("description");
 
-                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn);
+                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, description);
             }
             rs.close();
             return book;

@@ -15,7 +15,8 @@
 </header>
 
 
-<% UsersRepositoryDao user = new UsersRepositoryDaoBean();
+<%
+    UsersRepositoryDao user = new UsersRepositoryDaoBean();
     User userData = user.getUserByLogin(userName);%>
 <article>
     <div class="addUserForm">

@@ -15,4 +15,5 @@ public interface OperationsRepositoryDao {
     List<Operation> operationListBookId(int bookId) throws SQLException, ClassNotFoundException;
     List<Operation> AllOperationList(String typoOfOperations, Integer userId) throws SQLException, ClassNotFoundException;
     void addNewOperation(List basket, User user);
+    List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException;
 }

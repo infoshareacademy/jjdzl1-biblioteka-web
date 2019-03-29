@@ -28,8 +28,8 @@ public class SelectUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int userId = Integer.parseInt(req.getParameter("userid"));
-        String operationType=req.getParameter("operation");
-        String redirection="";
+        String operationType = req.getParameter("operation");
+        String redirection = "";
 
         User user = null;
         try {
@@ -42,8 +42,8 @@ public class SelectUserServlet extends HttpServlet {
         basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
-        if (operationType.equals("newoperation")) redirection ="listOfBooks.jsp";
-        if (operationType.equals("returnbook")) redirection= "listOfBorrow.jsp";
+        if (operationType.equals("newoperation")) redirection = "listOfBooks.jsp";
+        if (operationType.equals("returnbook")) redirection = "listOfBorrow.jsp";
 
         resp.sendRedirect(redirection);
     }

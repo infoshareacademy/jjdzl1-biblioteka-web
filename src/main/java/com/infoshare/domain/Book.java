@@ -14,6 +14,17 @@ public class Book {
     private String authorLastName;
     private int relaseDate;
     private String isbn;
+    private String description;
+
+    public Book(int bookID, String title, String authorFirstName, String authorLastName, int relaseDate, String isbn, String description) {
+        this.bookID = bookID;
+        this.title = title;
+        this.authorFirstName = authorFirstName;
+        this.authorLastName = authorLastName;
+        this.relaseDate = relaseDate;
+        this.isbn = isbn;
+        this.description = description;
+    }
 
     public Book(int bookID, String title, String authorFirstName, String authorLastName, int relaseDate, String isbn) {
         this.bookID = bookID;

@@ -17,19 +17,11 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <%
-    String order = request.getParameter("order");
-    String bookTitle = request.getParameter("title");
-    String orderTitle;
-    if (order == null || order.isEmpty() || order.equals("title")) {
-        orderTitle = " (wg tytułu)";
-        order = "title";
-    } else orderTitle = " (wg autora)";
     BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
     List<Basket> basketList = basketRepositoryDaoBean.basketList();
-
 %>
+
 <article>
     <div class="content">
         <div class="contentInside">

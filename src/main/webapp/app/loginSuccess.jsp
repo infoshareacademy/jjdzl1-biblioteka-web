@@ -21,64 +21,72 @@ To change this template use File | Settings | File Templates.
 <body>
 <div class="mainpage">
 
-<header>
-    <%@include file="/./include/appHeader.jsp" %>
-</header>
+    <header>
+        <%@include file="/./include/appHeader.jsp" %>
+    </header>
 
 
+    <% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Dodano użytkownika do biblioteki</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("addUser");
+    %>
 
-<% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Dodano użytkownika do biblioteki</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-    }
-    request.getSession().removeAttribute("addUser");
-%>
+    <% if (request.getSession().getAttribute("userEdited") == "userEdited") { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Edytowano dane użytkownika w bazie</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("userEdited");
+    %>
 
-<% if (request.getSession().getAttribute("userEdited") == "userEdited") { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Edytowano dane użytkownika w bazie</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-    }
-    request.getSession().removeAttribute("userEdited");
-%>
+    <% if (request.getSession().getAttribute("addBook") == "bookAdded") { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Dodano książkę do biblioteki</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("addBook");
+    %>
 
-<% if (request.getSession().getAttribute("addBook") == "bookAdded") { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Dodano książkę do biblioteki</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-    }
-    request.getSession().removeAttribute("addBook");
-%>
-
-<% if (request.getSession().getAttribute("opertationSuccess") == "success") { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Operacja została zapisana</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-    }
-    request.getSession().removeAttribute("opertationSuccess");
-%>
+    <% if (request.getSession().getAttribute("opertationSuccess") == "success") { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Operacja została zapisana</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("opertationSuccess");
+    %>
 
     <div class="row">
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">
-                <h4>Statystyki biblioteki</h4>
+
+
+                <div class="d-flex">
+
+                    <div class="mr-auto p-2 align-items-start">
+                        <h4><b>Statystyki biblioteki</b></h4>
+                    </div>
+
+                </div>
+
                 <table class="table table-borderless">
                     <thead class="listofitemps">
                     <tr>
@@ -94,7 +102,7 @@ To change this template use File | Settings | File Templates.
                     </thead>
                 </table>
 
-                <h4>Statystyki wypożyczeń</h4>
+                <h4><b>Statystyki wypożyczeń</b></h4>
                 <table class="table table-borderless">
                     <thead class="listofitemps">
                     <tr>
@@ -110,6 +118,20 @@ To change this template use File | Settings | File Templates.
 
                     </thead>
                 </table>
+                <br/>
+                <br/>
+                <div class="d-flex">
+                    <div class="mr-auto p-2 align-items-start">
+                    </div>
+                    <div class="p2 align-items-end">
+                        <form method="GET" action="" class="addUser">
+                            <input type="hidden" name="" value=""/>
+                            <button type="submit" class="btn btn-outline-secondary">Odśwież statystyki ...</button>
+                        </form>
+                        <br/>
+                        <div class="mr-auto p-2 align-items-start" style="font-size: 14px">Zaktualizowano o: 12:00</div>
+                    </div>
+                </div>
 
 
             </div>

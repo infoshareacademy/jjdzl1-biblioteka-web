@@ -49,7 +49,9 @@
                     for (Book book : listOfBooks) {
                 %>
 
-                <tr class="listofitemps">
+                <tr class="listofitemps" style="cursor:pointer"
+                    onclick="window.location='bookDescription.jsp?id=<%=book.getBookID()%>'" data-toggle="tooltip"
+                    title="Zobacz więcej ...">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%=book.getTitle()%>

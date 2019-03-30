@@ -52,7 +52,7 @@
                         <% if (operations.size() != 0) {%>
                         <button type="submit" class="btn btn-secondary">Anuluj</button>
                         <%} else {%>
-                        <button type="submit" class="btn btn-secondary">Anuluj operację</button>
+                        <button type="submit" class="btn btn-secondary">Zakończ operację</button>
                         <%}%>
                     </form>
                 </div>
@@ -100,7 +100,7 @@
                     <td>
                         <form method="POST" action="ReturnBookServlet" class="addUser">
                             <input type="hidden" name="operationId" value="<%=operation.getId()%>"/>
-                            <button type="submit" class="btn btn-danger">Zwróć</button>
+                            <button type="submit" class="btn btn-success">Zwróć</button>
                         </form>
 
                     </td>

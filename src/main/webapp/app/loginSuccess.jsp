@@ -1,10 +1,7 @@
-<%--
-Created by IntelliJ IDEA.
-User: lukasz
-Date: 02.02.19
-Time: 16:08
-To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.infoshare.query.StatsQuery" %>
+<%@ page import="java.sql.SQLException" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -74,6 +71,26 @@ To change this template use File | Settings | File Templates.
         request.getSession().removeAttribute("opertationSuccess");
     %>
 
+    <%
+        String time = null;
+        String countBooks = null;
+        String activeUsers=null;
+        String disabledUsers=null;
+        Map<String, String> stats = StatsQuery.statsMap;
+        if (stats.size() == 0) {
+            try {
+                StatsQuery.generateStats();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        time = stats.get("time");
+        countBooks=stats.get("booksCount");
+        activeUsers=stats.get("activeUsers");
+        disabledUsers=stats.get("disabledUsers");
+    %>
+
+
     <div class="row">
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">
@@ -91,13 +108,13 @@ To change this template use File | Settings | File Templates.
                     <thead class="listofitemps">
                     <tr>
                         <td>Ilość książek w bibliotece:</td>
-                        <td>15</td>
+                        <td><%=countBooks%></td>
                     </tr>
                     <tr>
                         <td>Ilość aktywnych użytkowników:</td>
-                        <td>20</td>
+                        <td><%=activeUsers%></td>
                         <td>Ilość zablokowanych użytkowników:</td>
-                        <td>10</td>
+                        <td><%=disabledUsers%></td>
                     </tr>
                     </thead>
                 </table>
@@ -129,7 +146,8 @@ To change this template use File | Settings | File Templates.
                             <button type="submit" class="btn btn-outline-secondary">Odśwież statystyki ...</button>
                         </form>
                         <br/>
-                        <div class="mr-auto p-2 align-items-start" style="font-size: 14px">Zaktualizowano o: 12:00</div>
+                        <div class="mr-auto p-2 align-items-start" style="font-size: 14px">Zaktualizowano o: <%=time%>
+                        </div>
                     </div>
                 </div>
 

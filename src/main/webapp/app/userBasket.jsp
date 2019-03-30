@@ -83,15 +83,15 @@
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td>
+                    <td><a href="bookDescription.jsp?id=<%=basket.getBook().getBookID()%>">
                         <b><%=basket.getBook().getTitle()%>
                         </b>
                         <br/><i>
                         <%=basket.getBook().getAuthorLastName() + ", " + basket.getBook().getAuthorFirstName()%>
-                    </i></td>
+                    </i></a></td>
                     <td><% if (basket.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%} else {%>
                         Wypożyczenie<%}%>
-
+                    </a>
                     </td>
 
                     <td>

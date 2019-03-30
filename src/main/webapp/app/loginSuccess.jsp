@@ -74,8 +74,8 @@
     <%
         String time = null;
         String countBooks = null;
-        String activeUsers=null;
-        String disabledUsers=null;
+        String activeUsers = null;
+        String disabledUsers = null;
         Map<String, String> stats = StatsQuery.statsMap;
         if (stats.size() == 0) {
             try {
@@ -85,9 +85,9 @@
             }
         }
         time = stats.get("time");
-        countBooks=stats.get("booksCount");
-        activeUsers=stats.get("activeUsers");
-        disabledUsers=stats.get("disabledUsers");
+        countBooks = stats.get("booksCount");
+        activeUsers = stats.get("activeUsers");
+        disabledUsers = stats.get("disabledUsers");
     %>
 
 
@@ -108,13 +108,16 @@
                     <thead class="listofitemps">
                     <tr>
                         <td>Ilość książek w bibliotece:</td>
-                        <td><%=countBooks%></td>
+                        <td><%=countBooks%>
+                        </td>
                     </tr>
                     <tr>
                         <td>Ilość aktywnych użytkowników:</td>
-                        <td><%=activeUsers%></td>
+                        <td><%=activeUsers%>
+                        </td>
                         <td>Ilość zablokowanych użytkowników:</td>
-                        <td><%=disabledUsers%></td>
+                        <td><%=disabledUsers%>
+                        </td>
                     </tr>
                     </thead>
                 </table>
@@ -141,8 +144,7 @@
                     <div class="mr-auto p-2 align-items-start">
                     </div>
                     <div class="p2 align-items-end">
-                        <form method="GET" action="" class="addUser">
-                            <input type="hidden" name="" value=""/>
+                        <form method="GET" action="RefreshStatsServlet" class="addUser">
                             <button type="submit" class="btn btn-outline-secondary">Odśwież statystyki ...</button>
                         </form>
                         <br/>

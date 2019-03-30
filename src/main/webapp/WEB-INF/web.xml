@@ -127,6 +127,15 @@
         <url-pattern>app/ReturnBookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RefreshStatsServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.RefreshStatsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RefreshStatsServlet</servlet-name>
+        <url-pattern>app/RefreshStatsServlet</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

@@ -92,6 +92,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         try (ResultSet rs = OperationsQuery.listOfBorrowedBookByUserId(userId)) {
 
             while (rs.next()) {
+                int id= rs.getInt("id");
                 userId = rs.getInt("userId");
                 String userName = rs.getString("lastName") + ", " + rs.getString("firstName");
                 int bookID = rs.getInt("bookId");
@@ -104,7 +105,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                 if (operationTypeId == 0) operationType = OperationType.RESERVATION;
                 else operationType = OperationType.BORROW;
 
-                operationBorrowedByUserList.add(new Operation(userId, userName, bookID, bookTitle, author, operationDate, startDate, endDate, operationType));
+                operationBorrowedByUserList.add(new Operation(id, userId, userName, bookID, bookTitle, author, operationDate, startDate, endDate, operationType));
 
             }
             rs.close();

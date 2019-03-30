@@ -92,27 +92,14 @@
                         <%=operation.getStartDate()%>
                     </td>
                     <td>
-                        <div class="form-group mx-sm-3 mb-2">
-                            <input type="date" name="endDate" class="form-control" value="<%=LocalDate.now()%>">
-                            <%--
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <input type="date" name="startDate" class="form-control" value="<%=basket.getStartDate()%>">
-                                </div>
-                            </td>
-                            <td>
-                                <%if (basket.getOperationType().equals(OperationType.RESERVATION)) {%>
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <input type="date" name="endDate" class="form-control" value="<%=basket.getEndDate()%>">
-                                </div>
-                                <%} else {%>
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <input type="text" name="endDate" class="form-control" disabled value=" --- ">
-                                        <%}%>
-        --%>
+                        <form method="POST" action="ReturnBookServlet" class="addUser">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input type="date" name="endDate" class="form-control" value="<%=LocalDate.now()%>">
+                            </div>
                     </td>
                     <td>
-                        <form method="POST" action="RemoveItemFromBasketServlet1" class="addUser">
-                            <input type="hidden" name="removeItem" value="<%=rowNumber-1%>"/>
+                        <form method="POST" action="ReturnBookServlet" class="addUser">
+                            <input type="hidden" name="operationId" value="<%=operation.getId()%>"/>
                             <button type="submit" class="btn btn-danger">Zwróć</button>
                         </form>
 

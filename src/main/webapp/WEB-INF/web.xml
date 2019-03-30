@@ -117,7 +117,15 @@
         <url-pattern>app/RemoveItemFromBasketServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ReturnBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.ReturnBookServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>ReturnBookServlet</servlet-name>
+        <url-pattern>app/ReturnBookServlet</url-pattern>
+    </servlet-mapping>
 
 
     <filter>

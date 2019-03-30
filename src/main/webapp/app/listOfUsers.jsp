@@ -103,7 +103,11 @@
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
                             <input type="hidden" name="operation" value="newoperation"/>
+                            <%if (user.getStatus().equals("Nieaktywny")){%>
+                            <button type="submit" class="btn btn-secondary btn-sm" disabled>Wyłączone</button>
+                            <%}else{%>
                             <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
+                            <%}%>
                         </form>
                     </td>
                     <%} else if (operation != null && !operation.isEmpty() && operation.equals("returnbook")) {%>
@@ -111,7 +115,11 @@
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
                             <input type="hidden" name="operation" value="returnbook"/>
+                            <%if (user.getStatus().equals("Nieaktywny")){%>
+                            <button type="submit" class="btn btn-secondary btn-sm" disabled>Wyłączone</button>
+                            <%}else{%>
                             <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
+                            <%}%>
                         </form>
                     </td>
                     <%}%>

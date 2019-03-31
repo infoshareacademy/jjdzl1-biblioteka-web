@@ -17,19 +17,11 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <%
-    String order = request.getParameter("order");
-    String bookTitle = request.getParameter("title");
-    String orderTitle;
-    if (order == null || order.isEmpty() || order.equals("title")) {
-        orderTitle = " (wg tytułu)";
-        order = "title";
-    } else orderTitle = " (wg autora)";
     BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
     List<Basket> basketList = basketRepositoryDaoBean.basketList();
-
 %>
+
 <article>
     <div class="content">
         <div class="contentInside">
@@ -91,15 +83,15 @@
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td>
+                    <td><a href="bookDescription.jsp?id=<%=basket.getBook().getBookID()%>">
                         <b><%=basket.getBook().getTitle()%>
                         </b>
                         <br/><i>
                         <%=basket.getBook().getAuthorLastName() + ", " + basket.getBook().getAuthorFirstName()%>
-                    </i></td>
+                    </i></a></td>
                     <td><% if (basket.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%} else {%>
                         Wypożyczenie<%}%>
-
+                    </a>
                     </td>
 
                     <td>

@@ -301,3 +301,9 @@ color: #1E2225;
     margin: 0;
     -moz-appearance: textfield;
 }
+
+#timeOfStat{
+    font-size: 10px;
+    color: #6c757d;
+    align-items: end;
+}

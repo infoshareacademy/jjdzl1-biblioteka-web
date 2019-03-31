@@ -2,6 +2,7 @@ package com.infoshare.query;
 
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Basket;
+import com.infoshare.domain.Operation;
 import com.infoshare.domain.OperationType;
 import com.infoshare.domain.User;
 import com.infoshare.utils.DateUtil;
@@ -84,6 +85,29 @@ public class OperationsQuery {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static ResultSet listOfBorrowedBookByUserId(int userID) throws SQLException, ClassNotFoundException {
+        String endDate = "1970.01.01";
+        String query = "SELECT * FROM operations " +
+                "JOIN `users` ON operations.userId = users.id " +
+                "JOIN books ON operations.bookId=books.id " +
+                "WHERE userID = " + userID + " " +
+                "AND endDate = '" + endDate + "'";
+        return preparedStatement(query).executeQuery();
+    }
+
+    public static void ReturnBook(int id, LocalDate endDate) {
+       String endDateString=endDate.toString();
+       // UPDATE `librarydb`.`operations` SET `endDate`='1970-01-02' WHERE `id`='25';
+        String query = "UPDATE operations SET endDate='" + endDateString + "' WHERE id=" + id;
+        try {
+            preparedStatement(query).execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

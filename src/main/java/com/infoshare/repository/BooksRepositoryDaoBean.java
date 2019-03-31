@@ -2,6 +2,7 @@ package com.infoshare.repository;
 
 import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
+import com.infoshare.domain.BookStatus;
 import com.infoshare.query.BooksQuery;
 
 import javax.ejb.Stateless;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Stateless
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
@@ -26,9 +28,15 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String authorLastName = rs.getString("authorLastName");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
+                String statusString = rs.getString("status");
+                BookStatus status;
+                if (statusString.equals("Dostępna"))
+                    status = BookStatus.Dostępna;
+                else if (statusString.equals("Zarezerwowana"))
+                    status = BookStatus.Zarezerwowana;
+                else status = BookStatus.Wypożyczona;
 
-
-                booksList.add(new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn));
+                booksList.add(new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, status));
             }
             rs.close();
             return booksList;
@@ -46,9 +54,16 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
                 String authorLastName = rs.getString("authorLastName");
                 int relaseDate = rs.getInt("daterelease");
                 String isbn = rs.getString("isbn");
-                String description= rs.getString("description");
+                String description = rs.getString("description");
+                String statusString = rs.getString("status");
+                BookStatus status;
+                if (statusString.equals("Dostępna"))
+                    status = BookStatus.Dostępna;
+                else if (statusString.equals("Zarezerwowana"))
+                    status = BookStatus.Zarezerwowana;
+                else status = BookStatus.Wypożyczona;
 
-                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, description);
+                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, description, status);
             }
             rs.close();
             return book;

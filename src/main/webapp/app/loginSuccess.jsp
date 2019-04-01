@@ -90,7 +90,7 @@
         disabledUsers = stats.get("disabledUsers");
     %>
 
-
+    <% if (session.getAttribute("normalUser") == null) {%>
     <div class="row">
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">
@@ -161,7 +161,7 @@
         <div class="col-lg-4">
         </div>
     </div>
-
+    <%}%>
 
 </div>
 

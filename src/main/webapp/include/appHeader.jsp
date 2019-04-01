@@ -17,7 +17,7 @@
 <nav class="navbar navbar-default "></nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
 
-    <a class="navbar-brand" href="loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png"
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/app/loginSuccess.jsp"><img src="${pageContext.request.contextPath}/img/logo.png"
                                                          width="30" height="30"
                                                          class="d-inline-block mr-1 align-bottom" alt=""> Biblioteka</a>
 

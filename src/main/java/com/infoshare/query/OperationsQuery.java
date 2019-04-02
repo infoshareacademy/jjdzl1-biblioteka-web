@@ -57,6 +57,7 @@ public class OperationsQuery {
 
         Date endDate = emptyDate;
         int operationTypeId = 1;
+        String status = "Wypożyczona";
 
         User user = selectedUser;
         List<Basket> basket = userBasket;
@@ -65,6 +66,7 @@ public class OperationsQuery {
             if (basketItem.getOperationType() == OperationType.RESERVATION) {
                 endDate = endOfReservationDate;
                 operationTypeId = 0;
+                status = "Zarezerwowana";
             }
 
             String query = "INSERT INTO `operations` " +
@@ -77,8 +79,13 @@ public class OperationsQuery {
                     currentDate + "', '" +
                     endDate + "', '" +
                     operationTypeId + "' )";
+
+
+            String changeStatusQuery = "UPDATE books SET status='" + status + "' WHERE id=" + basketItem.getBook().getBookID();
+
             try {
                 preparedStatement(query).execute();
+                preparedStatement(changeStatusQuery).execute();
 
             } catch (SQLException e) {
                 e.printStackTrace();

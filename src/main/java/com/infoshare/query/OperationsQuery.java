@@ -109,8 +109,10 @@ public class OperationsQuery {
        String endDateString=endDate.toString();
        // UPDATE `librarydb`.`operations` SET `endDate`='1970-01-02' WHERE `id`='25';
         String query = "UPDATE operations SET endDate='" + endDateString + "' WHERE id=" + id;
+        String statusAvailableQuery = "UPDATE books SET status='Dostępna' WHERE id=" + id;
         try {
             preparedStatement(query).execute();
+            preparedStatement(statusAvailableQuery).execute();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

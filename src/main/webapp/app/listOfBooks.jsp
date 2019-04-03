@@ -2,6 +2,7 @@
 <%@ page import="com.infoshare.repository.BooksRepositoryDaoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.Book" %>
+<%@ page import="com.infoshare.domain.BookStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -73,7 +74,13 @@
 
                     <% if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");
-                    %>
+
+                        if (book.getStatus() != BookStatus.Dostępna) {%>
+                    <td>
+                        <button type="submit" class="btn btn-secondary btn-sm" disabled><%=book.getStatus()%>
+                        </button>
+                    </td>
+                    <%} else {%>
                     <td>
                         <div>
                             <form method="GET" action="UserBasketServlet" class="addUser">
@@ -90,7 +97,10 @@
                             </form>
                         </div>
                     </td>
-                    <%}%>
+                    <%
+                            }
+                        }
+                    %>
                 </tr>
                 <%
                         rowNumber++;

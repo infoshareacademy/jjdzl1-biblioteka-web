@@ -13,6 +13,8 @@ Funkcjonalność zaimplementowana w aplikacji:
  - Historia wypożyczeń, rezerwacji ogólna i dla konkretnego użytkownika
  - Proste statystyki
  
+ ![Imgur](https://i.imgur.com/uKmR1XJ.png)
+ 
  Podczas tworzenia aplikacji używaliśmy narzędzi i oprogramowania:
  - JetBrains IntelliJ w wersji Ultimate (Java EE)
  - Serwera aplikacji WildFly 15.1
